@@ -1,30 +1,27 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app" style="padding: 20px;">
+    <BentoGrid rows="3" cols="4" gap="10px" customClass="custom-grid">
+      <div v-for="(item, index) in items" :key="index">
+        Celda {{ item }}
+      </div>
+    </BentoGrid>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import BentoGrid from './components/BentoGrid.vue';
+
+const items = Array.from({ length: 12 }, (_, i) => i + 1); // Genera números del 1 al 12
+</script>
+
+<style>
+#app {
+  font-family: Arial, sans-serif;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.custom-grid {
+  border: 2px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
 }
 </style>
