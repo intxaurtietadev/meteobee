@@ -6,14 +6,14 @@ export default defineConfig({
   plugins: [vue()],
 })
 
-module.exports = {
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        pathRewrite: { '^/api': '' }
-      }
-    }
-  }
-}
+// module.exports = {
+//   devServer: {
+//     proxy: {
+//       '/api': {
+//         target: 'http://localhost:3000',
+//         changeOrigin: true,
+//         pathRewrite: { '^/api': '' }
+//       }
+//     }
+//   }
+// }
