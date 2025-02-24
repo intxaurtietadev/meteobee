@@ -1,0 +1,116 @@
+{
+  "recomendaciones": {
+    "precipitacion": [
+      {
+        "rango": {"min": 0, "max": 20},
+        "recomendacion": "No hay riesgo de lluvia, las actividades apícolas pueden continuar normalmente."
+      },
+      {
+        "rango": {"min": 21, "max": 60},
+        "recomendacion": "Lluvias moderadas, se recomienda revisar las colmenas para evitar filtraciones de agua."
+      },
+      {
+        "rango": {"min": 61, "max": 100},
+        "recomendacion": "Lluvias intensas, se recomienda proteger las colmenas y monitorear la actividad de las abejas."
+      }
+    ],
+    "cota_nieve": [
+      {
+        "rango": {"min": 0, "max": 500},
+        "recomendacion": "Bajo riesgo de nieve, actividades normales."
+      },
+      {
+        "rango": {"min": 501, "max": 1000},
+        "recomendacion": "Riesgo de nieve a bajas altitudes, asegurarse de que las colmenas estén resguardadas."
+      },
+      {
+        "rango": {"min": 1001, "max": 3000},
+        "recomendacion": "Nieve en altitudes medias, revisar el estado de las colmenas y protegerlas de la nieve."
+      }
+    ],
+    "temperatura_maxima": [
+      {
+        "rango": {"min": -5, "max": 10},
+        "recomendacion": "Temperaturas frescas, asegurarse de que las colmenas estén bien aisladas."
+      },
+      {
+        "rango": {"min": 11, "max": 25},
+        "recomendacion": "Temperaturas agradables, las abejas están activas. Asegurarse de que no haya exceso de humedad."
+      },
+      {
+        "rango": {"min": 26, "max": 40},
+        "recomendacion": "Temperaturas altas, mantener las colmenas ventiladas y evitar que las abejas se sobrecalienten."
+      }
+    ],
+    "temperatura_minima": [
+      {
+        "rango": {"min": -10, "max": 0},
+        "recomendacion": "Temperaturas muy frías, asegurarse de que las colmenas estén bien protegidas del frío."
+      },
+      {
+        "rango": {"min": 1, "max": 10},
+        "recomendacion": "Temperaturas frías, revisar que las colmenas tengan suficiente comida."
+      },
+      {
+        "rango": {"min": 11, "max": 20},
+        "recomendacion": "Temperaturas moderadas, condiciones favorables para la actividad de las abejas."
+      }
+    ],
+    "humedad_maxima": [
+      {
+        "rango": {"min": 0, "max": 60},
+        "recomendacion": "Humedad baja, mantener las colmenas ventiladas para evitar el exceso de calor."
+      },
+      {
+        "rango": {"min": 61, "max": 80},
+        "recomendacion": "Humedad moderada, asegurar que las abejas tengan suficiente espacio para ventilación."
+      },
+      {
+        "rango": {"min": 81, "max": 100},
+        "recomendacion": "Humedad alta, podría haber riesgo de moho o enfermedades en la colmena, revisar con frecuencia."
+      }
+    ],
+    "humedad_minima": [
+      {
+        "rango": {"min": 0, "max": 30},
+        "recomendacion": "Humedad muy baja, asegurarse de que las abejas no sufran deshidratación."
+      },
+      {
+        "rango": {"min": 31, "max": 50},
+        "recomendacion": "Humedad moderada, condiciones normales."
+      },
+      {
+        "rango": {"min": 51, "max": 100},
+        "recomendacion": "Humedad alta, mantener la ventilación para evitar la acumulación de humedad en la colmena."
+      }
+    ],
+    "racha_max_viento": [
+      {
+        "rango": {"min": 0, "max": 20},
+        "recomendacion": "Viento suave, no se esperan problemas para las colmenas."
+      },
+      {
+        "rango": {"min": 21, "max": 40},
+        "recomendacion": "Viento moderado, asegurarse de que las colmenas estén bien fijadas y no haya riesgo de vuelcos."
+      },
+      {
+        "rango": {"min": 41, "max": 100},
+        "recomendacion": "Viento fuerte, proteger las colmenas y asegurarse de que no se caigan."
+      }
+    ],
+    "indice_uv": [
+      {
+        "rango": {"min": 0, "max": 2},
+        "recomendacion": "Bajo índice UV, condiciones normales."
+      },
+      {
+        "rango": {"min": 3, "max": 5},
+        "recomendacion": "Índice UV moderado, proteger las colmenas de la exposición directa al sol."
+      },
+      {
+        "rango": {"min": 6, "max": 10},
+        "recomendacion": "Índice UV alto, mantener las colmenas en sombra para evitar que las abejas sufran daños."
+      }
+    ]
+  }
+}

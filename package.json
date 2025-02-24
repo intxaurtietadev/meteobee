@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "json-server": "json-server --watch db.json --port 5000"
+    "json-server": "json-server --watch advice.json --port 5000"
   },
   "dependencies": {
+    "blendy": "^0.0.1",
+    "bootstrap": "^5.3.3",
     "swapy": "^1.0.5",
     "vue": "^3.5.13"
   },

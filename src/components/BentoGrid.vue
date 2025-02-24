@@ -23,15 +23,15 @@
       />
     </div>
 
-    <div data-swapy-slot="card3" class="slot">
-      <BentoCard
-        title="Wallet"
-        description="Access all your gifts and save up your Givingli Cash."
+    <div data-swapy-slot="card3" class="slot" @click="selectCard('card3')">
+      <BentoCardDaily
         bgColor="#f0c17a"
         img="https://via.placeholder.com/100"
         class="card3"
+        :class="{ selected: selectedCard === 'card3' }"
         data-swapy-item="item3"
       />
+
     </div>
 
     <div data-swapy-slot="card4" class="slot">
@@ -73,9 +73,19 @@
 import { createSwapy } from 'swapy';
 import { onMounted, onUnmounted, ref } from 'vue';
 import BentoCard from './BentoCard.vue';
+import BentoCardDaily from './BentoCardDaily.vue';
 
 const container = ref(null);
 const swapy = ref(null);
+const selectedCard = ref(null);
+
+const selectCard = (card) => {
+  if (selectedCard.value === card) {
+    selectedCard.value = null;  
+  } else {
+    selectedCard.value = card;  
+  }
+};
 
 onMounted(() => {
   if (container.value) {
@@ -139,4 +149,11 @@ onUnmounted(() => {
 .card6 {
   grid-area: card6;
 }
+
+/* .selected {
+  transform: scale(1.5); 
+  grid-column: span 3; 
+  grid-row: span 3; 
+  z-index: 10; 
+} */
 </style>
