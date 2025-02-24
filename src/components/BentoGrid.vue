@@ -113,6 +113,7 @@
     max-width: 75rem;
     margin: 0 auto;
     margin-top: 4rem;
+    font-family: var(--font-family);
   }
 
   /* Estilos para los slots */
@@ -122,6 +123,7 @@
   .grid__slot[data-swapy-highlighted] {
   background: rgba(255, 255, 255, 0.2);
 }
+
 
   .card1 {
     grid-area: card1;
