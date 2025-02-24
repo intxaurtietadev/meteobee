@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+    <Navbar />
     <BentoGrid />
   </div>
 </template>
 
 <script setup>
+import Navbar from './components/Navbar.vue'; 
 import BentoGrid from './components/BentoGrid.vue';
+
 </script>
 
 <style>
