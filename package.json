@@ -10,7 +10,11 @@
     "json-server": "json-server --watch db.json"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "blendy": "^0.0.1",
+    "bootstrap": "^5.3.3",
+    "swapy": "^1.0.5",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
