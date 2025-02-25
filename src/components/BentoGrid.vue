@@ -1,159 +1,92 @@
 <template>
   <div class="grid-container" ref="container">
-    <!-- Cada tarjeta está envuelta en un div con data-swapy-slot -->
-    <div data-swapy-slot="card1" class="slot">
-      <BentoCard
-        title="Customization"
-        description="Use a pre-designed template or personalize with video, stickers, fonts, and more."
-        bgColor="#f6b83c"
-        img="https://via.placeholder.com/100"
-        class="card1"
-        data-swapy-item="item1"
-      />
-    </div>
+    <!-- Tarjeta 1: DailyMeteo -->
+    <BentoCard class="card1" :routeName="'DailyMeteo'">
+      <DailyMeteo />
+    </BentoCard>
 
-    <div data-swapy-slot="card2" class="slot">
-      <BentoCard
-        title="Scheduling"
-        description="Schedule all your cards and gifts now and we'll send them later."
-        bgColor="#a3d55d"
-        img="https://via.placeholder.com/100"
-        class="card2"
-        data-swapy-item="item2"
-      />
-    </div>
+    <!-- Tarjeta 2: WeeklyMeteo -->
+    <BentoCard class="card2" :routeName="'WeeklyMeteo'">
+      <WeeklyMeteo />
+    </BentoCard>
 
-    <div data-swapy-slot="card3" class="slot" @click="selectCard('card3')">
-      <BentoCardDaily
-        bgColor="#f0c17a"
-        img="https://via.placeholder.com/100"
-        class="card3"
-        :class="{ selected: selectedCard === 'card3' }"
-        data-swapy-item="item3"
-      />
+    <!-- Tarjeta 3: DailyToDo -->
+    <BentoCard class="card3" :routeName="'DailyToDo'">
+      <DailyToDo />
+    </BentoCard>
 
-    </div>
+    <!-- Tarjeta 4: WeeklyToDo -->
+    <BentoCard class="card4" :routeName="'WeeklyToDo'">
+      <WeeklyToDo />
+    </BentoCard>
 
-    <div data-swapy-slot="card4" class="slot">
-      <BentoCard
-        title="Inbox"
-        description="Track your gifts, group chats, and sent cards."
-        bgColor="#f5e55c"
-        img="https://via.placeholder.com/100"
-        class="card4"
-        data-swapy-item="item4"
-      />
-    </div>
+    <!-- Tarjeta 5: HoneyProduction -->
+    <BentoCard class="card5" :routeName="'HoneyProduction'">
+      <HoneyProduction />
+    </BentoCard>
 
-    <div data-swapy-slot="card5" class="slot">
-      <BentoCard
-        title="Send Gifts"
-        description="Send as a group with friends or individually."
-        bgColor="#4d6c32"
-        img="https://via.placeholder.com/100"
-        class="card5"
-        data-swapy-item="item5"
-      />
-    </div>
-
-    <div data-swapy-slot="card6" class="slot">
-      <BentoCard
-        title="Reminders"
-        description="Never miss a birthday again."
-        bgColor="#f6b83c"
-        img="https://via.placeholder.com/100"
-        class="card6"
-        data-swapy-item="item6"
-      />
-    </div>
+    <!-- Tarjeta 6: News -->
+    <BentoCard class="card6" :routeName="'News'">
+      <News />
+    </BentoCard>
   </div>
 </template>
 
 <script setup>
-import { createSwapy } from 'swapy';
-import { onMounted, onUnmounted, ref } from 'vue';
-import BentoCard from './BentoCard.vue';
-import BentoCardDaily from './BentoCardDaily.vue';
-
-const container = ref(null);
-const swapy = ref(null);
-const selectedCard = ref(null);
-
-const selectCard = (card) => {
-  if (selectedCard.value === card) {
-    selectedCard.value = null;  
-  } else {
-    selectedCard.value = card;  
-  }
-};
-
-onMounted(() => {
-  if (container.value) {
-    // Inicializa Swapy en el contenedor del grid
-    swapy.value = createSwapy(container.value,  {
-      animation: 'spring'});
-
-    // Escucha el evento de intercambio
-    swapy.value.onSwap((event) => {
-      console.log('Elementos intercambiados:', event);
-    });
-  }
-});
-
-onUnmounted(() => {
-  // Destruye la instancia de Swapy cuando el componente se desmonte
-  swapy.value?.destroy();
-});
+import BentoCard from './BentoCard.vue'; // Import BentoCard
+import DailyMeteo from './cards/DailyMeteo.vue';
+import WeeklyMeteo from './cards/WeeklyMeteo.vue';
+import DailyToDo from './cards/DailyToDo.vue';
+import WeeklyToDo from './cards/WeeklyToDo.vue';
+import HoneyProduction from './cards/HoneyProduction.vue';
+import News from './cards/News.vue';
 </script>
 
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-  grid-template-rows: auto auto auto; /* 3 filas */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     "card1 card2 card2"
     "card1 card3 card4"
     "card5 card5 card6";
-  gap: 1.25rem;
-  padding: 2.5rem;
+  gap: var(--space-md);
+  padding: var(--space-lg);
   max-width: 75rem;
   margin: 0 auto;
+  margin-top: var(--space-xl);
+  font-family: var(--font-family);
 }
 
-/* Estilos para los slots */
-.slot {
-  display: contents; /* Evita que los divs adicionales afecten el grid */
-}
-
+/* Posicionamiento de las tarjetas en el grid */
 .card1 {
   grid-area: card1;
+  background-color: var(--color-secondary);
 }
 
 .card2 {
   grid-area: card2;
+  background-color: var(--color-tertiary);
 }
 
 .card3 {
   grid-area: card3;
+  background-color: var(--color-accent);
 }
 
 .card4 {
   grid-area: card4;
+  background-color: var(--color-light);
 }
 
 .card5 {
   grid-area: card5;
+  background-color: var(--color-primary)
 }
 
 .card6 {
   grid-area: card6;
+  background-color: var(--color-secondary);
 }
-
-/* .selected {
-  transform: scale(1.5); 
-  grid-column: span 3; 
-  grid-row: span 3; 
-  z-index: 10; 
-} */
 </style>
