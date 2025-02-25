@@ -3,11 +3,14 @@
     class="card"
     :class="{ 'card--active': isActive }"
     :style="{ backgroundColor: bgColor }"
-    data-swapy-item
   >
-    <img v-if="img" :src="img" alt="Card image" class="card__image" />
-    <h3 class="card__title">{{ title }}</h3>
-    <p class="card__description">{{ description }}</p>
+    <!-- Slot para contenido personalizado -->
+    <slot>
+      <!-- Contenido por defecto -->
+      <img v-if="img" :src="img" alt="Card image" class="card__image" />
+      <h3 class="card__title">{{ title }}</h3>
+      <p class="card__description">{{ description }}</p>
+    </slot>
   </div>
 </template>
 
@@ -22,48 +25,43 @@ defineProps({
 </script>
 
 <style scoped>
-/* Bloque principal */
+/* Estilos base para todas las tarjetas */
 .card {
-  border-radius: 1rem; /* 16px */
-  box-shadow: 0 0.625rem 0.9375rem rgba(0, 0, 0, 0.1); /* 10px 15px */
-  padding: 1.5rem; /* 24px */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
 }
 
-/* Modificador: Estado activo */
 .card--active {
-  cursor: grabbing; /* Cambia el cursor cuando se está arrastrando */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  cursor: grabbing;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-/* Hover */
 .card:hover {
   transform: scale(1.05);
 }
 
-/* Elemento: Imagen */
 .card__image {
-  width: 6.25rem; /* 100px */
-  height: 6.25rem; /* 100px */
-  margin-bottom: 1rem; /* 16px */
+  width: 6.25rem;
+  height: 6.25rem;
+  margin-bottom: var(--space-sm);
   object-fit: contain;
-  border-radius: 0.75rem; /* 12px */
+  border-radius: var(--border-radius);
 }
 
-/* Elemento: Título */
 .card__title {
-  font-size: 1.25rem; /* 20px */
-  font-weight: bold;
-  margin-bottom: 0.5rem; /* 8px */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
 }
 
-/* Elemento: Descripción */
 .card__description {
-  font-size: 1rem; /* 16px */
-  color: #4a4a4a;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
 }
 </style>
