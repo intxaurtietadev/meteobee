@@ -8,12 +8,12 @@
       <h3 class="card-title">Recomendaciones diarias</h3>
       <!-- <p class="card-description">{{ description }}</p> -->
       <div v-if="advice">
-        <p><strong>Precipitaciones:</strong> {{ advice.precipitacion }}</p>
-        <p><strong>Nieve:</strong> {{ advice.cota_nieve }}</p>
-        <p><strong>Temperatura:</strong> {{ advice.temperatura_maxima }} </p>
-        <p><strong>Humedad:</strong> {{ advice.humedad_maxima }}</p>
-        <p><strong>Viento:</strong> {{ advice.racha_max_viento }}</p>
-        <p><strong>Índice UV:</strong> {{ advice.indice_uv }}</p>
+        <p><strong>Precipitaciones:</strong> {{ advice.precipitation }}</p>
+        <p><strong>Nieve:</strong> {{ advice.snow }}</p>
+        <p><strong>Temperatura:</strong> {{ advice.max_temp }} </p>
+        <p><strong>Humedad:</strong> {{ advice.max_humidity }}</p>
+        <p><strong>Viento:</strong> {{ advice.wind }}</p>
+        <p><strong>Índice UV:</strong> {{ advice.uv_index }}</p>
       </div>
     </div>
   </template>
@@ -27,56 +27,60 @@
   });
   import { ref, onMounted } from 'vue'
 
+// 
 const advice = ref({
-  precipitacion: '',
-  cota_nieve: '',
-  temperatura_maxima: '',
-  temperatura_minima: '',
-  humedad_maxima: '',
-  humedad_minima: '',
-  racha_max_viento: '',
-  indice_uv: ''
+  precipitation: '',
+  snow: '',
+  max_temp: '',
+  min_temp: '',
+  max_humidity: '',
+  min_humidity: '',
+  snow: '',
+  uv_index: ''
 })
 
-const getAdvice = (parametro, valor, adviceJSON) => {
-  const adviceList = adviceJSON.recomendaciones[parametro]
+//Function to get the advice from the JSON file
+const getAdvice = (parameter, value, adviceJSON) => {
+  const adviceList = adviceJSON.advice[parameter]
   const adviceItem = adviceList.find(item => 
-    valor >= item.rango.min && valor <= item.rango.max
+    value >= item.range.min && value <= item.range.max
   )
   console.log(adviceItem)
-  return adviceItem ? adviceItem.recomendacion: "No hay recomendación disponible."
+  return adviceItem ? adviceItem.advice: "No hay recomendación disponible."
 }
 
+//Fake API data
 const apiData = {
-  precipitacion: 40,
-  cota_nieve: 800,
-  temperatura_maxima: 25,
-  temperatura_minima: 15,
-  humedad_maxima: 75,
-  humedad_minima: 35,
-  racha_max_viento: 30,
-  indice_uv: 5
+  precipitation: 40,
+  snow: 800,
+  max_temp: 25,
+  min_temp: 15,
+  max_humidity: 75,
+  min_humidity: 35,
+  wind: 30,
+  uv_index: 5
 }
 
-const cargarAdvice = async () => {
+//Function to load the advice from the JSON file
+const loadAdvice = async () => {
 
-    const respuesta = await fetch('../public/advice.json')  
-    const data = await respuesta.json()
+    const answer = await fetch('../public/advice.json')  
+    const data = await answer.json()
     console.log(data)
     
-    advice.value.precipitacion = getAdvice('precipitacion', apiData.precipitacion, data)
-    advice.value.cota_nieve = getAdvice('cota_nieve', apiData.cota_nieve, data)
-    advice.value.temperatura_maxima = getAdvice('temperatura_maxima', apiData.temperatura_maxima, data)
-    advice.value.temperatura_minima = getAdvice('temperatura_minima', apiData.temperatura_minima, data)
-    advice.value.humedad_maxima = getAdvice('humedad_maxima', apiData.humedad_maxima, data)
-    advice.value.humedad_minima = getAdvice('humedad_minima', apiData.humedad_minima, data)
-    advice.value.racha_max_viento = getAdvice('racha_max_viento', apiData.racha_max_viento, data)
-    advice.value.indice_uv = getAdvice('indice_uv', apiData.indice_uv, data)
+    advice.value.precipitation = getAdvice('precipitation', apiData.precipitation, data)
+    advice.value.snow = getAdvice('snow', apiData.snow, data)
+    advice.value.max_temp = getAdvice('max_temp', apiData.max_temp, data)
+    advice.value.min_temp = getAdvice('min_temp', apiData.min_temp, data)
+    advice.value.max_humidity = getAdvice('max_humidity', apiData.max_humidity, data)
+    advice.value.min_humidity = getAdvice('min_humidity', apiData.min_humidity, data)
+    advice.value.wind = getAdvice('wind', apiData.wind, data)
+    advice.value.uv_index = getAdvice('uv_index', apiData.uv_index, data)
   
 }
 
 onMounted(() => {
-  cargarAdvice()
+  loadAdvice()
 })
   </script>
   
