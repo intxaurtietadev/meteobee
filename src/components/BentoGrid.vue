@@ -40,9 +40,11 @@ import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
 import HoneyProduction from './cards/HoneyProduction.vue';
 import News from './cards/News.vue';
+
 </script>
 
 <style scoped>
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

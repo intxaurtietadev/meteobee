@@ -1,11 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
-import Login from '@/views/LoginView.vue';
+import LoginView from '@/views/LoginView.vue';
+import ProfileView from '@/views/ProfileView.vue'; // Asegúrate de que ProfileView.vue existe
 import { useAuthStore } from '@/stores/auth';
 
 const routes = [
-  { path: '/', component: HomeView, meta: { requiresAuth: true } }, // Ruta protegida
-  { path: '/login', component: Login },
+  {
+    path: '/',
+    name: 'Home',
+    component: HomeView,
+    meta: { requiresAuth: false }, // No requiere autenticación
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+    meta: { requiresAuth: false }, // No requiere autenticación
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: ProfileView,
+    meta: { requiresAuth: true }, // Requiere autenticación
+  },
 ];
 
 const router = createRouter({
@@ -13,6 +30,7 @@ const router = createRouter({
   routes,
 });
 
+// Protege las rutas que requieren autenticación
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
   authStore.checkAuth(); // Verificar autenticación

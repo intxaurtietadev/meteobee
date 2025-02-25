@@ -24,7 +24,7 @@
       <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
     <!-- Ícono de usuario -->
-    <div class="navbar__user">
+    <div class="navbar__user" @click="$emit('toggle-login')">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
