@@ -23,8 +23,8 @@
       <li class="navbar__nav-item"><a href="#blog" class="navbar__link">Blog</a></li>
       <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
-    <!-- Ícono de usuario -->
-    <div class="navbar__user" @click="$emit('toggle-login')">
+    <!-- Ícono de usuario, redirigir al login -->
+    <div class="navbar__user" @click="$router.push('/login')"> <!-- Aquí redirigimos a la página de login -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
