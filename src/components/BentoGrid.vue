@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import BentoCard from './BentoCard.vue'; // Importa BentoCard
+import BentoCard from './BentoCard.vue'; // Import BentoCard
 import DailyMeteo from './cards/DailyMeteo.vue';
 import WeeklyMeteo from './cards/WeeklyMeteo.vue';
 import DailyToDo from './cards/DailyToDo.vue';
@@ -62,25 +62,31 @@ import News from './cards/News.vue';
 /* Posicionamiento de las tarjetas en el grid */
 .card1 {
   grid-area: card1;
+  background-color: var(--color-secondary);
 }
 
 .card2 {
   grid-area: card2;
+  background-color: var(--color-tertiary);
 }
 
 .card3 {
   grid-area: card3;
+  background-color: var(--color-accent);
 }
 
 .card4 {
   grid-area: card4;
+  background-color: var(--color-light);
 }
 
 .card5 {
   grid-area: card5;
+  background-color: var(--color-primary)
 }
 
 .card6 {
   grid-area: card6;
+  background-color: var(--color-secondary);
 }
 </style>
