@@ -21,7 +21,7 @@
       <option
         v-for="municipio in filteredMunicipios"
         :key="municipio.CP"
-        :value="municipio.NOMBRE"
+        :value="municipio.CP"
       >
         {{ municipio.NOMBRE }}
       </option>
