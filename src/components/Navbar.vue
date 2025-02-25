@@ -91,6 +91,9 @@ export default {
   display: flex;
   gap: var(--space-md);
   transition: transform var(--transition-duration) ease;
+  /*border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  padding: 1rem;*/
 }
 
 .navbar__nav-item {
