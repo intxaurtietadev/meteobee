@@ -35,6 +35,12 @@
       "name": "Paquito",
       "email": "paco@abejas.com",
       "password": "paquitoabejas"
+    },
+    {
+      "id": "1a5e",
+      "name": "Jose",
+      "email": "jose@abejas.com",
+      "password": "paquitoabejas"
     }
   ],
   "news": [

@@ -125,7 +125,7 @@
     align-items: center;
     width: 100%;
     font-family: var(--font-family);
-    height: 100vh;
+    height: 110vh;
   }
   
   .register__container {
