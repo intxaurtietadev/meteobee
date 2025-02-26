@@ -50,4 +50,20 @@ const props = defineProps({
   font-size: 1rem;
   line-height: 1.5;
 }
+
+/* Estilos específicos para cuando está en la Home */
+.no-style .news__card {
+  border: none;
+  box-shadow: none;
+  transition: none;
+  color: white;
+}
+
+.no-style .news__card .news__image {
+  /* width: 50% */
+}
+
+.no-style .news__card:hover {
+  transform: none;
+}
 </style>
