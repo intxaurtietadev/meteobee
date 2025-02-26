@@ -84,10 +84,8 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-// Define los eventos que el componente puede emitir
 const emit = defineEmits(['login', 'register', 'forgotPassword']);
 
-// Estados
 const email = ref('');
 const password = ref('');
 const remember = ref(false);
@@ -95,18 +93,26 @@ const showPassword = ref(false);
 const isLoading = ref(false);
 const errorMessage = ref('');
 
-// Método para manejar el envío del formulario
 const handleSubmit = async () => {
   errorMessage.value = '';
   isLoading.value = true;
   
   try {
-    // Emitir evento de login con los datos
-    emit('login', {
-      email: email.value,
-      password: password.value,
-      remember: remember.value
-    });
+    // 🔗 Llamada al JSON Server para obtener usuarios
+    const response = await fetch('http://localhost:3000/users');
+    if (!response.ok) throw new Error('Error al obtener usuarios.');
+    if (response.ok) throw new Error('todo ok');
+
+    const users = await response.json();
+    
+    // 🔐 Verificar credenciales
+    const user = users.find(u => u.email === email.value && u.password === password.value);
+
+    if (user) {
+      emit('login', { email: user.email, remember: remember.value });
+    } else {
+      errorMessage.value = 'Correo o contraseña incorrectos.';
+    }
   } catch (err) {
     errorMessage.value = err.message || 'Error al iniciar sesión. Inténtalo de nuevo.';
   } finally {
@@ -114,6 +120,7 @@ const handleSubmit = async () => {
   }
 };
 </script>
+
 
 <style scoped>
 .login {
