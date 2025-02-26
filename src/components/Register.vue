@@ -60,6 +60,7 @@
           <button class="register__button" type="submit" :disabled="isLoading">
             {{ isLoading ? 'Registrando...' : 'Registrarse' }}
           </button>
+          <p class="register__login">¿Ya tienes una cuenta? <a href="#" class="register__link" @click.prevent="$emit('switchToLogin')">Inicia sesión aquí</a></p>
         </form>
       </div>
     </div>

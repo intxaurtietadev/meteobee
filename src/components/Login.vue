@@ -71,7 +71,8 @@
       </p>
       
       <div class="login__footer">
-        <p class="login__register">¿No tienes una cuenta? <a href="#" class="login__link" @click.prevent="$emit('register')">Regístrate aquí</a></p>
+        <p class="login__register">¿No tienes una cuenta? <a href="#" class="login__link" @click.prevent="$emit('switchToRegister')">Regístrate aquí</a>
+        </p>
         <p class="login__weather-info">
           <i class="login__icon login__icon--weather"></i> 
           El clima y las abejas, en perfecta armonía
