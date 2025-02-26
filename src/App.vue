@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <Navbar />
-    <main>
-      <router-view />
-    </main>
+    <Navbar @toggle-login="showLogin = !showLogin" />
+    <router-view></router-view> <!-- Aquí se renderiza la vista correspondiente a la ruta -->
   </div>
 </template>
 
 <script setup>
-import Navbar from './components/Navbar.vue'; 
-import {  RouterView } from 'vue-router'
+import { ref } from 'vue';
+import Navbar from '@/components/Navbar.vue';
+
+const showLogin = ref(false);  // Estado para controlar si el login debe mostrarse
 </script>
-
-<style>
-
-</style>
