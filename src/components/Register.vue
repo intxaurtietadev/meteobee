@@ -60,7 +60,9 @@
           <button class="register__button" type="submit" :disabled="isLoading">
             {{ isLoading ? 'Registrando...' : 'Registrarse' }}
           </button>
-          <p class="register__login">¿Ya tienes una cuenta? <a href="#" class="register__link" @click.prevent="$emit('switchToLogin')">Inicia sesión aquí</a></p>
+          <p class="register__login">
+            ¿Ya tienes una cuenta? <a href="#" class="register__link" @click.prevent="$emit('switchToLogin')">Inicia sesión aquí</a>
+          </p>
         </form>
       </div>
     </div>
@@ -93,6 +95,7 @@
   
       if (userExists) {
         errorMessage.value = 'El correo electrónico ya está registrado.';
+        isLoading.value = false;
         return;
       }
   
@@ -105,8 +108,6 @@
   
       if (!response.ok) throw new Error('Error al registrar el usuario.');
   
-      const user = await response.json();
-      console.log('Usuario registrado:', user);
       alert('✅ ¡Registro exitoso! Ahora puedes iniciar sesión.');
       router.push('/login');
     } catch (error) {
@@ -214,18 +215,9 @@
     text-align: center;
   }
   
-  .register__error-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: var(--space-xs);
-    background-color: #b91c1c;
-    border-radius: 50%;
-  }
-  
-  .register__footer {
-    padding: var(--space-md) var(--space-lg) var(--space-lg);
+  .register__login {
+    padding-top: var(--space-md);
     text-align: center;
-    border-top: 1px solid #f0f0f0;
   }
   
   .register__link {
