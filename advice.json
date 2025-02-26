@@ -44,7 +44,7 @@
     ],
     "min_temp": [
       {
-        "rango": {"min": -10, "max": 0},
+        "range": {"min": -10, "max": 0},
         "advice": "Temperaturas muy frías, asegurarse de que las colmenas estén bien protegidas del frío."
       },
       {

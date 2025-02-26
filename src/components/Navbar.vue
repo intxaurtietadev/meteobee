@@ -18,9 +18,9 @@
       </svg>
     </div>
     <ul class="navbar__nav-links" :class="{ 'navbar__nav-links--open': isOpen }">
-      <li class="navbar__nav-item"><a href="#home" class="navbar__link">Inicio</a></li>
+      <li class="navbar__nav-item"><router-link to="/" class="navbar__link">Inicio</router-link></li>
       <li class="navbar__nav-item"><a href="#proyectos" class="navbar__link">Proyectos</a></li>
-      <li class="navbar__nav-item"><a href="#blog" class="navbar__link">Blog</a></li>
+      <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
       <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
     <!-- Ícono de usuario -->
