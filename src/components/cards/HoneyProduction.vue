@@ -1,6 +1,6 @@
 <template>
   <div class="daily-meteo">
-    <h3>Tiempo Diario</h3>
+    <h3>Historial Graph + Prediction</h3>
     <p>{{ weatherData }}</p>
   </div>
 </template>

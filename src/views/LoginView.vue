@@ -12,7 +12,7 @@ import { ref } from 'vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '@/stores/auth';
+import { useAuthStore } from '../stores/auth';
 
 const activeTab = ref('login');
 const router = useRouter();

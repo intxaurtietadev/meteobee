@@ -7,7 +7,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import Navbar from '@/components/Navbar.vue';
+import Navbar from './components/Navbar.vue';
 
 const showLogin = ref(false);  // Estado para controlar si el login debe mostrarse
 </script>
