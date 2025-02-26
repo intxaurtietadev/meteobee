@@ -30,7 +30,7 @@
 
   <!-- Prueba de que el municipio se selecciona bien -->
   <p>El municipio seleccionado es: {{ municipioSelected }}</p>
-  <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button>
+  <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
 </template>
 
 
@@ -39,6 +39,7 @@
 import { ref, computed, onMounted, watch } from "vue";
 import provinciasData from "../../assets/Provincias.json";
 import municipiosData from "../../assets/Municipios.json";
+
 
 //Constantes
 const provincias = ref([]);
@@ -112,6 +113,36 @@ const fetchWeatherData = async (codigoMunicipio) => {
   } catch (error) {
     weatherData.value = "Error al obtener datos.";
     console.error(error);
+  }
+};
+
+// Función para descargar y guardar los datos en JSON Server
+const downloadDailyMeteoJSON = async () => {
+  const savedData = localStorage.getItem("DailyMeteo");
+  if (!savedData) {
+    alert("No hay datos en localStorage.");
+    return;
+  }
+
+  const weatherData = JSON.parse(savedData);
+
+  try {
+    // Enviar los datos a JSON Server
+    const response = await fetch("http://localhost:3000/weatherData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(weatherData),
+    });
+
+    if (response.ok) {
+      alert("Datos guardados correctamente en JSON Server.");
+    } else {
+      alert("Error al guardar los datos en JSON Server.");
+    }
+  } catch (error) {
+    console.error("Error al enviar datos a JSON Server:", error);
   }
 };
 
