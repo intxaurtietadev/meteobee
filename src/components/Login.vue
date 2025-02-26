@@ -101,7 +101,6 @@ const handleSubmit = async () => {
     // 🔗 Llamada al JSON Server para obtener usuarios
     const response = await fetch('http://localhost:3000/users');
     if (!response.ok) throw new Error('Error al obtener usuarios.');
-    if (response.ok) throw new Error('todo ok');
 
     const users = await response.json();
     
@@ -119,6 +118,7 @@ const handleSubmit = async () => {
     isLoading.value = false;
   }
 };
+
 </script>
 
 
