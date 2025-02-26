@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue';
 import LoginView from '@/views/LoginView.vue';
 import ProfileView from '@/views/ProfileView.vue'; // Asegúrate de que ProfileView.vue existe
 import { useAuthStore } from '@/stores/auth';
+import NewsView from '../views/NewsView.vue';
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     component: ProfileView,
     meta: { requiresAuth: true }, // Requiere autenticación
   },
+  {
+    path: '/noticias',
+    name: 'Noticias',
+    component: NewsView,
+  }
 ];
 
 const router = createRouter({

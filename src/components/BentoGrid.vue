@@ -11,7 +11,7 @@
     </BentoCard>
 
     <!-- Tarjeta 3: DailyToDo -->
-    <BentoCard class="card3" :routeName="'DailyToDo'">
+    <BentoCard class="card3" :routeName="'DailyToDo'" @click="gotToDailyRec">
       <DailyToDo />
     </BentoCard>
 
@@ -27,7 +27,7 @@
 
     <!-- Tarjeta 6: News -->
     <BentoCard class="card6" :routeName="'News'">
-      <News />
+      <!-- <News /> -->
     </BentoCard>
   </div>
 </template>
@@ -40,7 +40,13 @@ import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
 import HoneyProduction from './cards/HoneyProduction.vue';
 import News from './cards/News.vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter(); 
+
+const gotToDailyRec = () => {
+  router.push('/recomendacionesdiarias'); 
+};
 </script>
 
 <style scoped>
