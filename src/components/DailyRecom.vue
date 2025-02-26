@@ -2,14 +2,14 @@
     <div>
       <h3>Recomendaciones para apicultores</h3>
       <div v-if="advice">
-        <p>Recomendación para la probabilidad de precipitación: {{ advice.precipitacion }}</p>
-        <p>Recomendación para la cota de nieve: {{ advice.cota_nieve }}</p>
-        <p>Recomendación para la temperatura máxima: {{ advice.temperatura_maxima }}</p>
-        <p>Recomendación para la temperatura mínima: {{ advice.temperatura_minima }}</p>
-        <p>Recomendación para la humedad máxima: {{ advice.humedad_maxima }}</p>
-        <p>Recomendación para la humedad mínima: {{ advice.humedad_minima }}</p>
-        <p>Recomendación para la racha máxima de viento: {{ advice.racha_max_viento }}</p>
-        <p>Recomendación para el índice UV: {{ advice.indice_uv }}</p>
+        <p>Recomendación para la probabilidad de precipitación: {{ advice.precipitation }}</p>
+        <p>Recomendación para la cota de nieve: {{ advice.snow }}</p>
+        <p>Recomendación para la temperatura máxima: {{ advice.max_temp }}</p>
+        <p>Recomendación para la temperatura mínima: {{ advice.min_temp }}</p>
+        <p>Recomendación para la humedad máxima: {{ advice.max_humidity }}</p>
+        <p>Recomendación para la humedad mínima: {{ advice.min_humidity }}</p>
+        <p>Recomendación para la racha máxima de viento: {{ advice.wind }}</p>
+        <p>Recomendación para el índice UV: {{ advice.uv_index }}</p>
       </div>
     </div>
   </template>
@@ -18,53 +18,54 @@
 import { ref, onMounted } from 'vue'
 
 const advice = ref({
-  precipitacion: '',
-  cota_nieve: '',
-  temperatura_maxima: '',
-  temperatura_minima: '',
-  humedad_maxima: '',
-  humedad_minima: '',
-  racha_max_viento: '',
-  indice_uv: ''
+  precipitation: '',
+  snow: '',
+  max_temp: '',
+  min_temp: '',
+  max_humidity: '',
+  min_humidity: '',
+  wind: '',
+  uv_index: ''
 })
 
-const getAdvice = (parametro, valor, adviceJSON) => {
-  const adviceList = adviceJSON.recomendaciones[parametro]
+const getAdvice = (parameter, value, dbJSON) => {
+  const adviceList = dbJSON.advice[parameter]
+
   const adviceItem = adviceList.find(item => 
-    valor >= item.rango.min && valor <= item.rango.max
+    value >= item.range.min && value <= item.range.max
   )
-  console.log(adviceItem)
-  return adviceItem ? adviceItem.recomendacion: "No hay recomendación disponible."
+
+  return adviceItem ? adviceItem.advice : "No hay recomendación disponible."
 }
 
+// Fake API data
 const apiData = {
-  precipitacion: 40,
-  cota_nieve: 800,
-  temperatura_maxima: 25,
-  temperatura_minima: 15,
-  humedad_maxima: 75,
-  humedad_minima: 35,
-  racha_max_viento: 30,
-  indice_uv: 5
+  precipitation: 40,
+  snow: 800,
+  max_temp: 25,
+  min_temp: 15,
+  max_humidity: 75,
+  min_humidity: 35,
+  wind: 30,
+  uv_index: 5
 }
 
 const cargarAdvice = async () => {
+    const respuesta = await fetch('/db.json')  
+    const data = await response.json()
 
-    const respuesta = await fetch('../public/advice.json')  
-    const data = await respuesta.json()
-    console.log(data)
-    
-    advice.value.precipitacion = getAdvice('precipitacion', apiData.precipitacion, data)
-    advice.value.cota_nieve = getAdvice('cota_nieve', apiData.cota_nieve, data)
-    advice.value.temperatura_maxima = getAdvice('temperatura_maxima', apiData.temperatura_maxima, data)
-    advice.value.temperatura_minima = getAdvice('temperatura_minima', apiData.temperatura_minima, data)
-    advice.value.humedad_maxima = getAdvice('humedad_maxima', apiData.humedad_maxima, data)
-    advice.value.humedad_minima = getAdvice('humedad_minima', apiData.humedad_minima, data)
-    advice.value.racha_max_viento = getAdvice('racha_max_viento', apiData.racha_max_viento, data)
-    advice.value.indice_uv = getAdvice('indice_uv', apiData.indice_uv, data)
-  
+    console.log("Datos cargados:", data)
+
+    advice.value.precipitation = getAdvice('precipitation', apiData.precipitation, data)
+    advice.value.snow = getAdvice('snow', apiData.snow, data)
+    advice.value.max_temp = getAdvice('max_temp', apiData.max_temp, data)
+    advice.value.min_temp = getAdvice('min_temp', apiData.min_temp, data)
+    advice.value.max_humidity = getAdvice('max_humidity', apiData.max_humidity, data)
+    advice.value.min_humidity = getAdvice('min_humidity', apiData.min_humidity, data)
+    advice.value.wind = getAdvice('wind', apiData.wind, data)
+    advice.value.uv_index = getAdvice('uv_index', apiData.uv_index, data)
+
 }
-
 onMounted(() => {
   cargarAdvice()
 })

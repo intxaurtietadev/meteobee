@@ -4,7 +4,7 @@
       <div class="login__header">
         <div class="login__logo">
           <!-- Reemplazado la URL de placeholder con una referencia a assets -->
-          <img src="@/assets/logo.png" alt="Logo ApiClima" />
+          <img src="./assets/logo.png" alt="Logo ApiClima" />
         </div>
         <h1 class="login__title">Meteo Bee</h1>
         <p class="login__subtitle">Meteorología para apicultores</p>

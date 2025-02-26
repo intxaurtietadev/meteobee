@@ -16,9 +16,10 @@
   
   const fetchNews = async () => {
       // Load JSON data
-      const response = await fetch('../news.json');
+      const response = await fetch('/db.json');
       // Turn response into .json
-      news.value = await response.json();
+      const data = await response.json();
+      news.value = data.news;
   };
   
   onMounted(fetchNews);
