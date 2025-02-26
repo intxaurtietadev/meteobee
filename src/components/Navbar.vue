@@ -18,13 +18,13 @@
       </svg>
     </div>
     <ul class="navbar__nav-links" :class="{ 'navbar__nav-links--open': isOpen }">
-      <li class="navbar__nav-item"><a href="#home" class="navbar__link">Inicio</a></li>
+      <li class="navbar__nav-item"><router-link to="/" class="navbar__link">Inicio</router-link></li>
       <li class="navbar__nav-item"><a href="#proyectos" class="navbar__link">Proyectos</a></li>
-      <li class="navbar__nav-item"><a href="#blog" class="navbar__link">Blog</a></li>
+      <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
       <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
-    <!-- Ícono de usuario -->
-    <div class="navbar__user">
+    <!-- Ícono de usuario, redirigir al login -->
+    <div class="navbar__user" @click="$router.push('/login')"> <!-- Aquí redirigimos a la página de login -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -91,6 +91,9 @@ export default {
   display: flex;
   gap: var(--space-md);
   transition: transform var(--transition-duration) ease;
+  /*border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  padding: 1rem;*/
 }
 
 .navbar__nav-item {

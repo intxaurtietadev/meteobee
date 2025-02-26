@@ -1,0 +1,116 @@
+{
+  "advice": {
+    "precipitation": [
+      {
+        "range": {"min": 0, "max": 20},
+        "advice": "No hay riesgo de lluvia, las actividades apícolas pueden continuar normalmente."
+      },
+      {
+        "range": {"min": 21, "max": 60},
+        "advice": "Lluvias moderadas, se recomienda revisar las colmenas para evitar filtraciones de agua."
+      },
+      {
+        "range": {"min": 61, "max": 100},
+        "advice": "Lluvias intensas, se recomienda proteger las colmenas y monitorear la actividad de las abejas."
+      }
+    ],
+    "snow": [
+      {
+        "range": {"min": 0, "max": 500},
+        "advice": "Bajo riesgo de nieve, actividades normales."
+      },
+      {
+        "range": {"min": 501, "max": 1000},
+        "advice": "Riesgo de nieve a bajas altitudes, asegurarse de que las colmenas estén resguardadas."
+      },
+      {
+        "range": {"min": 1001, "max": 3000},
+        "advice": "Nieve en altitudes medias, revisar el estado de las colmenas y protegerlas de la nieve."
+      }
+    ],
+    "max_temp": [
+      {
+        "range": {"min": -5, "max": 10},
+        "advice": "Temperaturas frescas, asegurarse de que las colmenas estén bien aisladas."
+      },
+      {
+        "range": {"min": 11, "max": 25},
+        "advice": "Temperaturas agradables, las abejas están activas. Asegurarse de que no haya exceso de humedad."
+      },
+      {
+        "range": {"min": 26, "max": 40},
+        "advice": "Temperaturas altas, mantener las colmenas ventiladas y evitar que las abejas se sobrecalienten."
+      }
+    ],
+    "min_temp": [
+      {
+        "range": {"min": -10, "max": 0},
+        "advice": "Temperaturas muy frías, asegurarse de que las colmenas estén bien protegidas del frío."
+      },
+      {
+        "range": {"min": 1, "max": 10},
+        "advice": "Temperaturas frías, revisar que las colmenas tengan suficiente comida."
+      },
+      {
+        "range": {"min": 11, "max": 20},
+        "advice": "Temperaturas moderadas, condiciones favorables para la actividad de las abejas."
+      }
+    ],
+    "max_humidity": [
+      {
+        "range": {"min": 0, "max": 60},
+        "advice": "Humedad baja, mantener las colmenas ventiladas para evitar el exceso de calor."
+      },
+      {
+        "range": {"min": 61, "max": 80},
+        "advice": "Humedad moderada, asegurar que las abejas tengan suficiente espacio para ventilación."
+      },
+      {
+        "range": {"min": 81, "max": 100},
+        "advice": "Humedad alta, podría haber riesgo de moho o enfermedades en la colmena, revisar con frecuencia."
+      }
+    ],
+    "min_humidity": [
+      {
+        "range": {"min": 0, "max": 30},
+        "advice": "Humedad muy baja, asegurarse de que las abejas no sufran deshidratación."
+      },
+      {
+        "range": {"min": 31, "max": 50},
+        "advice": "Humedad moderada, condiciones normales."
+      },
+      {
+        "range": {"min": 51, "max": 100},
+        "advice": "Humedad alta, mantener la ventilación para evitar la acumulación de humedad en la colmena."
+      }
+    ],
+    "wind": [
+      {
+        "range": {"min": 0, "max": 20},
+        "advice": "Viento suave, no se esperan problemas para las colmenas."
+      },
+      {
+        "range": {"min": 21, "max": 40},
+        "advice": "Viento moderado, asegurarse de que las colmenas estén bien fijadas y no haya riesgo de vuelcos."
+      },
+      {
+        "range": {"min": 41, "max": 100},
+        "advice": "Viento fuerte, proteger las colmenas y asegurarse de que no se caigan."
+      }
+    ],
+    "uv_index": [
+      {
+        "range": {"min": 0, "max": 2},
+        "advice": "Bajo índice UV, condiciones normales."
+      },
+      {
+        "range": {"min": 3, "max": 5},
+        "advice": "Índice UV moderado, proteger las colmenas de la exposición directa al sol."
+      },
+      {
+        "range": {"min": 6, "max": 10},
+        "advice": "Índice UV alto, mantener las colmenas en sombra para evitar que las abejas sufran daños."
+      }
+    ]
+   }
+}

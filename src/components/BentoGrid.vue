@@ -11,7 +11,7 @@
     </BentoCard>
 
     <!-- Tarjeta 3: DailyToDo -->
-    <BentoCard class="card3" :routeName="'DailyToDo'">
+    <BentoCard class="card3" :routeName="'DailyToDo'" @click="gotToDailyRec">
       <DailyToDo />
     </BentoCard>
 
@@ -21,13 +21,13 @@
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
-    <BentoCard class="card5" :routeName="'HoneyProduction'">
-      <HoneyProduction />
+    <BentoCard class="card5 no-style" :routeName="'HoneyProduction'">
+      <News v-if="firstNews" :news="firstNews" />
     </BentoCard>
 
     <!-- Tarjeta 6: News -->
     <BentoCard class="card6" :routeName="'News'">
-      <News />
+      <HoneyProduction />
     </BentoCard>
   </div>
 </template>
@@ -40,9 +40,34 @@ import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
 import HoneyProduction from './cards/HoneyProduction.vue';
 import News from './cards/News.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter(); 
+
+const gotToDailyRec = () => {
+  router.push('/recomendacionesdiarias'); 
+};
+
+// // Load news from JSON file
+// import { ref, onMounted, computed } from 'vue';
+// const news = ref([]);
+
+// const fetchNews = async () => {
+//   // Load JSON data
+//     const response = await fetch('/news.json');
+//   // Turn response into .json
+//     news.value = await response.json();
+  
+// };
+
+// // Get the first news item
+// const firstNews = computed(() => (news.value.length > 0 ? news.value[0] : null));
+
+// onMounted(fetchNews);
 </script>
 
 <style scoped>
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -88,5 +113,10 @@ import News from './cards/News.vue';
 .card6 {
   grid-area: card6;
   background-color: var(--color-secondary);
+}
+
+.news__card {
+  border: 0px;
+  color: white;
 }
 </style>
