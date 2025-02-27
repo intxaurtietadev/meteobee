@@ -189,5 +189,7 @@ export const useAPIdata = defineStore('APIdata', {
         console.log(this.meteoData6);
         
       } 
-    }
+      
+    },
+    persist: true, 
   });

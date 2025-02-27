@@ -18,10 +18,10 @@ const apiData = useAPIdata();
 
 
 //   const apiData = ref({});
-  const municipio = 48020;
+  // const municipio = 48020;
 
   
-onMounted(() => apiData.fetchWeatherData(municipio));
+// onMounted(() => apiData.fetchWeatherData(municipio));
 
 
   </script>
