@@ -28,62 +28,70 @@
         "advice": "Nieve en altitudes medias, revisar el estado de las colmenas y protegerlas de la nieve."
       }
     ],
-    "max_temp": [
+    "temperature_combined": [
       {
-        "range": {"min": -5, "max": 10},
-        "advice": "Temperaturas frescas, asegurarse de que las colmenas estén bien aisladas."
+        "range": { "max_min": [-10, 0], "max_max": [0, 10] },
+        "advice": "Días fríos y noches heladas. Asegurar buen aislamiento de las colmenas."
       },
       {
-        "range": {"min": 11, "max": 25},
-        "advice": "Temperaturas agradables, las abejas están activas. Asegurarse de que no haya exceso de humedad."
+        "range": { "max_min": [1, 10], "max_max": [11, 20] },
+        "advice": "Días frescos y noches frías. Verificar que las abejas tengan alimento suficiente."
       },
       {
-        "range": {"min": 26, "max": 40},
-        "advice": "Temperaturas altas, mantener las colmenas ventiladas y evitar que las abejas se sobrecalienten."
+        "range": { "max_min": [11, 20], "max_max": [21, 30] },
+        "advice": "Días templados y noches frescas. Condiciones óptimas para la actividad de las abejas."
+      },
+      {
+        "range": { "max_min": [21, 30], "max_max": [31, 40] },
+        "advice": "Días calurosos y noches templadas. Asegurar ventilación y disponibilidad de agua."
       }
     ],
-    "min_temp": [
-      {
-        "range": {"min": -10, "max": 0},
-        "advice": "Temperaturas muy frías, asegurarse de que las colmenas estén bien protegidas del frío."
-      },
-      {
-        "range": {"min": 1, "max": 10},
-        "advice": "Temperaturas frías, revisar que las colmenas tengan suficiente comida."
-      },
-      {
-        "range": {"min": 11, "max": 20},
-        "advice": "Temperaturas moderadas, condiciones favorables para la actividad de las abejas."
-      }
-    ],
-    "max_humidity": [
-      {
-        "range": {"min": 0, "max": 60},
-        "advice": "Humedad baja, mantener las colmenas ventiladas para evitar el exceso de calor."
-      },
-      {
-        "range": {"min": 61, "max": 80},
-        "advice": "Humedad moderada, asegurar que las abejas tengan suficiente espacio para ventilación."
-      },
-      {
-        "range": {"min": 81, "max": 100},
-        "advice": "Humedad alta, podría haber riesgo de moho o enfermedades en la colmena, revisar con frecuencia."
-      }
-    ],
-    "min_humidity": [
-      {
-        "range": {"min": 0, "max": 30},
-        "advice": "Humedad muy baja, asegurarse de que las abejas no sufran deshidratación."
-      },
-      {
-        "range": {"min": 31, "max": 50},
-        "advice": "Humedad moderada, condiciones normales."
-      },
-      {
-        "range": {"min": 51, "max": 100},
-        "advice": "Humedad alta, mantener la ventilación para evitar la acumulación de humedad en la colmena."
-      }
-    ],
+ "humidity_combined": [
+  {
+    "range": { "minima_min": 0, "minima_max": 30, "maxima_min": 51, "maxima_max": 80 },
+    "advice": "Altas variaciones de humedad. Mantener ventilación en la colmena."
+  },
+  {
+    "range": { "minima_min": 0, "minima_max": 30, "maxima_min": 30, "maxima_max": 50 },
+    "advice": "Humedad moderada en general. Monitoreo frecuente recomendado."
+  },
+  {
+    "range": { "minima_min": 51, "minima_max": 80, "maxima_min": 81, "maxima_max": 100 },
+    "advice": "Humedad alta constante. Revisar colmenas para evitar moho o enfermedades."
+  },
+  {
+    "range": { "minima_min": 0, "minima_max": 20, "maxima_min": 81, "maxima_max": 100 },
+    "advice": "Diferencia extrema de humedad. Proteger las colmenas contra condensación."
+  },
+  {
+    "range": { "minima_min": 21, "minima_max": 50, "maxima_min": 51, "maxima_max": 75 },
+    "advice": "Humedad estable en niveles medios. Buenas condiciones para las colmenas."
+  },
+  {
+    "range": { "minima_min": 31, "minima_max": 60, "maxima_min": 61, "maxima_max": 90 },
+    "advice": "Humedad relativamente alta. Asegurar ventilación adecuada en la colmena."
+  },
+  {
+    "range": { "minima_min": 61, "minima_max": 90, "maxima_min": 91, "maxima_max": 100 },
+    "advice": "Humedad muy elevada. Revisar las colmenas frecuentemente para evitar hongos."
+  },
+  {
+    "range": { "minima_min": 40, "minima_max": 70, "maxima_min": 71, "maxima_max": 85 },
+    "advice": "Condiciones de humedad equilibradas. Ambiente favorable para las abejas."
+  },
+  {
+    "range": { "minima_min": 10, "minima_max": 40, "maxima_min": 41, "maxima_max": 70 },
+    "advice": "Humedad moderada con variaciones suaves. Mantenimiento regular recomendado."
+  },
+  {
+    "range": { "minima_min": 5, "minima_max": 25, "maxima_min": 26, "maxima_max": 60 },
+    "advice": "Humedad baja a moderada. Verificar suministro de agua para las abejas."
+  },
+  {
+    "range": { "minima_min": 70, "minima_max": 95, "maxima_min": 96, "maxima_max": 100 },
+    "advice": "Humedad extrema. Alto riesgo de enfermedades en las colmenas."
+  }
+],
     "wind": [
       {
         "range": {"min": 0, "max": 20},

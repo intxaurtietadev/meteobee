@@ -6,8 +6,8 @@
       <div v-if="advice">
         <p><strong>Precipitaciones:</strong> {{ advice.precipitation }}</p>
         <p><strong>Nieve:</strong> {{ advice.snow }}</p>
-        <p><strong>Temperatura:</strong> {{ advice.max_temp }} </p>
-        <p><strong>Humedad:</strong> {{ advice.max_humidity }}</p>
+        <p><strong>Temperatura:</strong> {{ advice.temp }} </p>
+        <p><strong>Humedad:</strong> {{ advice.humidity }}</p>
         <p><strong>Viento:</strong> {{ advice.wind }}</p>
         <p><strong>Índice UV:</strong> {{ advice.uv_index }}</p>
       </div>
@@ -25,10 +25,8 @@ const meteoData = computed(() => apiData.meteoData0);
 const advice = ref({
   precipitation: '',
   snow: '',
-  max_temp: '',
-  min_temp: '',
-  max_humidity: '',
-  min_humidity: '',
+  temp: '',
+  humidity: '',
   wind: '',
   uv_index: ''
 });
@@ -42,6 +40,30 @@ const getAdvice = (parameter, value, adviceJSON) => {
   return adviceItem ? adviceItem.advice : "No hay recomendación disponible.";
 };
 
+//Function to find the advice for temperature based on min and max values
+const getTemperatureAdvice = (minTemp, maxTemp, adviceJSON) => {
+  const adviceList = adviceJSON.advice["temperature_combined"];
+  
+  const adviceItem = adviceList.find(item => 
+    minTemp >= item.range.max_min[0] && minTemp <= item.range.max_min[1] &&
+    maxTemp >= item.range.max_max[0] && maxTemp <= item.range.max_max[1]
+  );
+
+  return adviceItem ? adviceItem.advice : "No hay recomendación disponible.";
+};
+
+// Function to find the advice for humidity based on min and max values
+const getHumidityAdvice = (minHumidity, maxHumidity, adviceJSON) => {
+  const adviceList = adviceJSON.advice["humidity_combined"];
+
+  const adviceItem = adviceList.find(item => 
+  minHumidity >= item.range.minima_min && minHumidity <= item.range.minima_max &&
+  maxHumidity >= item.range.maxima_min && maxHumidity <= item.range.maxima_max
+);
+
+  return adviceItem ? adviceItem.advice : "No hay recomendación disponible.";
+};
+
 // Function to load the advice from the JSON file
 const loadAdvice = async () => {
     const response = await fetch('/advice.json');
@@ -52,12 +74,11 @@ const loadAdvice = async () => {
     // Stores the advice for each parameter in the advice object
     advice.value.precipitation = getAdvice('precipitation', meteoData.value.precipitation, data);
     advice.value.snow = getAdvice('snow', meteoData.value.snow, data);
-    advice.value.max_temp = getAdvice('max_temp', meteoData.value.max_temp, data);
-    advice.value.min_temp = getAdvice('min_temp', meteoData.value.min_temp, data);
-    advice.value.max_humidity = getAdvice('max_humidity', meteoData.value.max_humidity, data);
-    advice.value.min_humidity = getAdvice('min_humidity', meteoData.value.min_humidity, data);
     advice.value.wind = getAdvice('wind', meteoData.value.wind, data);
     advice.value.uv_index = getAdvice('uv_index', meteoData.value.uv_index, data);
+
+    advice.value.temp = getTemperatureAdvice(meteoData.value.min_temp, meteoData.value.max_temp, data);
+    advice.value.humidity = getHumidityAdvice(meteoData.value.min_humidity, meteoData.value.max_humidity, data);
   
 };
 
