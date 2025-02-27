@@ -10,6 +10,8 @@
 </template>
 
 <script setup>
+import grantData from '@/assets/grants.json';
+import { ref } from 'vue';
 import { defineProps } from 'vue';
 
 //Receive the news object from the parent component
