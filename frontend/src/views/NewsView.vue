@@ -16,7 +16,7 @@
   
   const fetchNews = async () => {
       // Load JSON data
-      const response = await fetch('/db.json');
+      const response = await fetch('/news.json');
       // Turn response into .json
       const data = await response.json();
       news.value = data.news;

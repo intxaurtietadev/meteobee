@@ -22,7 +22,8 @@
 
     <!-- Tarjeta 5: HoneyProduction -->
     <BentoCard class="card5 no-style" :routeName="'HoneyProduction'">
-      <News v-if="firstNews" :news="firstNews" />
+      <!-- <News v-if="firstNews" :news="firstNews" /> -->
+      <Prueba />
     </BentoCard>
 
     <!-- Tarjeta 6: News -->
@@ -41,6 +42,7 @@ import WeeklyToDo from './cards/WeeklyToDo.vue';
 import HoneyProduction from './cards/HoneyProduction.vue';
 import News from './cards/News.vue';
 import { useRouter } from 'vue-router';
+import Prueba from "@/components/cards/Prueba.vue";
 
 const router = useRouter(); 
 

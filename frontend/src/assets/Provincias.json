@@ -1,78 +1,78 @@
 [
  {
-   "PROVINCIA": "Málaga",
+   "provincia": "Málaga",
    "CP": 29
  },
  {
-   "PROVINCIA": "Almería",
+   "provincia": "Almería",
    "CP": 4
  },
  {
-   "PROVINCIA": "Granada",
+   "provincia": "Granada",
    "CP": 18
  },
  {
-   "PROVINCIA": "Cádiz",
+   "provincia": "Cádiz",
    "CP": 11
  },
  {
-   "PROVINCIA": "Huelva",
+   "provincia": "Huelva",
    "CP": 21
  },
  {
-   "PROVINCIA": "Jaén",
+   "provincia": "Jaén",
    "CP": 23
  },
  {
-   "PROVINCIA": "Córdoba",
+   "provincia": "Córdoba",
    "CP": 14
  },
  {
-   "PROVINCIA": "Sevilla",
+   "provincia": "Sevilla",
    "CP": 41
  },
  {
-   "PROVINCIA": "Cáceres",
+   "provincia": "Cáceres",
    "CP": 10
  },
  {
-   "PROVINCIA": "Badajoz",
+   "provincia": "Badajoz",
    "CP": 6
  },
  {
-   "PROVINCIA": "León",
+   "provincia": "León",
    "CP": 24
  },
  {
-   "PROVINCIA": "Palencia",
+   "provincia": "Palencia",
    "CP": 34
  },
  {
-   "PROVINCIA": "Burgos",
+   "provincia": "Burgos",
    "CP": 9
  },
  {
-   "PROVINCIA": "Soria",
+   "provincia": "Soria",
    "CP": 42
  },
  {
-   "PROVINCIA": "Zamora",
+   "provincia": "Zamora",
    "CP": 49
  },
  {
-   "PROVINCIA": "Segovia",
+   "provincia": "Segovia",
    "CP": 40
  },
  {
-   "PROVINCIA": "Salamanca",
+   "provincia": "Salamanca",
    "CP": 37
  },
  {
-   "PROVINCIA": "Ávila",
+   "provincia": "Ávila",
    "CP": 5
  },
  {
-   "PROVINCIA": "Valladolid",
+   "provincia": "Valladolid",
    "CP": 47
  }
 ]
