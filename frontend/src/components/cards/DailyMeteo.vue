@@ -1,69 +1,69 @@
 <template>
   <div>
-    <!-- Selector de provincias -->
-    <label for="selectProvincia">Selecciona una provincia:</label>
-    <select id="selectProvincia">
+    <!-- Selector for provinces -->
+    <label for="selectProvince" >Selecciona una provincia:</label>
+    <select id="selectProvince">
       <option
-        v-for="provincia in provincias"
-        :key="provincia.CP"
-        :value="provincia.CP"
-        @click="provinciaSelected = provincia.PROVINCIA"
+        v-for="province in provinces"
+        :key="province.CP"
+        :value="province.CP"
+        @click="selectedProvince = province.province"
       >
-        {{ provincia.PROVINCIA }}
+        {{ province.province }}
       </option>
     </select>
   </div>
 
   <div>
-    <!-- Selector de municipios -->
-    <label for="selectMunicipio">Selecciona un municipio:</label>
-    <select id="selectMunicipio" v-model="municipioSelected">
+    <!-- Selector for municipalitys -->
+    <label for="selectMunicipality">Selecciona un municipio:</label>
+    <select id="selectMunicipality" v-model="selectedMunicipality">
       <option
-        v-for="municipio in filteredMunicipios"
-        :key="municipio.CP"
-        :value="municipio.CP"
+        v-for="municipality in filteredMunicipalitys"
+        :key="municipality.CP"
+        :value="municipality.CP"
       >
-        {{ municipio.NOMBRE }}
+        {{ municipality.NAME }}
       </option>
     </select>
   </div>
 
-  <!-- Prueba de que el municipio se selecciona bien -->
-  <p>El municipio seleccionado es: {{ municipioSelected }}</p>
+  <!-- Test that municipality is correct -->
+  <p>El municipio seleccionado es: {{ selectedMunicipality }}</p>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import provinciasData from "../../assets/Provincias.json";
-import municipiosData from "../../assets/Municipios.json";
+import provincesData from "../../assets/Provinces.json";
+import municipalitysData from "../../assets/Municipalitys.json";
 
-//Constantes
-const provincias = ref([]);
-const municipios = ref([]);
-const provinciaSelected = ref(null);
-const municipioSelected = ref(null);
+//Constats
+const provinces = ref([]);
+const municipalitys = ref([]);
+const selectedProvince = ref(null);
+const selectedMunicipality = ref(null);
 
-//Convertimos los json en arrays y los ordenamos alfabéticamente según el idioma ES
+//We convert the json into arrays and sort them alphabetically according to language ES
 onMounted(() => {
-  provincias.value = [...provinciasData].sort((a, b) =>
-    a.PROVINCIA.localeCompare(b.PROVINCIA, "es")
+  provinces.value = [...provincesData].sort((a, b) =>
+    a.province.localeCompare(b.province, "es")
   );
-  municipios.value = [...municipiosData].sort((a, b) =>
-    a.NOMBRE.localeCompare(b.NOMBRE, "es")
-  );
-});
-
-// Filtramos los municipios en función de la provincia seleccionada
-const filteredMunicipios = computed(() => {
-  if (!provinciaSelected.value) return [];
-  return municipios.value.filter(
-    (municipio) => municipio.PROVINCIA === provinciaSelected.value
+  municipalitys.value = [...municipalitysData].sort((a, b) =>
+    a.NAME.localeCompare(b.NAME, "es")
   );
 });
 
-// Función para que cuando se cambie la provincia se cambien los municipios
-const handleProvinciaChange = (event) => {
-  provinciaSelected.value = event.target.value;
+// We filter the minicipalitys according the selected province
+const filteredMunicipalitys = computed(() => {
+  if (!selectedProvince.value) return [];
+  return municipalitys.value.filter(
+    (municipality) => municipality.province === selectedProvince.value
+  );
+});
+
+// This is for the monicipalitiys to be changed everytime the province is changed
+const handleProvinceChange = (event) => {
+  selectedProvince.value = event.target.value;
 };
 </script>
 
