@@ -1,70 +1,145 @@
 <template>
   <div>
-    <!-- Selector for provinces -->
-    <label for="selectProvince" >Selecciona una provincia:</label>
-    <select id="selectProvince">
+    <!-- Selector de provincias -->
+    <label for="selectprovincia">Selecciona una provincia:</label>
+    <select id="selectprovincia">
       <option
-        v-for="province in provinces"
-        :key="province.CP"
-        :value="province.CP"
-        @click="selectedProvince = province.province"
+        v-for="provincia in provincias"
+        :key="provincia.CP"
+        :value="provincia.CP"
+        @click="provinciaSelected = provincia.provincia"
       >
-        {{ province.province }}
+        {{ provincia.provincia }}
       </option>
     </select>
   </div>
 
   <div>
-    <!-- Selector for municipalitys -->
-    <label for="selectMunicipality">Selecciona un municipio:</label>
-    <select id="selectMunicipality" v-model="selectedMunicipality">
+    <!-- Selector de municipios -->
+    <label for="selectMunicipio">Selecciona un municipio:</label>
+    <select id="selectMunicipio" v-model="municipioSelected">
       <option
-        v-for="municipality in filteredMunicipalitys"
-        :key="municipality.CP"
-        :value="municipality.CP"
+        v-for="municipio in filteredMunicipios"
+        :key="municipio.CP"
+        :value="municipio.CP"
       >
-        {{ municipality.NAME }}
+        {{ municipio.NOMBRE }}
       </option>
     </select>
   </div>
 
-  <!-- Test that municipality is correct -->
-  <p>El municipio seleccionado es: {{ selectedMunicipality }}</p>
+  <!-- Prueba de que el municipio se selecciona bien -->
+  <p>El municipio seleccionado es: {{ municipioSelected }}</p>
+  <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button>
 </template>
 
+
+
 <script setup>
-import { ref, computed, onMounted } from "vue";
-import provincesData from "../../assets/Provinces.json";
-import municipalitysData from "../../assets/Municipalitys.json";
+import { ref, computed, onMounted, watch } from "vue";
+import provinciasData from "../../assets/Provincias.json";
+import municipiosData from "../../assets/Municipios.json";
 
-//Constats
-const provinces = ref([]);
-const municipalitys = ref([]);
-const selectedProvince = ref(null);
-const selectedMunicipality = ref(null);
+//Constantes
+const provincias = ref([]);
+const municipios = ref([]);
+const provinciaSelected = ref(null);
+const municipioSelected = ref(null);
+const weatherData = ref(null);
 
-//We convert the json into arrays and sort them alphabetically according to language ES
+
+
+
+//Convertimos los json en arrays y los ordenamos alfabéticamente según el idioma ES
 onMounted(() => {
-  provinces.value = [...provincesData].sort((a, b) =>
-    a.province.localeCompare(b.province, "es")
+  provincias.value = [...provinciasData].sort((a, b) =>
+    a.provincia.localeCompare(b.provincia, "es")
   );
-  municipalitys.value = [...municipalitysData].sort((a, b) =>
-    a.NAME.localeCompare(b.NAME, "es")
+  municipios.value = [...municipiosData].sort((a, b) =>
+    a.NOMBRE.localeCompare(b.NOMBRE, "es")
+  );
+  // Obtenemos los datos guardados en localStorage
+  const savedData = localStorage.getItem("DailyMeteo");
+  if (savedData) {
+    weatherData.value = JSON.parse(savedData);
+  };
+});
+
+// Filtramos los municipios en función de la provincia seleccionada
+const filteredMunicipios = computed(() => {
+  if (!provinciaSelected.value) return [];
+  return municipios.value.filter(
+    (municipio) => municipio.provincia === provinciaSelected.value
   );
 });
 
-// We filter the minicipalitys according the selected province
-const filteredMunicipalitys = computed(() => {
-  if (!selectedProvince.value) return [];
-  return municipalitys.value.filter(
-    (municipality) => municipality.province === selectedProvince.value
-  );
-});
-
-// This is for the monicipalitiys to be changed everytime the province is changed
-const handleProvinceChange = (event) => {
-  selectedProvince.value = event.target.value;
+// Función para que cuando se cambie la provincia se cambien los municipios
+const handleprovinciaChange = (event) => {
+  provinciaSelected.value = event.target.value;
 };
+
+// Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
+watch(municipioSelected, async (newValue) => {
+  if (newValue) {
+    await fetchWeatherData(newValue);
+  }
+});
+
+
+
+//Esta función pide los datos del municipio seleccionado a la API de AEMET y los guarda en localStorage
+const fetchWeatherData = async (codigoMunicipio) => {
+  weatherData.value = "Cargando...";
+
+  try {
+    const url = `https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/${codigoMunicipio}?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.estado === 200 && data.datos) {
+      // Hacemos una segunda petición a la URL de "datos"
+      const weatherResponse = await fetch(data.datos);
+      const weatherJson = await weatherResponse.json();
+
+      // Guardamos los datos en localStorage
+      localStorage.setItem("DailyMeteo", JSON.stringify(weatherJson));
+
+      // Actualizamos la variable reactiva para mostrar los datos en la UI
+      weatherData.value = weatherJson;
+    } else {
+      weatherData.value = "No se encontraron datos.";
+    }
+  } catch (error) {
+    weatherData.value = "Error al obtener datos.";
+    console.error(error);
+  }
+};
+
+// const downloadDailyMeteoJSON = () => {
+//   // Obtener los datos de localStorage
+//   const dailyMeteoData = localStorage.getItem("DailyMeteo");
+
+//   if (!dailyMeteoData) {
+//     alert("No hay datos en localStorage.");
+//     return;
+//   }
+
+//   // Crear un blob con los datos en formato JSON
+//   const blob = new Blob([dailyMeteoData], { type: "application/json" });
+
+//   // Crear un enlace temporal para la descarga
+//   const url = URL.createObjectURL(blob);
+//   const a = document.createElement("a");
+//   a.href = url;
+//   a.download = "DailyMeteo.json"; // Nombre del archivo a descargar
+//   document.body.appendChild(a);
+//   a.click();
+
+//   // Limpiar el objeto URL y eliminar el enlace temporal
+//   URL.revokeObjectURL(url);
+//   document.body.removeChild(a);
+// };
+
 </script>
 
 
