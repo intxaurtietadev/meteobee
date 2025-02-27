@@ -15,13 +15,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-// import { useAPIdata } from '@/stores/APIdata.js';
+import { ref, computed, watch } from 'vue';
+import { useAPIdata } from '@/stores/APIdata.js';
 
-// const apiData = useAPIdata();
-// apiData.fetchWeatherData();
+const apiData = useAPIdata();
+const meteoData = computed(() => apiData.meteoData0);
 
-// Reactive variables to store the advice
+// Advice object to store the received advice
 const advice = ref({
   precipitation: '',
   snow: '',
@@ -31,51 +31,43 @@ const advice = ref({
   min_humidity: '',
   wind: '',
   uv_index: ''
-})
+});
 
-//Function to get the advice from the JSON file
+// Function to find the advice for a given parameter and value
 const getAdvice = (parameter, value, adviceJSON) => {
-  const adviceList = adviceJSON.advice[parameter]
+  const adviceList = adviceJSON.advice[parameter];
   const adviceItem = adviceList.find(item => 
     value >= item.range.min && value <= item.range.max
-  )
-  console.log(adviceItem)
-  return adviceItem ? adviceItem.advice: "No hay recomendación disponible."
-}
+  );
+  return adviceItem ? adviceItem.advice : "No hay recomendación disponible.";
+};
 
-//Fake API data
-const apiData = {
-  precipitation: 40,
-  snow: 800,
-  max_temp: 25,
-  min_temp: 15,
-  max_humidity: 75,
-  min_humidity: 35,
-  wind: 30,
-  uv_index: 5
-}
-
-//Function to load the advice from the JSON file
+// Function to load the advice from the JSON file
 const loadAdvice = async () => {
+    const response = await fetch('/advice.json');
+    const data = await response.json();
 
-    const answer = await fetch('../advice.json')  
-    const data = await answer.json()
-    console.log(data)
+    if (!meteoData.value) return;
     
-    advice.value.precipitation = getAdvice('precipitation', apiData.precipitation, data)
-    advice.value.snow = getAdvice('snow', apiData.snow, data)
-    advice.value.max_temp = getAdvice('max_temp', apiData.max_temp, data)
-    advice.value.min_temp = getAdvice('min_temp', apiData.min_temp, data)
-    advice.value.max_humidity = getAdvice('max_humidity', apiData.max_humidity, data)
-    advice.value.min_humidity = getAdvice('min_humidity', apiData.min_humidity, data)
-    advice.value.wind = getAdvice('wind', apiData.wind, data)
-    advice.value.uv_index = getAdvice('uv_index', apiData.uv_index, data)
+    // Stores the advice for each parameter in the advice object
+    advice.value.precipitation = getAdvice('precipitation', meteoData.value.precipitation, data);
+    advice.value.snow = getAdvice('snow', meteoData.value.snow, data);
+    advice.value.max_temp = getAdvice('max_temp', meteoData.value.max_temp, data);
+    advice.value.min_temp = getAdvice('min_temp', meteoData.value.min_temp, data);
+    advice.value.max_humidity = getAdvice('max_humidity', meteoData.value.max_humidity, data);
+    advice.value.min_humidity = getAdvice('min_humidity', meteoData.value.min_humidity, data);
+    advice.value.wind = getAdvice('wind', meteoData.value.wind, data);
+    advice.value.uv_index = getAdvice('uv_index', meteoData.value.uv_index, data);
   
-}
+};
 
-onMounted(() => {
-  loadAdvice()
-})
+// Watches if meteoData changes and loads the advice
+watch(meteoData, (newData) => {
+  if (newData) {
+    loadAdvice();
+  }
+}, { immediate: true });
+
 </script>
 
 <style scoped>
