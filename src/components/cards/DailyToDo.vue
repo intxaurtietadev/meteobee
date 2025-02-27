@@ -16,6 +16,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+// import { useAPIdata } from '@/stores/APIdata.js';
+
+// const apiData = useAPIdata();
+// apiData.fetchWeatherData();
+
 // Reactive variables to store the advice
 const advice = ref({
   precipitation: '',
