@@ -31,10 +31,37 @@
       "password": "contrasena"
     },
     {
-      "id": "fec6",
-      "name": "natalia",
-      "email": "natalia@abejas.com",
-      "password": "abejitas"
+      "id": "3af3",
+      "name": "carlitos",
+      "email": "carlitos@abejas.com",
+      "password": "abejitas",
+      "confirmPassword": "abejitas",
+      "provincia": "Ávila",
+      "municipio": "Avellaneda",
+      "numColmenas": 8,
+      "especieAbeja": "Apis mellifera"
+    },
+    {
+      "id": "81bd",
+      "name": "marta",
+      "email": "marta@abejita.com",
+      "password": "calcamonia",
+      "confirmPassword": "calcamonia",
+      "provincia": "Jaén",
+      "municipio": "Baeza",
+      "numColmenas": 200,
+      "especieAbeja": "Megachile spp."
+    },
+    {
+      "id": "19dd",
+      "name": "btrb",
+      "email": "martut@abejitaaaa.com",
+      "password": "cinturon",
+      "confirmPassword": "cinturon",
+      "provincia": "Almería",
+      "municipio": "Almócita",
+      "numColmenas": 433,
+      "especieAbeja": "Eucera spp."
     }
   ],
   "news": [
