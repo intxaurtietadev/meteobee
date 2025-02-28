@@ -31,11 +31,30 @@
       "password": "contrasena"
     },
     {
-      "id": "fec6",
-      "name": "natalia",
-      "email": "natalia@abejas.com",
-      "password": "abejitas"
+      "id": "fd53",
+      "name": "ramon",
+      "email": "ramon@zaragoza.com",
+      "password": "zaragozazaragoza",
+      "colmenas": 3,
+      "species": [
+        "Nomada spp."
+      ],
+      "province": "Zamora",
+      "municipality": "Benavente",
+      "CP": "49021"
+    },
+    {
+      "id": "657d",
+      "name": "lucia",
+      "email": "lucia@santander.com",
+      "password": "luciasantander",
+      "colmenas": 6,
+      "species": [
+        "Xylocopa violacea"
+      ],
+      "province": "Zamora",
+      "municipality": "Bermillo de Sayago",
+      "CP": "49023"
     }
   ]
-  
-  }
+}

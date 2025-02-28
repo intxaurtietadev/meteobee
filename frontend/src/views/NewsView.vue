@@ -9,7 +9,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import NewsCard from '../components/cards/News.vue';
+  import NewsCard from '../components/News.vue';
   
   // Array to store news
   const news = ref([]);
