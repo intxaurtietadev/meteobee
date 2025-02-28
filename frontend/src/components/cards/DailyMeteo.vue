@@ -17,7 +17,7 @@
   <div>
     <!-- Selector de municipios -->
     <label for="selectMunicipio">Selecciona un municipio:</label>
-    <select id="selectMunicipio" v-model="municipioSelected">
+    <select id="selectMunicipio" v-model="apiData.municipioSelected">
       <option
         v-for="municipio in filteredMunicipios"
         :key="municipio.CP"
@@ -29,8 +29,9 @@
   </div>
 
   <!-- Prueba de que el municipio se selecciona bien -->
-  <p>El municipio seleccionado es: {{ municipioSelected }}</p>
+  <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p>
   <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
+   <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
 </template>
 
 
@@ -42,6 +43,10 @@ import municipiosData from "../../assets/Municipios.json";
 import { useAPIdata } from '@/stores/APIdata.js';
 
 const apiData = useAPIdata();
+
+const resetMeteoData = () => {
+  apiData.reset();
+};
 
 //Constantes
 const provincias = ref([]);
@@ -82,7 +87,7 @@ const handleprovinciaChange = (event) => {
 };
 
 // Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
-watch(municipioSelected, async (newValue) => {
+watch(() => apiData.municipioSelected, async (newValue) => {
   if (newValue) {
     await apiData.fetchWeatherData(newValue);
   }

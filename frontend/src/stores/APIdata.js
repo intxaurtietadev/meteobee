@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useAPIdata = defineStore('APIdata', {
   state: () => ({
+    municipioSelected: null,
     meteoData0: {  
       date: 0,
       precipitation: 0,
@@ -83,7 +84,11 @@ export const useAPIdata = defineStore('APIdata', {
   }),
 
   actions: {
+    setMunicipioSelected(municipio) {
+      this.municipioSelected = municipio;
+    },
     async fetchWeatherData(municipio) {
+       this.setMunicipioSelected(municipio);
         const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc"; 
         let urlMeteo = `https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/${municipio}/?api_key=${apiKey}`;
 
@@ -188,8 +193,22 @@ export const useAPIdata = defineStore('APIdata', {
         console.log(this.meteoData5);
         console.log(this.meteoData6);
         
-      } 
-      
-    },
-    persist: true, 
-  });
+        
+      },
+      reset() {
+        this.meteoData0 = {  
+          date: 0,
+          precipitation: 0,
+          snow: 0,
+          max_temp: 0,
+          min_temp: 0,
+          max_humidity: 0,
+          min_humidity: 0,
+          wind: 0,
+          uv_index: 0
+        };
+      },
+
+  },
+  persist: true 
+})

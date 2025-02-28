@@ -82,13 +82,28 @@ const loadAdvice = async () => {
   
 };
 
+
 // Watches if meteoData changes and loads the advice
 watch(meteoData, (newData) => {
-  if (newData) {
-    loadAdvice();
+  if (!newData) return;
+
+  // Verify if all meteoData0 values are 0
+  const allZero = Object.values(newData).every(value => value === 0);
+
+  // If all values are 0, set advice to empty strings
+  if (allZero) {
+    advice.value = {
+      precipitation: '',
+      snow: '',
+      temp: '',
+      humidity: '',
+      wind: '',
+      uv_index: ''
+    };
+  } else {
+    loadAdvice(); //If values are not 0, load the advice
   }
 }, { immediate: true });
-
 </script>
 
 <style scoped>
