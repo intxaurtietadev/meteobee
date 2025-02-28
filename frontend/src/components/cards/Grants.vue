@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import grantData from '@/assets/grants.json';
+import grantData from '../../assets/Grants.json';
 import { ref } from 'vue';
 import { defineProps } from 'vue';
 
