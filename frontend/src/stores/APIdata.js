@@ -6,12 +6,24 @@ export const useAPIdata = defineStore('APIdata', {
     meteoData0: {  
       date: 0,
       precipitation: 0,
+      precipitation06: 0,
+      precipitation12: 0,
+      precipitation18: 0,
+      precipitation24: 0,
       snow: 0,
       max_temp: 0,
       min_temp: 0,
+      temp06: 0,
+      temp12: 0,
+      temp18: 0,
+      temp24: 0,
       max_humidity: 0,
       min_humidity: 0,
       wind: 0,
+      wind06: 0,
+      wind12: 0,
+      wind18: 0,
+      wind24: 0,
       uv_index: 0
      }, 
      meteoData1: {  
@@ -103,13 +115,25 @@ export const useAPIdata = defineStore('APIdata', {
 
         this.meteoData0 = {
           date: data2[0].prediccion.dia[0].fecha,
-          precipitation: data2[0].prediccion.dia[0].probPrecipitacion[0].value ,
+          precipitation: data2[0].prediccion.dia[0].probPrecipitacion[0].value,
+          precipitation06: data2[0].prediccion.dia[0].probPrecipitacion[3].value,
+          precipitation12: data2[0].prediccion.dia[0].probPrecipitacion[4].value,
+          precipitation18: data2[0].prediccion.dia[0].probPrecipitacion[5].value,
+          precipitation24: data2[0].prediccion.dia[0].probPrecipitacion[6].value,
           snow: data2[0].prediccion.dia[0].cotaNieveProv[0].value,
           max_temp: data2[0].prediccion.dia[0].temperatura.maxima,
           min_temp: data2[0].prediccion.dia[0].temperatura.minima,
+          temp06: data2[0].prediccion.dia[0].temperatura.dato[0].value,
+          temp12: data2[0].prediccion.dia[0].temperatura.dato[1].value,
+          temp18: data2[0].prediccion.dia[0].temperatura.dato[2].value,
+          temp24: data2[0].prediccion.dia[0].temperatura.dato[3].value,
           max_humidity: data2[0].prediccion.dia[0].humedadRelativa.maxima,
           min_humidity: data2[0].prediccion.dia[0].humedadRelativa.minima,
           wind: data2[0].prediccion.dia[0].viento[0].velocidad,
+          wind06: data2[0].prediccion.dia[0].viento[1].velocidad,
+          wind12: data2[0].prediccion.dia[0].viento[2].velocidad,
+          wind18: data2[0].prediccion.dia[0].viento[3].velocidad,
+          wind24: data2[0].prediccion.dia[0].viento[4].velocidad,
           uv_index:  data2[0].prediccion.dia[0].uvMax
         };
 
@@ -198,14 +222,26 @@ export const useAPIdata = defineStore('APIdata', {
       reset() {
         this.meteoData0 = {  
           date: 0,
-          precipitation: 0,
-          snow: 0,
-          max_temp: 0,
-          min_temp: 0,
-          max_humidity: 0,
-          min_humidity: 0,
-          wind: 0,
-          uv_index: 0
+      precipitation: 0,
+      precipitation06: 0,
+      precipitation12: 0,
+      precipitation18: 0,
+      precipitation24: 0,
+      snow: 0,
+      max_temp: 0,
+      min_temp: 0,
+      temp06: 0,
+      temp12: 0,
+      temp18: 0,
+      temp24: 0,
+      max_humidity: 0,
+      min_humidity: 0,
+      wind: 0,
+      wind06: 0,
+      wind12: 0,
+      wind18: 0,
+      wind24: 0,
+      uv_index: 0
         };
       },
 

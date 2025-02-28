@@ -31,6 +31,16 @@ const advice = ref({
   uv_index: ''
 });
 
+// Function to get the time range based on the current hour
+const getTimeRange = () => {
+  const hour = new Date().getHours();
+  if (hour >= 0 && hour < 6) return '06';   
+  if (hour >= 6 && hour < 12) return '12';  
+  if (hour >= 12 && hour < 18) return '18'; 
+  return '24';                              
+};
+
+
 // Function to find the advice for a given parameter and value
 const getAdvice = (parameter, value, adviceJSON) => {
   const adviceList = adviceJSON.advice[parameter];
@@ -70,12 +80,20 @@ const loadAdvice = async () => {
     const data = await response.json();
 
     if (!meteoData.value) return;
-    
+
+    const timeRange = getTimeRange();
+
+    // Select the key for the specific time range
+    const precipitationKey = `precipitation${timeRange}`;
+    const tempKey = `temp${timeRange}`;
+    const windKey = `wind${timeRange}`;
+
     // Stores the advice for each parameter in the advice object
-    advice.value.precipitation = getAdvice('precipitation', meteoData.value.precipitation, data);
     advice.value.snow = getAdvice('snow', meteoData.value.snow, data);
-    advice.value.wind = getAdvice('wind', meteoData.value.wind, data);
     advice.value.uv_index = getAdvice('uv_index', meteoData.value.uv_index, data);
+
+    advice.value.precipitation = getAdvice('precipitation', meteoData.value[precipitationKey], data);
+    advice.value.wind = getAdvice('wind', meteoData.value[windKey], data);
 
     advice.value.temp = getTemperatureAdvice(meteoData.value.min_temp, meteoData.value.max_temp, data);
     advice.value.humidity = getHumidityAdvice(meteoData.value.min_humidity, meteoData.value.max_humidity, data);
