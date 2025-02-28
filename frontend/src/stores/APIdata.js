@@ -124,7 +124,7 @@ export const useAPIdata = defineStore('APIdata', {
           precipitation12: data2[0].prediccion.dia[0].probPrecipitacion[4].value,
           precipitation18: data2[0].prediccion.dia[0].probPrecipitacion[5].value,
           precipitation24: data2[0].prediccion.dia[0].probPrecipitacion[6].value,
-          snow: data2[0].prediccion.dia[0].cotaNieveProv[0].value,
+          snow: data2[0].prediccion.dia[0].cotaNieveProv[0].value || 0,
           max_temp: data2[0].prediccion.dia[0].temperatura.maxima,
           min_temp: data2[0].prediccion.dia[0].temperatura.minima,
           temp06: data2[0].prediccion.dia[0].temperatura.dato[0].value,
@@ -142,7 +142,7 @@ export const useAPIdata = defineStore('APIdata', {
           wind12: data2[0].prediccion.dia[0].viento[2].velocidad,
           wind18: data2[0].prediccion.dia[0].viento[3].velocidad,
           wind24: data2[0].prediccion.dia[0].viento[4].velocidad,
-          uv_index:  data2[0].prediccion.dia[0].uvMax
+          uv_index:  data2[0].prediccion.dia[0].uvMax 
         };
 
         this.meteoData1 = {

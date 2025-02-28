@@ -13,4 +13,4 @@ const weatherData = 'Cargando...'; // Datos del tiempo (puedes obtenerlos de una
 .daily-meteo {
   text-align: center;
 }
-</style>
+</style>c

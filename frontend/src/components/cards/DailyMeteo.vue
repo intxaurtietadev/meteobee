@@ -32,6 +32,7 @@
   <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p>
   <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
    <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
+   <DailyMeteo2 />
 </template>
 
 
@@ -41,6 +42,7 @@ import { ref, computed, onMounted, watch } from "vue";
 import provinciasData from "../../assets/Provincias.json";
 import municipiosData from "../../assets/Municipios.json";
 import { useAPIdata } from '@/stores/APIdata.js';
+import DailyMeteo2 from "./DailyMeteo2.vue";
 
 const apiData = useAPIdata();
 
