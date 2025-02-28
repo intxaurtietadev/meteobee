@@ -1,5 +1,5 @@
 <template>
-    <div class="daymeteoContainer" >
+    <div v-if="hasData" class="daymeteoContainer" >
         <p>{{ meteoData.date }}</p>
         <p><strong>Temperatura máx/min: </strong>{{ meteoData.min_temp }}/{{ meteoData.max_temp }} ºC</p>
         <p><strong>Humedad relativa(%):</strong> {{ meteoData.min_humidity }}/{{ meteoData.max_humidity }}</p>
@@ -43,6 +43,14 @@
   
   const apiData = useAPIdata();
   const meteoData = computed(() => apiData.meteoData0);
+
+  //Check if meteoData has a value
+  const hasData = computed(() => {
+  if (!meteoData.value) return false; 
+
+  //Check if any value is different from 0
+  return Object.values(meteoData.value).some(value => value !== 0);
+});
  
   </script>
   
