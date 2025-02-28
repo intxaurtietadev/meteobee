@@ -55,7 +55,6 @@
           />
         </div>
 
-        <!-- Nuevos campos -->
         <div class="register__form-group">
           <label for="colmenas" class="register__label">Número de colmenas</label>
           <input
@@ -82,36 +81,35 @@
         </div>
 
         <div class="register__form-group">
-          <label for="selectprovincia">Selecciona una provincia:</label>
-    <select id="selectprovincia">
-      <option
-        v-for="provincia in provinces"
-        :key="provincia.CP"
-        :value="provincia.CP"
-        @click="selectedProvince = provincia.provincia"
-      >
-        {{ provincia.provincia }}
-      </option>
-    </select>
+          <label for="selectprovincia" class="register__label">Selecciona una provincia:</label>
+          <select id="selectprovincia" v-model="selectedProvince">
+            <option
+              v-for="provincia in provinces"
+              :key="provincia.CP"
+              :value="provincia.provincia"
+            >
+              {{ provincia.provincia }}
+            </option>
+          </select>
         </div>
 
         <div class="register__form-group">
-          <label for="selectMunicipio">Selecciona un municipio:</label>
-          <select 
-  id="selectMunicipio" 
-  v-model="selectedMunicipality" 
-  :disabled="!selectedProvince" 
-  required
->
-  <option value="">Selecciona municipio</option>
-  <option 
-    v-for="municipio in filteredMunicipalities" 
-    :key="municipio.CP" 
-    :value="municipio.NOMBRE" 
-  >
-    {{ municipio.NOMBRE }}
-  </option>
-</select>
+          <label for="selectMunicipio" class="register__label">Selecciona un municipio:</label>
+          <select
+            id="selectMunicipio"
+            v-model="selectedMunicipality"
+            :disabled="!selectedProvince"
+            required
+          >
+            <option value="">Selecciona municipio</option>
+            <option
+              v-for="municipio in filteredMunicipalities"
+              :key="municipio.CP"
+              :value="municipio.NOMBRE"
+            >
+              {{ municipio.NOMBRE }}
+            </option>
+          </select>
         </div>
 
         <p v-if="errorMessage" class="register__error">{{ errorMessage }}</p>
@@ -127,8 +125,8 @@
         <p class="register__login">
           ¿Ya tienes una cuenta? 
           <a 
-            href="#" 
-            class="register__link" 
+            href="#"
+            class="register__link"
             @click.prevent="$emit('switchToLogin')"
           >
             Inicia sesión aquí
@@ -142,6 +140,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
 
 const router = useRouter();
 
@@ -158,6 +157,7 @@ const selectedProvince = ref('');
 const selectedMunicipality = ref('');
 const errorMessage = ref('');
 const isLoading = ref(false);
+const authStore = useAuthStore(); 
 
 // Especies de abejas
 const beeSpecies = ref([
@@ -174,11 +174,12 @@ const beeSpecies = ref([
 // Cargar datos desde JSON
 onMounted(async () => {
   try {
-    // Asegúrate de que los JSON estén en la carpeta public/assets
-    const provincesResponse = await fetch('/Provincias.json');
-    provinces.value = await provincesResponse.json();
+    const [provincesResponse, municipalitiesResponse] = await Promise.all([
+      fetch('/Provincias.json'),
+      fetch('/Municipios.json')
+    ]);
 
-    const municipalitiesResponse = await fetch('/Municipios.json');
+    provinces.value = await provincesResponse.json();
     municipalities.value = await municipalitiesResponse.json();
   } catch (error) {
     console.error('Error al cargar datos:', error);
@@ -186,36 +187,27 @@ onMounted(async () => {
   }
 });
 
-
 // Municipios filtrados por provincia
 const filteredMunicipalities = computed(() => {
   if (!selectedProvince.value) return [];
-  
-  // Encuentra el CP de la provincia seleccionada
-  const selectedProvinceCP = provinces.value.find(p => 
-    p.provincia === selectedProvince.value
-  )?.CP.toString() || '';
-  
-  return municipalities.value.filter(m => 
-    m.provincia === selectedProvince.value && 
-    m.CP.startsWith(selectedProvinceCP)
-  );
+  return municipalities.value.filter(m => m.provincia === selectedProvince.value);
 });
 
 const handleRegister = async () => {
   errorMessage.value = '';
+  isLoading.value = true;
+
   if (password.value !== confirmPassword.value) {
     errorMessage.value = 'Las contraseñas no coinciden.';
+    isLoading.value = false;
     return;
   }
 
-  // Encuentra el municipio seleccionado
-  const selectedMunicipio = municipalities.value.find(m => 
-    m.NOMBRE === selectedMunicipality.value
-  );
+  const selectedMunicipio = municipalities.value.find(m => m.NOMBRE === selectedMunicipality.value);
 
   if (!selectedMunicipio) {
     errorMessage.value = 'Municipio no encontrado.';
+    isLoading.value = false;
     return;
   }
 
@@ -225,9 +217,9 @@ const handleRegister = async () => {
     password: password.value,
     colmenas: colmenas.value,
     species: selectedSpecies.value,
-    province: selectedProvince.value, // Nombre de la provincia
-    municipality: selectedMunicipality.value, // Nombre del municipio
-    CP: selectedMunicipio.CP // CP del municipio
+    province: selectedProvince.value,
+    municipality: selectedMunicipality.value,
+    CP: selectedMunicipio.CP
   };
 
   try {
@@ -235,7 +227,7 @@ const handleRegister = async () => {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
-        'Accept': 'application/json' // Asegura que el backend entienda JSON
+        'Accept': 'application/json'
       },
       body: JSON.stringify(newUser),
     });
@@ -245,8 +237,9 @@ const handleRegister = async () => {
       throw new Error(`Error ${response.status}: ${errorData.message || 'Error desconocido'}`);
     }
 
-    alert('✅ ¡Registro exitoso!');
-    router.push('/login');
+    // 🔐 Autenticar al usuario después del registro
+    authStore.login(newUser.email, newUser.password); // Usa el método login del authStore
+    router.push('/profile'); // Redirige al perfil
   } catch (error) {
     errorMessage.value = error.message;
   } finally {
@@ -256,13 +249,14 @@ const handleRegister = async () => {
 </script>
 
 <style scoped>
+/* Estilos BEM */
 .register {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   font-family: var(--font-family);
-margin-top: 10rem;
+  margin-top: 10rem;
 }
 
 .register__container {
@@ -388,5 +382,4 @@ margin-top: 10rem;
     padding: var(--space-md);
   }
 }
-
 </style>

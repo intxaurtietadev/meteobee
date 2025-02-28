@@ -15,11 +15,12 @@ export const useAuthStore = defineStore('auth', () => {
       if (users.length > 0 && users[0].password === password) {
         user.value = users[0]; // Guardar el usuario autenticado
         localStorage.setItem('user', JSON.stringify(user.value)); // Guardar en localStorage
+        router.push('/profile'); // Redirigir al perfil
       } else {
         throw new Error('Credenciales incorrectas');
       }
     } catch (err) {
-      throw new Error('Error al iniciar sesión');
+      throw new Error('Error al iniciar sesión:'  + err.message);
     }
   };
 
