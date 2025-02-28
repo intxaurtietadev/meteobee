@@ -1,101 +1,181 @@
 <template>
-   <div class="weather-container">
+  <div class="weather-container">
     <div class="selected-day">
       <h2>
         <span class="weather-emoji">{{ getWeatherIcon(selectedDay.condition) }}</span> 
-        {{ selectedDay.day }}
+        {{ getDayOfWeek(selectedDay.date) }}
       </h2>
       <div class="weather-info">
         <div class="weather-detail">
-          <p class="temperature"><strong>Temperature:</strong> {{ selectedDay.temp }}°C</p>
-          <p class="condition"><strong>Condition:</strong> {{ selectedDay.condition }}</p>
+          <p class="temperature"><strong>Temperatura:</strong> {{ selectedDay.temp }}°C</p>
+          <p class="condition"><strong>Condición:</strong> {{ selectedDay.condition }}</p>
         </div>
         <div class="weather-detail">
-          <p class="precipitation"><strong>Precipitation:</strong> {{ selectedDay.precipitation }}%</p>
-          <p class="snow"><strong>Snow:</strong> {{ selectedDay.snow }} mm</p>
+          <p class="precipitation"><strong>Precipitación:</strong> {{ selectedDay.precipitation }}%</p>
+          <p class="snow"><strong>Cota de nieve:</strong> {{ selectedDay.snow }} mm</p>
         </div>
         <div class="weather-detail">
-          <p class="speed"><strong>Wind Speed:</strong> {{ selectedDay.wind }} km/h</p>
-          <p class="uv"><strong>UV Index:</strong> {{ selectedDay.uv_index }}</p>
+          <p class="speed"><strong>Viento:</strong> {{ selectedDay.wind }} km/h</p>
+          <p class="uv"><strong>Indicé UV:</strong> {{ selectedDay.uv_index }}</p>
         </div>
       </div>
     </div>
     <div class="week-forecast">
       <div v-for="(day, index) in weekData" :key="index" class="day-card" @click="selectDay(day)">
-        <span class="day-icon">{{ getWeatherIcon(day.condition) }}</span>
-        <p>{{ day.day }}</p>
-        <p>{{ day.temp }}°C</p>
+        <span class="day-icon">{{ getWeatherIcon(getWeatherCondition(day)) }}</span>
+        <p>{{ getDayOfWeek(day.date) }}</p>
+        <p>{{ getAverageTemp(day) }}°C</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, onMounted, computed } from "vue";
+import { useAPIdata } from "@/stores/APIdata.js";
 
-// Define the selected day as a reactive reference
+const apiData = useAPIdata();
+
+// Define the selected day as a reactive reference with default values
 const selectedDay = ref({
-  day: "Monday",
+  date: new Date().toISOString().split('T')[0],
   temp: 22,
-  condition: "Sunny",
+  condition: "'Soleado",
   precipitation: 0,
   snow: 0,
   wind: 5,
   uv_index: 4
 });
 
-// Define the week data
-const weekData = ref([
-  { day: 'Monday', temp: 22, condition: 'Cloudy', precipitation: 10, snow: 0, wind: 5, uv_index: 4 },
-  { day: 'Tuesday', temp: 18, condition: 'Rainy', precipitation: 80, snow: 0, wind: 8, uv_index: 2 },
-  { day: 'Wednesday', temp: 15, condition: 'Partly Cloudy', precipitation: 20, snow: 0, wind: 6, uv_index: 3 },
-  { day: 'Thursday', temp: 16, condition: 'Sunny', precipitation: 0, snow: 0, wind: 3, uv_index: 6 },
-  { day: 'Friday', temp: 20, condition: 'Partly Cloudy', precipitation: 30, snow: 0, wind: 7, uv_index: 4 },
-  { day: 'Saturday', temp: 17, condition: 'Cloudy', precipitation: 40, snow: 0, wind: 5, uv_index: 3 },
-  { day: 'Sunday', temp: 12, condition: 'Cloudy', precipitation: 60, snow: 0, wind: 10, uv_index: 2 },
-]);
+// Function to determine weather condition based on precipitation probability
+const getWeatherCondition = (day) => {
+  const precipitation = day.precipitation;
+  
+  if (precipitation === 0 || precipitation < 20) return 'Soleado';
+  if (precipitation < 40) return 'Parcialmente nublado';
+  if (precipitation < 60) return 'Nublado';
+  if (precipitation < 80) return 'Lluvia ligera';
+  return 'Lluvia';
+};
+
+// Computed property to transform meteoData into weekData format
+const weekData = computed(() => {
+  if (!apiData) return [];
+  
+  return [
+    apiData.meteoData0,
+    apiData.meteoData1,
+    apiData.meteoData2,
+    apiData.meteoData3,
+    apiData.meteoData4,
+    apiData.meteoData5,
+    apiData.meteoData6
+  ].filter(day => day && day.date); // Filter out any undefined data
+});
+
+// Function to get average temperature from min and max
+const getAverageTemp = (day) => {
+  if (!day || day.max_temp === undefined || day.min_temp === undefined) {
+    return 'N/A';
+  }
+  return Math.round((day.max_temp + day.min_temp) / 2);
+};
+
+// Function to convert date to day of week
+const getDayOfWeek = (dateString) => {
+  if (!dateString) return 'Unknown';
+  
+  // Check if the date is already formatted as YYYY-MM-DD
+  let date;
+  if (typeof dateString === 'string' && dateString.includes('-')) {
+    date = new Date(dateString);
+  } else {
+    // If it's a timestamp or different format, try to convert
+    date = new Date(dateString);
+  }
+  
+  const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  return days[date.getDay()];
+};
 
 // Function to select a day
 const selectDay = (day) => {
-  selectedDay.value = day;
+  if (!day) return;
+  
+  selectedDay.value = {
+    date: day.date,
+    temp: getAverageTemp(day),
+    condition: getWeatherCondition(day),
+    precipitation: day.precipitation || 1,
+    snow: day.snow || 0,
+    wind: day.wind || 0,
+    uv_index: day.uv_index || 0
+  };
 };
 
 // Function to get weather icons
 const getWeatherIcon = (condition) => {
   const iconMap = {
-    'Sunny': '☀️',
-    'Clear': '☀️',
-    'Partly Cloudy': '⛅',
-    'Cloudy': '☁️',
-    'Overcast': '☁️',
-    'Mist': '🌫️',
-    'Fog': '🌫️',
-    'Light Rain': '🌦️',
-    'Rain': '🌧️',
-    'Heavy Rain': '⛈️',
-    'Thunderstorm': '⚡',
-    'Snow': '❄️',
-    'Light Snow': '🌨️',
-    'Heavy Snow': '❄️',
-    'Sleet': '🌨️',
-    'Hail': '🌨️',
-    'Windy': '💨'
+    'Soleado': '☀️',
+    'Despejado': '☀️',
+    'Parcialmente nublado': '⛅',
+    'Nublado': '☁️',
+    'Cubierto': '☁️',
+    'Neblina': '🌫️',
+    'Niebla': '🌫️',
+    'Lluvia ligera': '🌦️',
+    'Lluvia': '🌧️',
+    'Lluvia fuerte': '⛈️',
+    'Tormenta eléctrica': '⚡',
+    'Nieve': '❄️',
+    'Nieve ligera': '🌨️',
+    'Nieve fuerte': '❄️',
+    'Aguanieve': '🌨️',
+    'Granizo': '🌨️',
+    'Ventoso': '💨'
   };
   return iconMap[condition] || '🌤️';
 };
+
+// Watch for any changes in the apiData store
+watch(() => [
+  apiData.meteoData0,
+  apiData.meteoData1,
+  apiData.meteoData2,
+  apiData.meteoData3,
+  apiData.meteoData4,
+  apiData.meteoData5,
+  apiData.meteoData6
+], ([newData0]) => {
+  if (newData0 && newData0.date) {
+    selectDay(newData0);
+  }
+}, { deep: true, immediate: true });
+
+// Watch for changes in the municipioSelected value 
+watch(() => apiData.meteoData0, (newData) => {
+  console.log("Weather data updated:", newData);
+  if (newData && newData.date) {
+    selectDay(newData);
+  }
+});
+
+// Initialize on mount
+onMounted(() => {
+  // If we already have data in the store, select the first day
+  if (apiData.meteoData0 && apiData.meteoData0.date) {
+    selectDay(apiData.meteoData0);
+  }
+});
 </script>
 
-
-
 <style scoped>
-
-
 .weather-container {
   text-align: center;
   background: linear-gradient(to right, #2c3e50, #4ca1af);
   color: white;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 15px; 
   max-width: 800px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
