@@ -7,16 +7,16 @@
       </h2>
       <div class="weather-info">
         <div class="weather-detail">
-          <p class="temperature"><strong>Temperature:</strong> {{ selectedDay.temp }}°C</p>
-          <p class="condition"><strong>Condition:</strong> {{ selectedDay.condition }}</p>
+          <p class="temperature"><strong>Temperatura:</strong> {{ selectedDay.temp }}°C</p>
+          <p class="condition"><strong>Condición:</strong> {{ selectedDay.condition }}</p>
         </div>
         <div class="weather-detail">
-          <p class="precipitation"><strong>Precipitation:</strong> {{ selectedDay.precipitation }}%</p>
-          <p class="snow"><strong>Snow:</strong> {{ selectedDay.snow }} mm</p>
+          <p class="precipitation"><strong>Precipitación:</strong> {{ selectedDay.precipitation }}%</p>
+          <p class="snow"><strong>Cota de nieve:</strong> {{ selectedDay.snow }} mm</p>
         </div>
         <div class="weather-detail">
-          <p class="speed"><strong>Wind Speed:</strong> {{ selectedDay.wind }} km/h</p>
-          <p class="uv"><strong>UV Index:</strong> {{ selectedDay.uv_index }}</p>
+          <p class="speed"><strong>Viento:</strong> {{ selectedDay.wind }} km/h</p>
+          <p class="uv"><strong>Indicé UV:</strong> {{ selectedDay.uv_index }}</p>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@ const apiData = useAPIdata();
 const selectedDay = ref({
   date: new Date().toISOString().split('T')[0],
   temp: 22,
-  condition: "Sunny",
+  condition: "'Soleado",
   precipitation: 0,
   snow: 0,
   wind: 5,
@@ -51,11 +51,11 @@ const selectedDay = ref({
 const getWeatherCondition = (day) => {
   const precipitation = day.precipitation;
   
-  if (precipitation === 0 || precipitation < 20) return 'Sunny';
-  if (precipitation < 40) return 'Partly Cloudy';
-  if (precipitation < 60) return 'Cloudy';
-  if (precipitation < 80) return 'Light Rain';
-  return 'Rain';
+  if (precipitation === 0 || precipitation < 20) return 'Soleado';
+  if (precipitation < 40) return 'Parcialmente nublado';
+  if (precipitation < 60) return 'Nublado';
+  if (precipitation < 80) return 'Lluvia ligera';
+  return 'Lluvia';
 };
 
 // Computed property to transform meteoData into weekData format
@@ -94,7 +94,7 @@ const getDayOfWeek = (dateString) => {
     date = new Date(dateString);
   }
   
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   return days[date.getDay()];
 };
 
@@ -116,23 +116,23 @@ const selectDay = (day) => {
 // Function to get weather icons
 const getWeatherIcon = (condition) => {
   const iconMap = {
-    'Sunny': '☀️',
-    'Clear': '☀️',
-    'Partly Cloudy': '⛅',
-    'Cloudy': '☁️',
-    'Overcast': '☁️',
-    'Mist': '🌫️',
-    'Fog': '🌫️',
-    'Light Rain': '🌦️',
-    'Rain': '🌧️',
-    'Heavy Rain': '⛈️',
-    'Thunderstorm': '⚡',
-    'Snow': '❄️',
-    'Light Snow': '🌨️',
-    'Heavy Snow': '❄️',
-    'Sleet': '🌨️',
-    'Hail': '🌨️',
-    'Windy': '💨'
+    'Soleado': '☀️',
+    'Despejado': '☀️',
+    'Parcialmente nublado': '⛅',
+    'Nublado': '☁️',
+    'Cubierto': '☁️',
+    'Neblina': '🌫️',
+    'Niebla': '🌫️',
+    'Lluvia ligera': '🌦️',
+    'Lluvia': '🌧️',
+    'Lluvia fuerte': '⛈️',
+    'Tormenta eléctrica': '⚡',
+    'Nieve': '❄️',
+    'Nieve ligera': '🌨️',
+    'Nieve fuerte': '❄️',
+    'Aguanieve': '🌨️',
+    'Granizo': '🌨️',
+    'Ventoso': '💨'
   };
   return iconMap[condition] || '🌤️';
 };
