@@ -9,14 +9,14 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import NewsCard from '../components/cards/News.vue';
+  import NewsCard from '../components/News.vue';
   
   // Array to store news
   const news = ref([]);
   
   const fetchNews = async () => {
       // Load JSON data
-      const response = await fetch('/db.json');
+      const response = await fetch('/news.json');
       // Turn response into .json
       const data = await response.json();
       news.value = data.news;
