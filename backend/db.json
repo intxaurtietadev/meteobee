@@ -35,7 +35,12 @@
       "name": "natalia",
       "email": "natalia@abejas.com",
       "password": "abejitas"
+    },
+    {
+      "id": "4c4b",
+      "name": "igor",
+      "email": "igoribon@gmail.com",
+      "password": "123456"
     }
   ]
-  
-  }
+}

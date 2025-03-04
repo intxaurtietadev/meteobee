@@ -82,20 +82,16 @@ const handleprovinciaChange = (event) => {
 };
 
 // Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
-watch(municipioSelected, async (newValue) => {
-  if (newValue) {
-    await apiData.fetchWeatherData(newValue);
-  }
-});
 
 
 
-//Esta función pide los datos del municipio seleccionado a la API de AEMET y los guarda en localStorage
+
+// Esta función pide los datos del municipio seleccionado a la API de AEMET y los guarda en localStorage
 // const fetchWeatherData = async (codigoMunicipio) => {
 //   weatherData.value = "Cargando...";
 
 //   try {
-//     const url = `https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/${codigoMunicipio}?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc`;
+//     const url = `https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/${codigoMunicipio}?api_key=...`;
 //     const response = await fetch(url);
 //     const data = await response.json();
 
