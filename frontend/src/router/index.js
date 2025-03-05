@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue';
 import ProfileView from '../views/ProfileView.vue'; // Asegúrate de que ProfileView.vue existe
 import { useAuthStore } from '../stores/auth';
 import NewsView from '../views/NewsView.vue';
+import GrantsView from '../views/GrantsView.vue';
 
 const routes = [
   {
@@ -28,7 +29,12 @@ const routes = [
     path: '/noticias',
     name: 'Noticias',
     component: NewsView,
-  }
+  },
+  {
+  path: '/ayudas',
+  name: 'Ayudas',
+  component: GrantsView,
+}
 ];
 
 const router = createRouter({
