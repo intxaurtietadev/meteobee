@@ -81,36 +81,36 @@ export default {
             {
               label: `${year} Honey Production (Tons)`, // Label for honey production
               data: honeyProductionData[year], // Data for the specific year (honey production)
-              backgroundColor: 'rgba(75, 192, 192, 0.2)', // Bar color (honey production)
-              borderColor: 'rgb(75, 192, 192)', // Border color for the bars
+              backgroundColor: '#4D6C32', // Bar color (honey production)
+              borderColor: 'white', // Border color for the bars
               borderWidth: 1 // Border width
             },
             {
               label: `${year} Temperature (°C)`, // Label for temperature
               data: temperatureData[year], // Data for the specific year (temperature)
-              backgroundColor: 'rgba(255, 99, 132, 0.2)', // Bar color (temperature)
-              borderColor: 'rgb(255, 99, 132)', // Border color for the bars
+              backgroundColor: 'red', // Bar color (temperature)
+              borderColor: 'white', // Border color for the bars
               borderWidth: 1 // Border width
             },
             {
               label: `${year} Humidity (%)`, // Label for humidity
               data: humidityData[year], // Data for the specific year (humidity)
-              backgroundColor: 'rgba(54, 162, 235, 0.2)', // Bar color (humidity)
-              borderColor: 'rgb(54, 162, 235)', // Border color for the bars
+              backgroundColor: '#4A9BA9', // Bar color (humidity)
+              borderColor: 'white', // Border color for the bars
               borderWidth: 1 // Border width
             },
             {
               label: `${year} Solar Radiation (hrs/day)`, // Label for solar radiation
               data: solarRadiationData[year], // Data for the specific year (solar radiation)
-              backgroundColor: 'rgba(153, 102, 255, 0.2)', // Bar color (solar radiation)
-              borderColor: 'rgb(153, 102, 255)', // Border color for the bars
+              backgroundColor: '#2D4254', // Bar color (solar radiation)
+              borderColor: 'white', // Border color for the bars
               borderWidth: 1 // Border width
             },
             {
               label: `${year} Precipitation (mm/year)`, // Label for precipitation
               data: precipitationData[year], // Data for the specific year (precipitation)
-              backgroundColor: 'rgba(255, 159, 64, 0.2)', // Bar color (precipitation)
-              borderColor: 'rgb(255, 159, 64)', // Border color for the bars
+              backgroundColor: '#A3D55D', // Bar color (precipitation)
+              borderColor: 'white', // Border color for the bars
               borderWidth: 1 // Border width
             }
           ]
@@ -172,4 +172,3 @@ img {
   height: auto; /* Maintain aspect ratio */
 }
 </style>
-c
