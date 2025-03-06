@@ -17,12 +17,12 @@
 
     <!-- Tarjeta 6: Floracion -->
     <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
-      <HoneyProduction />
+      <Prueba />
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
     <BentoCard class="home-grid__card home-grid__card--honey-production" :routeName="'HoneyProduction'">
-      <Prueba />
+      <HoneyGraph />
     </BentoCard>
 
   </div>
@@ -34,10 +34,10 @@ import DailyMeteo from './cards/DailyMeteo.vue';
 import WeeklyMeteo from './cards/WeeklyMeteo.vue';
 import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
-import HoneyProduction from './cards/HoneyProduction.vue';
+import Prueba from './cards/Prueba.vue';
 import ToDoFloracion from './cards/ToDoFloracion.vue';
 import { useRouter } from 'vue-router';
-import Prueba from "@/components/cards/Prueba.vue";
+import HoneyGraph from "@/components/cards/HoneyGraph.vue";
 
 const router = useRouter(); 
 
