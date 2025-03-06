@@ -40,6 +40,8 @@ const switchToLogin = () => {
   align-items: center;
   justify-content: center;
   min-height: 110vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+  url('../assets/img/background-user.png');
 }
 
 .login-view__content {
