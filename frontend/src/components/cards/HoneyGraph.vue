@@ -139,6 +139,12 @@ export default {
             x: {
               stacked: true // Stack the bars for each region in the chart
             },
+            legend: {
+              labels: {
+                fontColor: 'blue',
+                fontSize: 200,
+              }
+            },
             y: {
               beginAtZero: true, // Ensure Y-axis starts at 0
               grid: {
@@ -161,9 +167,7 @@ export default {
 
 <style scoped>
 
-h2, h3, h4 {
-  color: var(--color-background)
-}
+
 
 h1 {
   font-size: 2rem;
