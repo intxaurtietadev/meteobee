@@ -55,6 +55,21 @@
       "province": "Zamora",
       "municipality": "Bermillo de Sayago",
       "CP": "49023"
+    },
+    {
+      "id": "2eb5",
+      "name": "Nerea",
+      "email": "nerea@ejemplo2.com",
+      "password": "88888888",
+      "colmenas": 7,
+      "species": [
+        "Osmia spp.",
+        "Xylocopa violacea",
+        "Megachile spp."
+      ],
+      "province": "Soria",
+      "municipality": "Baraona",
+      "CP": "42029"
     }
   ]
 }

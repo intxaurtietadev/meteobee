@@ -7,22 +7,22 @@
 
     <!-- Tarjeta 2: WeeklyMeteo -->
     <BentoCard class="home-grid__card home-grid__card--weekly-meteo" :routeName="'WeeklyMeteo'">
-      <WeeklyMeteo />
+      <DailyToDo />
     </BentoCard>
 
     <!-- Tarjeta 3: DailyToDo -->
     <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
-      <DailyToDo />
+      <WeeklyMeteo />
     </BentoCard>
 
     <!-- Tarjeta 6: Floracion -->
     <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
-      <Prueba />
+      <WeeklyToDo />
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
     <BentoCard class="home-grid__card home-grid__card--honey-production" :routeName="'HoneyProduction'">
-      <HoneyGraph />
+      <HoneyProduction />
     </BentoCard>
 
   </div>
@@ -30,12 +30,10 @@
 
 <script setup>
 import BentoCard from './BentoCard.vue'; // Import BentoCard
-import DailyMeteo from './cards/DailyMeteo.vue';
+import DailyMeteo from './cards/DailyMeteo/DailyMeteo.vue';
 import WeeklyMeteo from './cards/WeeklyMeteo.vue';
 import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
-import Prueba from './cards/Prueba.vue';
-import ToDoFloracion from './cards/ToDoFloracion.vue';
 import { useRouter } from 'vue-router';
 import HoneyGraph from "@/components/cards/HoneyGraph.vue";
 
