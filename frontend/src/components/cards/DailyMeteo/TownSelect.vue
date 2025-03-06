@@ -41,10 +41,9 @@
   
   <script setup>
   import { ref, computed, onMounted, watch } from "vue";
-  import provinciasData from "../../assets/Provincias.json";
-  import municipiosData from "../../assets/Municipios.json";
+  import provinciasData from "../../../assets/Provincias.json";
+  import municipiosData from "../../../assets/Municipios.json";
   import { useAPIdata } from '@/stores/APIdata.js';
-  import DailyMeteo2 from "./DailyMeteo/DailyMeteo2.vue";
   
   const apiData = useAPIdata();
   

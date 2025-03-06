@@ -30,7 +30,7 @@
 
 <script setup>
 import BentoCard from './BentoCard.vue'; // Import BentoCard
-import DailyMeteo from './cards/DailyMeteo.vue';
+import DailyMeteo from './cards/DailyMeteo/DailyMeteo.vue';
 import WeeklyMeteo from './cards/WeeklyMeteo.vue';
 import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
