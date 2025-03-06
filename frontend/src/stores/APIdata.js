@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia';
+import municipiosData from "@/assets/Municipios.json";
 
 export const useAPIdata = defineStore('APIdata', {
   state: () => ({
     municipioSelected: null,
+    muniSel: null,
     meteoData0: {  
-      date: 0,
+      date: "2025-03-06T09:02:13",
       precipitation: 70,
       precipitation06: 70,
       precipitation12: 70,
@@ -103,6 +105,7 @@ export const useAPIdata = defineStore('APIdata', {
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
     },
+
     async fetchWeatherData(municipio) {
        this.setMunicipioSelected(municipio);
         const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc"; 
@@ -229,7 +232,7 @@ export const useAPIdata = defineStore('APIdata', {
       },
       reset() {
         this.meteoData0 = {  
-          date: 0,
+          date: "2025-03-06T09:02:13",
       precipitation: 70,
       precipitation06: 70,
       precipitation12: 70,
