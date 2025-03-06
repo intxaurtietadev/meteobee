@@ -129,13 +129,13 @@ const handleSubmit = async () => {
   align-items: center;
   width: 100%;
   font-family: var(--font-family);
-  height: 110vh;
+  margin-top: 3rem;
 }
 
 .login__container {
   width: 100%;
   max-width: 28.125rem;
-  background-color: rgba(230, 230, 230, 0.541); 
+  background-color: var(--color-box-background);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
@@ -147,8 +147,9 @@ const handleSubmit = async () => {
 .login__header {
   text-align: center;
   padding: var(--space-lg) var(--space-md) var(--space-md);
-  background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.363), #f0c17aab);
   color: var(--color-text);
+  border-radius: var(--border-radius);
 }
 
 .login__logo {

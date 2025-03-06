@@ -82,7 +82,7 @@
 
         <div class="register__form-group">
           <label for="selectprovincia" class="register__label">Selecciona una provincia:</label>
-          <select id="selectprovincia" v-model="selectedProvince">
+          <select id="selectprovincia" class="register__input" v-model="selectedProvince">
             <option
               v-for="provincia in provinces"
               :key="provincia.CP"
@@ -97,6 +97,7 @@
           <label for="selectMunicipio" class="register__label">Selecciona un municipio:</label>
           <select
             id="selectMunicipio"
+            class="register__input"
             v-model="selectedMunicipality"
             :disabled="!selectedProvince"
             required
@@ -161,14 +162,14 @@ const authStore = useAuthStore();
 
 // Especies de abejas
 const beeSpecies = ref([
-  { label: 'Abeja europea o de la miel (Apis mellifera)', value: 'Apis mellifera' },
-  { label: 'Abeja carpintera (Xylocopa violacea)', value: 'Xylocopa violacea' },
-  { label: 'Abeja de la madera (Ceratina cyanea)', value: 'Ceratina cyanea' },
-  { label: 'Abejas cuco (Nomada spp.)', value: 'Nomada spp.' },
-  { label: 'Abeja albañil (Osmia spp.)', value: 'Osmia spp.' },
-  { label: 'Abeja corta hojas (Megachile spp.)', value: 'Megachile spp.' },
-  { label: 'Abeja minadora (Andrena spp.)', value: 'Andrena spp.' },
-  { label: 'Abeja de las orquídeas (Eucera spp.)', value: 'Eucera spp.' }
+  { label: 'Abeja europea o de la miel', value: 'Apis mellifera' },
+  { label: 'Abeja carpintera', value: 'Xylocopa violacea' },
+  { label: 'Abeja de la madera', value: 'Ceratina cyanea' },
+  { label: 'Abejas cuco', value: 'Nomada spp.' },
+  { label: 'Abeja albañil', value: 'Osmia spp.' },
+  { label: 'Abeja corta hojas', value: 'Megachile spp.' },
+  { label: 'Abeja minadora', value: 'Andrena spp.' },
+  { label: 'Abeja de las orquídeas', value: 'Eucera spp.' }
 ]);
 
 // Cargar datos desde JSON
@@ -256,13 +257,13 @@ const handleRegister = async () => {
   align-items: center;
   width: 100%;
   font-family: var(--font-family);
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 
 .register__container {
   width: 100%;
   max-width: 28.125rem;
-  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
+  background-color: var(--color-box-background);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
@@ -271,8 +272,10 @@ const handleRegister = async () => {
 
 .register__header {
   text-align: center;
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.363), #f0c17aab);
   color: var(--color-text);
+  border-radius: var(--border-radius);
 }
 
 .register__title {
@@ -293,6 +296,7 @@ const handleRegister = async () => {
 
 .register__form-group {
   margin-bottom: var(--space-md);
+  width: 90%;
 }
 
 .register__label {
@@ -302,11 +306,13 @@ const handleRegister = async () => {
 }
 
 .register__input {
-  width: 90%;
+  width: 100%;
   padding: var(--space-sm);
   border: 1px solid #e2e8f0;
   border-radius: var(--border-radius);
   font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  transition: border-color var(--transition-duration);
 }
 
 .register__input:focus {

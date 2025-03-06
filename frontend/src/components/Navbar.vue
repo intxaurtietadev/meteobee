@@ -77,7 +77,7 @@ export default {
   transform: translateX(-50%);
   color: var(--color-text);
   z-index: 1000;
-  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
+  background-color: var(--color-box-background);/* --color-primary con transparencia */
   font-family: var(--font-family);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -128,6 +128,7 @@ export default {
   width: 24px;
   height: 24px;
   fill: var(--color-primary); /* Color del ícono */
+  cursor: pointer;
 }
 
 /* Menú hamburguesa */
@@ -168,9 +169,9 @@ export default {
     opacity: 0;
     visibility: hidden;
     transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease, visibility var(--transition-duration) ease;
-    background-color: var(--color-background);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    background-color: rgba(230, 230, 230, 0.87);
   }
 
   .navbar__nav-links--open {

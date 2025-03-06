@@ -8,8 +8,8 @@
   --color-accent: #f0c17a; /* mostaza */
   --color-light: #f5e55c; /* color claro */
   --color-background: #fff; /* blanco */
-  --color-text: #333; /* color del texto */
-  --color-box-background: 0 0 0 0.125rem rgba(246, 184, 60, 0.2);
+  --color-text: #464646; /* color del texto */
+  --color-box-background: rgba(230, 230, 230, 0.226);
   
   /* Espacios (márgenes y rellenos) */
   --space-xs: 0.5rem;
