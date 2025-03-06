@@ -256,13 +256,13 @@ const handleRegister = async () => {
   align-items: center;
   width: 100%;
   font-family: var(--font-family);
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 .register__container {
   width: 100%;
   max-width: 28.125rem;
-  background-color: var(--color-background);
+  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
@@ -272,7 +272,6 @@ const handleRegister = async () => {
 .register__header {
   text-align: center;
   padding: var(--space-lg) var(--space-md);
-  background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
   color: var(--color-text);
 }
 
