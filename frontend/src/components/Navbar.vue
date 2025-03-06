@@ -19,7 +19,7 @@
     </div>
     <ul class="navbar__nav-links" :class="{ 'navbar__nav-links--open': isOpen }">
       <li class="navbar__nav-item"><router-link to="/" class="navbar__link">Inicio</router-link></li>
-      <li class="navbar__nav-item"><router-link to="/ayudas" class="navbar__link">ayudas</router-link></li>
+      <li class="navbar__nav-item"><router-link to="/ayudas" class="navbar__link">Subvenciones</router-link></li>
       <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
       <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
@@ -73,7 +73,7 @@ export default {
   transform: translateX(-50%);
   color: var(--color-text);
   z-index: 1000;
-  background-color: var(--color-background);
+  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
   font-family: var(--font-family);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);

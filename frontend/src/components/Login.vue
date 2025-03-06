@@ -135,12 +135,13 @@ const handleSubmit = async () => {
 .login__container {
   width: 100%;
   max-width: 28.125rem;
-  background-color: var(--color-background);
+  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
   position: relative;
   font-family: var(--font-family);
+
 }
 
 .login__header {
