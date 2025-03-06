@@ -1,10 +1,5 @@
 <template>
     <div v-if="hasData" class="daymeteoContainer" >
-        <p>{{ meteoData.date }}</p>
-        <p><strong>Temperatura máx/min: </strong>{{ meteoData.min_temp }}/{{ meteoData.max_temp }} ºC</p>
-        <p><strong>Humedad relativa(%):</strong> {{ meteoData.min_humidity }}/{{ meteoData.max_humidity }}</p>
-        <p><strong>Cota de nieve: </strong>{{ meteoData.snow }} m</p>
-        <p><strong>Índice UV: </strong>{{ meteoData.uv_index }}</p>
         <div class="daymeteo__card">
             <p><strong>00h - 06h</strong></p>
             <p><strong>Temperatura: </strong>{{ meteoData.temp06 }} °C</p>
@@ -33,7 +28,6 @@
             <p><strong>Humedad:</strong> {{ meteoData.humidity24 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind24 }} km/h</p>
         </div>
-        
       </div>
   </template>
   
@@ -59,9 +53,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 .daymeteo__card {
+    height: 50%;
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;

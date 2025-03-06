@@ -7,22 +7,22 @@
 
     <!-- Tarjeta 2: WeeklyMeteo -->
     <BentoCard class="home-grid__card home-grid__card--weekly-meteo" :routeName="'WeeklyMeteo'">
-      <WeeklyMeteo />
+      <DailyToDo />
     </BentoCard>
 
     <!-- Tarjeta 3: DailyToDo -->
     <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
-      <DailyToDo />
+      <WeeklyMeteo />
     </BentoCard>
 
     <!-- Tarjeta 6: Floracion -->
     <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
-      <HoneyProduction />
+      <WeeklyToDo />
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
     <BentoCard class="home-grid__card home-grid__card--honey-production" :routeName="'HoneyProduction'">
-      <Prueba />
+      <HoneyProduction />
     </BentoCard>
 
   </div>

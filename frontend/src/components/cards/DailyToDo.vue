@@ -1,5 +1,5 @@
 <template>
-  <div class="daily-meteo">
+  <div class="daily__advice">
       <!-- <img v-if="img" :src="img" alt="Card image" class="card-img" /> -->
       <h3 class="card-title">Recomendaciones diarias</h3>
       <!-- <p class="card-description">{{ description }}</p> -->
@@ -125,7 +125,14 @@ watch(meteoData, (newData) => {
 </script>
 
 <style scoped>
-.daily-meteo {
+.daily__advice {
   text-align: center;
+  width: 80%;
+  
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 </style>
