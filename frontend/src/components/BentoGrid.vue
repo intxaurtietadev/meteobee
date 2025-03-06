@@ -15,9 +15,9 @@
       <DailyToDo />
     </BentoCard>
 
-    <!-- Tarjeta 4: WeeklyToDo -->
-    <BentoCard class="home-grid__card home-grid__card--weekly-todo" :routeName="'WeeklyToDo'">
-      <WeeklyToDo />
+    <!-- Tarjeta 6: Floracion -->
+    <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
+      <HoneyProduction />
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
@@ -25,10 +25,6 @@
       <Prueba />
     </BentoCard>
 
-    <!-- Tarjeta 6: Floracion -->
-    <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
-      <HoneyProduction />
-    </BentoCard>
   </div>
 </template>
 
@@ -55,23 +51,19 @@ const gotToDailyRec = () => {
 .home-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
-    "daily-meteo weekly-meteo weekly-meteo"
-    "daily-meteo daily-todo weekly-todo"
-    "honey-production honey-production floracion";
+    "daily-meteo daily-meteo weekly-meteo"
+    "daily-meteo daily-meteo weekly-meteo"
+    "daily-todo daily-todo daily-todo"
+    "floracion honey-production honey-production";
   gap: var(--space-md);
-  padding: var(--space-lg);
-  max-width: 75rem;
+  padding: var(--space-lg); 
   margin: 0 auto;
-  margin-top: var(--space-xl);
+  width: 100%;
+  max-width: 100rem;
   font-family: var(--font-family);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-  url('../assets/img/honeycomb-7038703_960_720.jpg');
-  backdrop-filter: blur(20px); /* Mayor desenfoque */
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
-  box-shadow: var(--box-shadow);
+
 }
 
 /* Bloque: Tarjeta */
@@ -122,33 +114,33 @@ const gotToDailyRec = () => {
 /* Modificadores para cada tarjeta */
 .home-grid__card--daily-meteo {
   grid-area: daily-meteo;
-  background-color: rgba(77, 108, 50, 0.2); /* --color-primary con transparencia */
+  background-color: rgba(230, 230, 230, 0.288); /* --color-primary con transparencia */
 }
 
 .home-grid__card--weekly-meteo {
   grid-area: weekly-meteo;
-  background-color: rgba(246, 184, 60, 0.2); /* --color-secondary con transparencia */
+  background-color: rgba(230, 230, 230, 0.288);  /* --color-secondary con transparencia */
 }
 
 .home-grid__card--daily-todo {
   grid-area: daily-todo;
-  background-color: rgba(163, 213, 93, 0.2); /* --color-tertiary con transparencia */
+  background-color: rgba(230, 230, 230, 0.288); /* --color-tertiary con transparencia */
   cursor: pointer; /* Indicar que es clickeable */
 }
 
 .home-grid__card--weekly-todo {
   grid-area: weekly-todo;
-  background-color: rgba(240, 193, 122, 0.2); /* --color-accent con transparencia */
+  background-color: rgba(230, 230, 230, 0.288);  /* --color-accent con transparencia */
 }
 
 .home-grid__card--honey-production {
   grid-area: honey-production;
-  background-color: rgba(245, 229, 92, 0.2); /* --color-light con transparencia */
+  background-color: rgba(230, 230, 230, 0.288);  /* --color-light con transparencia */
 }
 
 .home-grid__card--floracion {
   grid-area: floracion;
-  background-color: rgba(77, 108, 50, 0.2); /* --color-primary con transparencia */
+  background-color: rgba(230, 230, 230, 0.288);  /* --color-primary con transparencia */
 }
 
 /* Efecto especial para la tarjeta clickeable */
