@@ -1,6 +1,10 @@
 <template>
   <nav class="navbar">
-    <div class="navbar__logo">MeteoBee</div>
+    <div class="navbar__logo">
+      <div><img src="../assets/img/logo.png" alt="" width="60" height="60">
+      </div>
+      <div>Meteobee</div>
+      </div>
     <div class="navbar__menu-toggle" @click="toggleMenu">
       <!-- Ícono de hamburguesa (SVG) -->
       <svg
@@ -81,6 +85,9 @@ export default {
 
 /* Elementos del navbar */
 .navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
