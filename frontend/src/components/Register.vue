@@ -302,7 +302,7 @@ const handleRegister = async () => {
 }
 
 .register__input {
-  width: 100%;
+  width: 90%;
   padding: var(--space-sm);
   border: 1px solid #e2e8f0;
   border-radius: var(--border-radius);
@@ -311,7 +311,7 @@ const handleRegister = async () => {
 
 .register__input:focus {
   outline: none;
-  border-color: var(--color-secondary);
+  border-color: var(--color-tertiary);
   box-shadow: 0 0 0 0.125rem rgba(246, 184, 60, 0.2);
 }
 

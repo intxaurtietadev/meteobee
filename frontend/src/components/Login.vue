@@ -135,7 +135,7 @@ const handleSubmit = async () => {
 .login__container {
   width: 100%;
   max-width: 28.125rem;
-  background-color: rgba(230, 230, 230, 0.541); /* --color-primary con transparencia */
+  background-color: rgba(230, 230, 230, 0.541); 
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
@@ -181,6 +181,7 @@ const handleSubmit = async () => {
 
 .login__form-group {
   margin-bottom: var(--space-md);
+  width: 90%;
 }
 
 .login__label {
