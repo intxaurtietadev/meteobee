@@ -1,16 +1,16 @@
 <template>
   <div class="home-grid" ref="container">
     <!-- Tarjeta 1: DailyMeteo -->
-    <BentoCard class="home-grid__card home-grid__card--daily-meteo" :routeName="'DailyMeteo'">
+    <BentoCard class="home-grid__card home-grid__card--daily-meteo" style="padding:0" :routeName="'DailyMeteo'">
       <DailyMeteo />
     </BentoCard>
 
-    <!-- Tarjeta 2: WeeklyMeteo -->
+    <!-- Tarjeta 2: DailyToDo -->
     <BentoCard class="home-grid__card home-grid__card--weekly-meteo" :routeName="'WeeklyMeteo'">
       <DailyToDo />
     </BentoCard>
 
-    <!-- Tarjeta 3: DailyToDo -->
+    <!-- Tarjeta 3: WeeklyMeteo -->
     <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
       <WeeklyMeteo />
     </BentoCard>

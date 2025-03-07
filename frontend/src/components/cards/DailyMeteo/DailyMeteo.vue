@@ -25,9 +25,16 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
   height: 100%;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  background: linear-gradient(to right, #2c3e5062, #4ca2af6c);
+  /* border-radius: 15px;  */
+  margin: 0 auto;
 }
 
 

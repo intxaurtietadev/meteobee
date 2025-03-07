@@ -1,28 +1,28 @@
 <template>
     <div v-if="hasData" class="daymeteoContainer" >
         <div class="daymeteo__card">
-            <p><strong>00h - 06h</strong></p>
+            <p class="hours"><strong>00h - 06h</strong></p>
             <p><strong>Temperatura: </strong>{{ meteoData.temp06 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation06 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity06 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind06 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p><strong>06h - 12h</strong></p>
+            <p class="hours"><strong>06h - 12h</strong></p>
             <p><strong>Temperatura:</strong> {{ meteoData.temp12 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation12 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity12 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind12 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p><strong>12h - 18h</strong></p>
+            <p class="hours"><strong>12h - 18h</strong></p>
             <p><strong>Temperatura:</strong> {{ meteoData.temp18 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation18 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity18 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind18 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p><strong>18h - 24h</strong></p>
+            <p class="hours"><strong>18h - 24h</strong></p>
             <p><strong>Temperatura:</strong> {{ meteoData.temp24 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation24 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity24 }} %</p>
@@ -56,12 +56,29 @@
   gap: var(--space-md);
 }
 .daymeteo__card {
-  height: 50%;
-  border: 1px solid #ddd;
+    height: 50%;
+    text-align: center;
+    margin: 0 auto;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.daymeteo__card:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.hours {
+  font-size: 1.6rem;
 }
 
 .daymeteo__card:hover {

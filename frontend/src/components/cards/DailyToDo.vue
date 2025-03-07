@@ -3,13 +3,13 @@
       <!-- <img v-if="img" :src="img" alt="Card image" class="card-img" /> -->
       <h3 class="card-title">Recomendaciones diarias</h3>
       <!-- <p class="card-description">{{ description }}</p> -->
-      <div v-if="advice">
-        <p><strong>Precipitaciones:</strong> {{ advice.precipitation }}</p>
-        <p><strong>Nieve:</strong> {{ advice.snow }}</p>
-        <p><strong>Temperatura:</strong> {{ advice.temp }} </p>
-        <p><strong>Humedad:</strong> {{ advice.humidity }}</p>
-        <p><strong>Viento:</strong> {{ advice.wind }}</p>
-        <p><strong>Índice UV:</strong> {{ advice.uv_index }}</p>
+      <div class="daily__advice__p" v-if="advice">
+        <h4>Precipitaciones:</h4> <span>{{ advice.precipitation }}</span>
+        <h4>Nieve:</h4> <span>{{ advice.snow }}</span>
+        <h4>Temperatura:</h4> <span>{{ advice.temp }} </span>
+        <h4>Humedad:</h4> <span>{{ advice.humidity }}</span>
+        <h4>Viento:</h4> <span>{{ advice.wind }}</span>
+        <h4>Índice UV:</h4> <span>{{ advice.uv_index }}</span>
       </div>
     </div>
 </template>
@@ -127,12 +127,37 @@ watch(meteoData, (newData) => {
 <style scoped>
 .daily__advice {
   text-align: center;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  
+}
+
+.daily__advice__p {
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
 }
 
 h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.8rem;
 }
+
+span {
+  padding-bottom: 1rem;
+}
+
+/* h4{
+  font-size: 1.3rem;
+
+}
+
+p {
+  font-size: 1.1rem;
+} */
 </style>

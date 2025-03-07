@@ -83,6 +83,11 @@
       (municipio) => municipio.provincia === provinciaSelected.value
     );
   });
+
+  const muniSel = computed(() => {
+  const selectedMunicipio = municipios.value.find(municipio => municipio.CP === municipioSelected.value);
+  return selectedMunicipio ? selectedMunicipio.NOMBRE : '';
+});
   
   // Función para que cuando se cambie la provincia se cambien los municipios
   const handleprovinciaChange = (event) => {
@@ -164,12 +169,17 @@
     width: 40%;
     text-align: center;
     margin: 0 auto;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ddd;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
   .container__select:hover {
   transform: scale(1.05);

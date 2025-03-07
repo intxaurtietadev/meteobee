@@ -1,34 +1,36 @@
 import { defineStore } from 'pinia';
+import municipiosData from "@/assets/Municipios.json";
 
 export const useAPIdata = defineStore('APIdata', {
   state: () => ({
     municipioSelected: null,
+    muniSel: null,
     meteoData0: {  
       date: 0,
-      precipitation: 70,
-      precipitation06: 70,
-      precipitation12: 70,
-      precipitation18: 20,
-      precipitation24: 10,
-      snow: 200,
-      max_temp: 20,
-      min_temp: 10,
-      temp06: 10,
-      temp12: 20,
-      temp18: 20,
-      temp24: 10,
-      max_humidity: 40,
-      min_humidity: 50,
-      humidity06: 40,
-      humidity12: 40,
-      humidity18: 50,
-      humidity24: 50,
+      precipitation: 0,
+      precipitation06: 0,
+      precipitation12: 0,
+      precipitation18: 0,
+      precipitation24: 0,
+      snow: 0,
+      max_temp: 0,
+      min_temp: 0,
+      temp06: 0,
+      temp12: 0,
+      temp18: 0,
+      temp24: 0,
+      max_humidity: 0,
+      min_humidity: 0,
+      humidity06: 0,
+      humidity12: 0,
+      humidity18: 0,
+      humidity24: 0,
       wind: 0,
       wind06: 0,
       wind12: 0,
       wind18: 0,
       wind24: 0,
-      uv_index: 2
+      uv_index: 0
      }, 
      meteoData1: {  
       date: 0,
@@ -103,6 +105,7 @@ export const useAPIdata = defineStore('APIdata', {
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
     },
+
     async fetchWeatherData(municipio) {
        this.setMunicipioSelected(municipio);
         const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc"; 
@@ -230,30 +233,30 @@ export const useAPIdata = defineStore('APIdata', {
       reset() {
         this.meteoData0 = {  
           date: 0,
-      precipitation: 70,
-      precipitation06: 70,
-      precipitation12: 70,
-      precipitation18: 20,
-      precipitation24: 10,
-      snow: 200,
-      max_temp: 20,
-      min_temp: 10,
-      temp06: 10,
-      temp12: 20,
-      temp18: 20,
-      temp24: 10,
-      max_humidity: 40,
-      min_humidity: 50,
-      humidity06: 40,
-      humidity12: 40,
-      humidity18: 50,
-      humidity24: 50,
+      precipitation: 0,
+      precipitation06: 0,
+      precipitation12: 0,
+      precipitation18: 0,
+      precipitation24: 0,
+      snow: 0,
+      max_temp: 0,
+      min_temp: 0,
+      temp06: 0,
+      temp12: 0,
+      temp18: 0,
+      temp24: 0,
+      max_humidity: 0,
+      min_humidity: 0,
+      humidity06: 0,
+      humidity12: 0,
+      humidity18: 0,
+      humidity24: 0,
       wind: 0,
       wind06: 0,
       wind12: 0,
       wind18: 0,
       wind24: 0,
-      uv_index: 2
+      uv_index: 0
         };
       },
 
