@@ -101,65 +101,9 @@
     }
   });
   
-  
-  
-  //Esta función pide los datos del municipio seleccionado a la API de AEMET y los guarda en localStorage
-  // const fetchWeatherData = async (codigoMunicipio) => {
-  //   weatherData.value = "Cargando...";
-  
-  //   try {
-  //     const url = `https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/${codigoMunicipio}?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZ20ubmVyZWFAZ21haWwuY29tIiwianRpIjoiNTZjZDU1NTEtMjJhOS00Yzk0LWE1NDAtMTdmZDkxZjY5OGYyIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDAwNTYwMTMsInVzZXJJZCI6IjU2Y2Q1NTUxLTIyYTktNGM5NC1hNTQwLTE3ZmQ5MWY2OThmMiIsInJvbGUiOiIifQ.Zw95iuaxZ6Ggso8KFtFURogSvIT17uCbKXlHsVtScKc`;
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  
-  //     if (data.estado === 200 && data.datos) {
-  //       // Hacemos una segunda petición a la URL de "datos"
-  //       const weatherResponse = await fetch(data.datos);
-  //       const weatherJson = await weatherResponse.json();
-  
-  //       // Guardamos los datos en localStorage
-  //       localStorage.setItem("DailyMeteo", JSON.stringify(weatherJson));
-  
-  //       // Actualizamos la variable reactiva para mostrar los datos en la UI
-  //       weatherData.value = weatherJson;
-  //     } else {
-  //       weatherData.value = "No se encontraron datos.";
-  //     }
-  //   } catch (error) {
-  //     weatherData.value = "Error al obtener datos.";
-  //     console.error(error);
-  //   }
-  // };
-  
-  // const downloadDailyMeteoJSON = () => {
-  //   // Obtener los datos de localStorage
-  //   const dailyMeteoData = localStorage.getItem("DailyMeteo");
-  
-  //   if (!dailyMeteoData) {
-  //     alert("No hay datos en localStorage.");
-  //     return;
-  //   }
-  
-  //   // Crear un blob con los datos en formato JSON
-  //   const blob = new Blob([dailyMeteoData], { type: "application/json" });
-  
-  //   // Crear un enlace temporal para la descarga
-  //   const url = URL.createObjectURL(blob);
-  //   const a = document.createElement("a");
-  //   a.href = url;
-  //   a.download = "DailyMeteo.json"; // Nombre del archivo a descargar
-  //   document.body.appendChild(a);
-  //   a.click();
-  
-  //   // Limpiar el objeto URL y eliminar el enlace temporal
-  //   URL.revokeObjectURL(url);
-  //   document.body.removeChild(a);
-  // };
-  
   </script>
   
-  
-  
+
   <style scoped>
   .daily-meteo {
   text-align: center;
@@ -212,6 +156,5 @@
     margin-bottom: 5px;
   }
   
-  
-  
+
   </style>
