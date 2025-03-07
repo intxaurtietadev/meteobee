@@ -76,6 +76,8 @@ const getWeatherIcon = (condition) => {
     text-align: center;
     margin: 0 auto;
   padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   display: flex;
   justify-content: center;
@@ -88,12 +90,8 @@ const getWeatherIcon = (condition) => {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.daymeteo__card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  transition: transform var(--transition-duration);
+.daymeteoContainerg:hover {
+  transform: scale(1.05);
 }
 
 .day__icon {   

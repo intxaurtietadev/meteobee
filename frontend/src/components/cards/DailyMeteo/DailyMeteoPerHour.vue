@@ -53,6 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: var(--space-md);
 }
 .daymeteo__card {
     height: 50%;
@@ -78,5 +79,9 @@
 
 .hours {
   font-size: var(--font-size-xl);
+}
+
+.daymeteo__card:hover {
+  transform: scale(1.05);
 }
   </style>

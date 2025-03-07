@@ -181,6 +181,9 @@
   margin-bottom: var(--space-md);
   box-shadow: var(--box-shadow);
   }
+  .container__select:hover {
+  transform: scale(1.05);
+}
   
   /* Select */
   select {
