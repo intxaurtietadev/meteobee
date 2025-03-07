@@ -1,23 +1,23 @@
 <template>
   <div class="home-grid" ref="container">
     <!-- Tarjeta 1: DailyMeteo -->
-    <BentoCard class="home-grid__card home-grid__card--daily-meteo" :routeName="'DailyMeteo'">
+    <BentoCard class="home-grid__card home-grid__card--daily-meteo" style="padding:0" :routeName="'DailyMeteo'">
       <DailyMeteo />
     </BentoCard>
 
-    <!-- Tarjeta 2: WeeklyMeteo -->
+    <!-- Tarjeta 2: DailyToDo -->
     <BentoCard class="home-grid__card home-grid__card--weekly-meteo" :routeName="'WeeklyMeteo'">
-      <WeeklyMeteo />
+      <DailyToDo />
     </BentoCard>
 
-    <!-- Tarjeta 3: DailyToDo -->
+    <!-- Tarjeta 3: WeeklyMeteo -->
     <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
-      <DailyToDo />
+      <WeeklyMeteo />
     </BentoCard>
 
     <!-- Tarjeta 6: Floracion -->
     <BentoCard class="home-grid__card home-grid__card--floracion" :routeName="'ToDoFloracion'">
-      <Prueba />
+      <WeeklyToDo />
     </BentoCard>
 
     <!-- Tarjeta 5: HoneyProduction -->
@@ -30,14 +30,12 @@
 
 <script setup>
 import BentoCard from './BentoCard.vue'; // Import BentoCard
-import DailyMeteo from './cards/DailyMeteo.vue';
+import DailyMeteo from './cards/DailyMeteo/DailyMeteo.vue';
 import WeeklyMeteo from './cards/WeeklyMeteo.vue';
 import DailyToDo from './cards/DailyToDo.vue';
 import WeeklyToDo from './cards/WeeklyToDo.vue';
-import Prueba from './cards/Prueba.vue';
-import ToDoFloracion from './cards/ToDoFloracion.vue';
 import { useRouter } from 'vue-router';
-import HoneyGraph from "@/components/cards/HoneyGraph.vue";
+import HoneyGraph from "./cards/HoneyGraph.vue";
 
 const router = useRouter(); 
 
@@ -63,6 +61,7 @@ const gotToDailyRec = () => {
   width: 100%;
   max-width: 100rem;
   font-family: var(--font-family);
+  color: var(--color-text);
 
 }
 
@@ -70,7 +69,7 @@ const gotToDailyRec = () => {
 .home-grid__card {
   position: relative;
   border-radius: var(--border-radius);
-  background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  background: var(--color-box-background);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
   box-shadow: var(--box-shadow);
@@ -114,33 +113,33 @@ const gotToDailyRec = () => {
 /* Modificadores para cada tarjeta */
 .home-grid__card--daily-meteo {
   grid-area: daily-meteo;
-  background-color: rgba(230, 230, 230, 0.288); /* --color-primary con transparencia */
+  background-color: var(--color-box-background); /* --color-primary con transparencia */
 }
 
 .home-grid__card--weekly-meteo {
   grid-area: weekly-meteo;
-  background-color: rgba(230, 230, 230, 0.288);  /* --color-secondary con transparencia */
+  background-color: var(--color-box-background);  /* --color-secondary con transparencia */
 }
 
 .home-grid__card--daily-todo {
   grid-area: daily-todo;
-  background-color: rgba(230, 230, 230, 0.288); /* --color-tertiary con transparencia */
+  background-color: var(--color-box-background);/* --color-tertiary con transparencia */
   cursor: pointer; /* Indicar que es clickeable */
 }
 
 .home-grid__card--weekly-todo {
   grid-area: weekly-todo;
-  background-color: rgba(230, 230, 230, 0.288);  /* --color-accent con transparencia */
+  background-color: var(--color-box-background);  /* --color-accent con transparencia */
 }
 
 .home-grid__card--honey-production {
   grid-area: honey-production;
-  background-color: rgba(230, 230, 230, 0.288);  /* --color-light con transparencia */
+  background-color: var(--color-box-background); /* --color-light con transparencia */
 }
 
 .home-grid__card--floracion {
   grid-area: floracion;
-  background-color: rgba(230, 230, 230, 0.288);  /* --color-primary con transparencia */
+  background-color: var(--color-box-background);  /* --color-primary con transparencia */
 }
 
 /* Efecto especial para la tarjeta clickeable */

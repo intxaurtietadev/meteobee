@@ -41,12 +41,13 @@ const logout = () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--color-background);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+  url('../assets/img/background-user.png');
   font-family: var(--font-family);
 }
 
 .profile__container {
-  background: white;
+  background: var(--color-box-background);
   padding: var(--space-lg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
