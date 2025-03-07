@@ -29,7 +29,7 @@
   </div>
 
   <!-- Prueba de que el municipio se selecciona bien -->
-  <p>El municipio seleccionado es: {{ municipioSelected }}</p>
+  <p>El municipio seleccionado es: {{ muniSel }}</p>
   <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
 </template>
 
@@ -80,6 +80,13 @@ const filteredMunicipios = computed(() => {
 const handleprovinciaChange = (event) => {
   provinciaSelected.value = event.target.value;
 };
+
+
+// Propiedad computada para obtener el nombre del municipio seleccionado
+const muniSel = computed(() => {
+  const selectedMunicipio = municipios.value.find(municipio => municipio.CP === municipioSelected.value);
+  return selectedMunicipio ? selectedMunicipio.NOMBRE : '';
+});
 
 // Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
 watch(municipioSelected, async (newValue) => {

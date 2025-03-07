@@ -9,7 +9,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import GrantsCard from '../components/cards/Grants.vue';
+  import GrantsCard from '../components/Grants.vue';
   
   const grants = ref([]);
   
