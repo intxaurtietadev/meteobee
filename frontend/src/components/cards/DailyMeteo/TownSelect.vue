@@ -169,33 +169,33 @@
     width: 40%;
     text-align: center;
     margin: 0 auto;
-  padding: 1rem;
-  transition: transform 0.3s;
+  padding: var(--space-sm);
+  transition: transform var(--transition-duration);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--box-shadow);
   }
   
   /* Select */
   select {
     width: 100%;
     max-width: 400px;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
+    padding: var(--space-xs);
+    margin: var(--space-xs) 0;
+    border-radius: var(--border-radius);
     border: none;
     background: rgba(255, 255, 255, 0.3);
     color: black;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-duration);
   }
   
   select:hover {
@@ -203,10 +203,10 @@
   }
   
   label {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: var(--space-xs);
   }
   
   

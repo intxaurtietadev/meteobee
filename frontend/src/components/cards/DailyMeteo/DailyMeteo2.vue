@@ -91,19 +91,19 @@ const getWeatherIcon = (condition) => {
 .daymeteo__card {
   border: 1px solid #ddd;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-duration);
 }
 
 .day__icon {   
   font-size: 2.5rem;
-  margin-top: 0.5rem;
+  margin-top: var(--space-xs);
   display: inline-block;
 }
 
 .date {
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
   font-weight: bold;
 }
   </style>

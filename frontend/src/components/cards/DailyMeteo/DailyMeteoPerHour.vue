@@ -58,17 +58,17 @@
     height: 50%;
     text-align: center;
     margin: 0 auto;
-  padding: 1rem;
-  transition: transform 0.3s;
+  padding: var(--space-sm);
+  transition: transform var(--transition-duration);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-xs);
+  box-shadow: var(--box-shadow);
 }
 
 .daymeteo__card:hover {
@@ -77,6 +77,6 @@
 }
 
 .hours {
-  font-size: 1.6rem;
+  font-size: var(--font-size-xl);
 }
   </style>

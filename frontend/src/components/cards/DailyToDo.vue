@@ -136,7 +136,7 @@ watch(meteoData, (newData) => {
 }
 
 .daily__advice__p {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,11 +145,11 @@ watch(meteoData, (newData) => {
 }
 
 h3 {
-  font-size: 1.8rem;
+  font-size: var(--font-size-xl);
 }
 
 span {
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-sm);
 }
 
 /* h4{

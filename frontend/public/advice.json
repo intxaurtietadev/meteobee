@@ -38,12 +38,44 @@
         "advice": "Días frescos y noches frías. Verificar que las abejas tengan alimento suficiente."
       },
       {
+        "range": { "max_min": [1, 10], "max_max": [10, 15] },
+        "advice": "Días frescos y noches muy frías. Observar la actividad de las abejas y evitar corrientes de aire en la colmena."
+      },
+      {
+        "range": { "max_min": [8, 10], "max_max": [10, 12] },
+        "advice": "Temperaturas frías y estabilidad térmica baja. Revisar la provisión de alimento y minimizar la manipulación de las colmenas."
+      },
+      {
+        "range": { "max_min": [8, 12], "max_max": [12, 18] },
+        "advice": "Días templados con noches frescas. Las abejas pueden forrajear, pero es recomendable seguir vigilando su alimentación."
+      },
+      {
+        "range": { "max_min": [10, 15], "max_max": [15, 25] },
+        "advice": "Temperatura ideal para la actividad de las abejas. Monitorear el desarrollo de la colonia y las reservas de miel."
+      },
+      {
         "range": { "max_min": [11, 20], "max_max": [21, 30] },
-        "advice": "Días templados y noches frescas. Condiciones óptimas para la actividad de las abejas."
+        "advice": "Días cálidos y noches templadas. Condiciones óptimas para la producción de miel."
+      },
+      {
+        "range": { "max_min": [11, 20], "max_max": [31, 40] },
+        "advice": "Días calurosos y noches frescas. Asegurar disponibilidad de agua y buena ventilación en la colmena."
       },
       {
         "range": { "max_min": [21, 30], "max_max": [31, 40] },
         "advice": "Días calurosos y noches templadas. Asegurar ventilación y disponibilidad de agua."
+      },
+      {
+        "range": { "max_min": [12, 22], "max_max": [32, 40] },
+        "advice": "Días muy calurosos y noches suaves. Evitar exposición directa al sol y garantizar acceso a agua."
+      },
+      {
+        "range": { "max_min": [5, 15], "max_max": [20, 28] },
+        "advice": "Días templados con noches frescas. Verificar reservas de miel y asegurar el bienestar de la colonia."
+      },
+      {
+        "range": { "max_min": [15, 25], "max_max": [28, 35] },
+        "advice": "Temperaturas óptimas para la recolección de néctar. Asegurar sombra y ventilación."
       }
     ],
  "humidity_combined": [
