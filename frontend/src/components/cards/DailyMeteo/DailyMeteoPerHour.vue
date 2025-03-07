@@ -56,9 +56,9 @@
   gap: var(--space-md);
 }
 .daymeteo__card {
-    height: 50%;
-    text-align: center;
-    margin: 0 auto;
+  height: 50%;
+  text-align: center;
+  margin: 0 auto;
   padding: 1rem;
   transition: transform 0.3s;
   display: flex;
@@ -66,10 +66,10 @@
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  background-color: var(--color-box-background);
+  border-radius: var(--border-radius);
   margin-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
 }
 
 .daymeteo__card:hover {
