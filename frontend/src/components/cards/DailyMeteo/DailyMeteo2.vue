@@ -35,7 +35,7 @@
     font-family: Arial, sans-serif;
     border: 1px solid #ddd;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   display: flex;
@@ -43,11 +43,8 @@
   align-items: center;
   flex-direction: column;
 }
-.daymeteo__card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+.daymeteoContainer:hover {
+  transform: scale(1.05);
 }
+
   </style>

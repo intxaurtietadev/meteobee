@@ -30,6 +30,7 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   height: 100%;
 }
 
+
 .row__one {
   display: flex;
   justify-content: space-around;

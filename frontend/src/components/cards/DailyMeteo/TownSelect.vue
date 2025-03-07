@@ -171,6 +171,9 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   }
+  .container__select:hover {
+  transform: scale(1.05);
+}
   
   /* Select */
   select {
