@@ -2,6 +2,7 @@
     <div v-if="hasData" class="daymeteoContainer" >
         <div class="daymeteo__card">
             <p class="hours"><strong>00h - 06h</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura: </strong>{{ meteoData.temp06 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation06 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity06 }} %</p>
@@ -9,6 +10,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>06h - 12h</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp12 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation12 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity12 }} %</p>
@@ -16,6 +18,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>12h - 18h</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp18 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation18 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity18 }} %</p>
@@ -23,6 +26,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>18h - 24h</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp24 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation24 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity24 }} %</p>
@@ -45,6 +49,39 @@
   //Check if any value is different from 0
   return Object.values(meteoData.value).some(value => value !== 0);
 });
+
+// Function to determine weather condition
+const getWeatherCondition = (precipitation) => {
+    if (precipitation === 0 || precipitation < 20) return 'Soleado';
+    if (precipitation < 40) return 'Parcialmente nublado';
+    if (precipitation < 60) return 'Nublado';
+    if (precipitation < 80) return 'Lluvia ligera';
+    return 'Lluvia';
+};
+
+// Function to get weather icons
+const getWeatherIcon = (condition) => {
+  const iconMap = {
+    'Soleado': '☀️',
+    'Despejado': '☀️',
+    'Parcialmente nublado': '⛅',
+    'Nublado': '☁️',
+    'Cubierto': '☁️',
+    'Neblina': '🌫️',
+    'Niebla': '🌫️',
+    'Lluvia ligera': '🌦️',
+    'Lluvia': '🌧️',
+    'Lluvia fuerte': '⛈️',
+    'Tormenta eléctrica': '⚡',
+    'Nieve': '❄️',
+    'Nieve ligera': '🌨️',
+    'Nieve fuerte': '❄️',
+    'Aguanieve': '🌨️',
+    'Granizo': '🌨️',
+    'Ventoso': '💨'
+  };
+  return iconMap[condition] || '🌤️';
+};
  
   </script>
   
@@ -75,6 +112,11 @@
 .daymeteo__card:hover {
   background: rgba(255, 255, 255, 0.5);
   transform: scale(1.05);
+}
+.day__icon {   
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  display: inline-block;
 }
 
 .hours {

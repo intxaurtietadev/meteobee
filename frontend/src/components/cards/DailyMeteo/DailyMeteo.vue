@@ -32,7 +32,6 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   padding-bottom: 1rem;
   box-shadow: var(--box-shadow);
   transition: transform 0.3s;
-  background: var(--color-box-background);
   border-radius: var(--border-radius);
   margin: 0 auto;
 }
