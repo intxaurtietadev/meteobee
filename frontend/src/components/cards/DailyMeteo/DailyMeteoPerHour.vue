@@ -65,7 +65,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--color-text);
+  color: white;
   background-color: var(--color-box-background);
   border-radius: var(--border-radius);
   margin-bottom: 20px;

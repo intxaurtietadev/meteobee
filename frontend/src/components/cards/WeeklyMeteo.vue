@@ -170,13 +170,13 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+
 .weather-container {
   text-align: center;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
   color: white;
   padding: 20px;
-  border-radius: 15px; 
-  max-width: 800px;
+  border-radius: var(--border-radius);
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }

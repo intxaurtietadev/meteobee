@@ -61,8 +61,19 @@ const getWeatherIcon = (condition) => {
     'Despejado': '☀️',
     'Parcialmente nublado': '⛅',
     'Nublado': '☁️',
+    'Cubierto': '☁️',
+    'Neblina': '🌫️',
+    'Niebla': '🌫️',
     'Lluvia ligera': '🌦️',
     'Lluvia': '🌧️',
+    'Lluvia fuerte': '⛈️',
+    'Tormenta eléctrica': '⚡',
+    'Nieve': '❄️',
+    'Nieve ligera': '🌨️',
+    'Nieve fuerte': '❄️',
+    'Aguanieve': '🌨️',
+    'Granizo': '🌨️',
+    'Ventoso': '💨'
   };
   return iconMap[condition] || '🌤️';
 };
@@ -83,12 +94,13 @@ const getWeatherIcon = (condition) => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--color-text);
+  color: white;
   background-color: var(--color-box-background);
   margin-bottom: 20px;
 }
 
 .daymeteoContainer:hover {
+  background: linear-gradient(to left, #446c97, #56c4d5);
   transform: scale(1.05);
 }
 
