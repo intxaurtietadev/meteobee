@@ -27,6 +27,7 @@ Programmer: Nerea Sainz de Aja - Github
 
 
 The following technologies have been used for its realisation:
+
 ![](/frontend/public/Icon/vue-vite-icon.webp) ![](/frontend/public/Icon/html5.png)
 
 
