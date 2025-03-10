@@ -1,54 +1,34 @@
 <template>
   <div class="weather-container">
-    <div class="selected-day">
-      <h2>
-        <span class="weather-emoji">{{ getWeatherIcon(selectedDay.condition) }}</span> 
-        {{ getDayOfWeek(selectedDay.date) }}
-      </h2>
-      <div class="weather-info">
-        <div class="weather-detail">
-          <p class="temperature"><strong>Temperatura:</strong> {{ selectedDay.temp }}°C</p>
-          <p class="condition"><strong>Condición:</strong> {{ selectedDay.condition }}</p>
+    <div class="days-forecast">
+      <div v-for="(day, index) in weekData" :key="index" class="day-card">
+        <h2>
+          <span class="weather-emoji">{{ getWeatherIcon(getWeatherCondition(day)) }}</span> 
+          {{ getDayOfWeek(day.date) }}
+        </h2>
+        <div class="weather-info">
+          <p class="temperature"><strong>Temperatura:</strong> {{ getAverageTemp(day) }}°C</p>
+          <p class="condition"><strong>Condición:</strong> {{ getWeatherCondition(day) }}</p>
+          <p class="precipitation"><strong>Precipitación:</strong> {{ day.precipitation || 0 }}%</p>
+          <p class="snow"><strong>Cota de nieve:</strong> {{ day.snow || 0 }} m</p>
+          <p class="speed"><strong>Viento:</strong> {{ day.wind || 0 }} km/h</p>
+          <p class="uv"><strong>Indicé UV:</strong> {{ day.uv_index || 0 }}</p>
         </div>
-        <div class="weather-detail">
-          <p class="precipitation"><strong>Precipitación:</strong> {{ selectedDay.precipitation }}%</p>
-          <p class="snow"><strong>Cota de nieve:</strong> {{ selectedDay.snow }} mm</p>
-        </div>
-        <div class="weather-detail">
-          <p class="speed"><strong>Viento:</strong> {{ selectedDay.wind }} km/h</p>
-          <p class="uv"><strong>Indicé UV:</strong> {{ selectedDay.uv_index }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="week-forecast">
-      <div v-for="(day, index) in weekData" :key="index" class="day-card" @click="selectDay(day)">
-        <span class="day-icon">{{ getWeatherIcon(getWeatherCondition(day)) }}</span>
-        <p>{{ getDayOfWeek(day.date) }}</p>
-        <p>{{ getAverageTemp(day) }}°C</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useAPIdata } from "@/stores/APIdata.js";
 
 const apiData = useAPIdata();
 
-// Define the selected day as a reactive reference with default values
-const selectedDay = ref({
-  date: new Date().toISOString().split('T')[0],
-  temp: 22,
-  condition: "'Soleado",
-  precipitation: 0,
-  snow: 0,
-  wind: 5,
-  uv_index: 4
-});
-
 // Function to determine weather condition based on precipitation probability
 const getWeatherCondition = (day) => {
+  if (!day || day.precipitation === undefined) return 'Soleado';
+  
   const precipitation = day.precipitation;
   
   if (precipitation === 0 || precipitation < 20) return 'Soleado';
@@ -94,23 +74,8 @@ const getDayOfWeek = (dateString) => {
     date = new Date(dateString);
   }
   
-  const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  const days = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   return days[date.getDay()];
-};
-
-// Function to select a day
-const selectDay = (day) => {
-  if (!day) return;
-  
-  selectedDay.value = {
-    date: day.date,
-    temp: getAverageTemp(day),
-    condition: getWeatherCondition(day),
-    precipitation: day.precipitation || 1,
-    snow: day.snow || 0,
-    wind: day.wind || 0,
-    uv_index: day.uv_index || 0
-  };
 };
 
 // Function to get weather icons
@@ -137,35 +102,9 @@ const getWeatherIcon = (condition) => {
   return iconMap[condition] || '🌤️';
 };
 
-// Watch for any changes in the apiData store
-watch(() => [
-  apiData.meteoData0,
-  apiData.meteoData1,
-  apiData.meteoData2,
-  apiData.meteoData3,
-  apiData.meteoData4,
-  apiData.meteoData5,
-  apiData.meteoData6
-], ([newData0]) => {
-  if (newData0 && newData0.date) {
-    selectDay(newData0);
-  }
-}, { deep: true, immediate: true });
-
-// Watch for changes in the municipioSelected value 
-watch(() => apiData.meteoData0, (newData) => {
-  console.log("Weather data updated:", newData);
-  if (newData && newData.date) {
-    selectDay(newData);
-  }
-});
-
 // Initialize on mount
 onMounted(() => {
-  // If we already have data in the store, select the first day
-  if (apiData.meteoData0 && apiData.meteoData0.date) {
-    selectDay(apiData.meteoData0);
-  }
+  console.log("Weather cards component mounted");
 });
 </script>
 
@@ -176,56 +115,43 @@ onMounted(() => {
   color: white;
   padding: 20px;
   border-radius: 15px; 
-  max-width: 800px;
+  max-width: 2000px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
-.selected-day {
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-.weather-info {
+
+.days-forecast {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 15px;
+  flex-direction: row;
+  gap: 20px;
 }
-.weather-detail {
-  margin: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 8px;
-}
-.week-forecast {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+
 .day-card {
-  padding: 15px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  min-width: 80px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-.day-card:hover {
-  background: rgba(255, 255, 255, 0.5);
-  transform: scale(1.05);
+
+.weather-info {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
 }
-.weather-emoji, .day-icon {
+
+.weather-emoji {
   font-size: 24px;
-  margin-bottom: 5px;
+  margin-right: 10px;
   display: inline-block;
 }
-.day-icon {
-  display: block;
-  font-size: 32px;
-  margin-bottom: 8px;
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 8px 0;
 }
 </style>
