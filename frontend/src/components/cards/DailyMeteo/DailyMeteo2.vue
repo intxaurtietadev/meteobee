@@ -5,6 +5,7 @@
         <span class="day__icon">{{ getWeatherIcon(getWeatherCondition()) }} </span>
         
         <p><strong>Temperatura min/max: </strong>{{ meteoData.min_temp }}/{{ meteoData.max_temp }} ºC</p>
+        <p><strong>Probabilidad de precipitación: </strong>{{ meteoData.precipitation }} %</p>
         <p><strong>Humedad relativa min/max:</strong> {{ meteoData.min_humidity }}/{{ meteoData.max_humidity }} %</p>
         <p><strong>Cota de nieve: </strong>{{ meteoData.snow }} m</p>
         <p><strong>Índice UV: </strong>{{ meteoData.uv_index }}</p>
@@ -45,7 +46,7 @@ const formattedDate = computed(() => {
 });
 
 const getWeatherCondition = () => {
-  const precipitation = meteoData.precipitation;
+  const precipitation = meteoData.value.precipitation;
   
   if (precipitation === 0 || precipitation < 20) return 'Soleado';
   if (precipitation < 40) return 'Parcialmente nublado';

@@ -1,14 +1,14 @@
 <template>
     <div class="container__select">
-      <span class="place">, {{ provinciaSelected }}</span>
+      <span class="place">{{ apiData.muniSel || "Seleccione un municipio" }}, {{ apiData.provinciaSelected || "Seleccione una provincia" }}</span>
     <div>
-      <!-- Selector de provincias -->
+      <!-- Province selector -->
       <label for="selectprovincia" >Selecciona una provincia:</label>
-      <select id="selectprovincia" v-model="apiData.provinciaSelected">
+      <select id="selectprovincia" v-model="apiData.provinciaSelected" @change="handleprovinciaChange" >
         <option
           v-for="provincia in provincias"
           :key="provincia.CP"
-          :value="provincia.CP"
+          :value="provincia.provincia"
           @click="provinciaSelected = provincia.provincia"
           
         >
@@ -18,9 +18,9 @@
     </div>
   
     <div>
-      <!-- Selector de municipios -->
+      <!-- Town selector -->
       <label for="selectMunicipio">Selecciona un municipio:</label>
-      <select id="selectMunicipio" v-model="apiData.municipioSelected">
+      <select id="selectMunicipio" v-model="apiData.municipioSelected" @change="handleMunicipioChange">
         <option
           v-for="municipio in filteredMunicipios"
           :key="municipio.CP"
@@ -31,7 +31,7 @@
       </select>
     </div>
   
-    <!-- Prueba de que el municipio se selecciona bien -->
+    <!-- Test to verify if the municipality is selected correctly -->
     <!-- <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p> -->
     <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
      <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
@@ -50,22 +50,23 @@
   const apiData = useAPIdata();
   const meteoData = computed(() => apiData.meteoData0);
   
+  // Reset weather data
   const resetMeteoData = () => {
     apiData.reset();
   };
 
   
-  //Constantes
+  //Constants
   const provincias = ref([]);
   const municipios = ref([]);
   const provinciaSelected = ref(null);
-  const municipioSelected = ref(null);
+  const municipioSelected = ref(apiData.municipioSelected || null);
   const weatherData = ref(null);
   
   
   
   
-  //Convertimos los json en arrays y los ordenamos alfabéticamente según el idioma ES
+  // Convert JSON into arrays and sort them alphabetically in Spanish
   onMounted(() => {
     provincias.value = [...provinciasData].sort((a, b) =>
       a.provincia.localeCompare(b.provincia, "es")
@@ -73,14 +74,14 @@
     municipios.value = [...municipiosData].sort((a, b) =>
       a.NOMBRE.localeCompare(b.NOMBRE, "es")
     );
-    // Obtenemos los datos guardados en localStorage
+    // Retrieve saved weather data from localStorage
     const savedData = localStorage.getItem("DailyMeteo");
     if (savedData) {
       weatherData.value = JSON.parse(savedData);
     };
   });
   
-  // Filtramos los municipios en función de la provincia seleccionada
+ // Filter municipalities based on the selected province
   const filteredMunicipios = computed(() => {
     if (!provinciaSelected.value) return [];
     return municipios.value.filter(
@@ -88,24 +89,39 @@
     );
   });
 
-  const muniSel = computed(() => {
-  const selectedMunicipio = municipios.value.find(municipio => municipio.CP === municipioSelected.value);
+// Computed property to store the name of the selected municipality
+const municipioNombre = computed(() => {
+  const selectedMunicipio = municipios.value.find(municipio => municipio.CP === apiData.municipioSelected);
   return selectedMunicipio ? selectedMunicipio.NOMBRE : '';
 });
-  
-  // Función para que cuando se cambie la provincia se cambien los municipios
-  const handleprovinciaChange = (event) => {
-    provinciaSelected.value = event.target.value;
-  };
-  
-  // Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
-  watch(() => apiData.municipioSelected, async (newValue) => {
-    if (newValue) {
-      await apiData.fetchWeatherData(newValue);
-    }
 
-  
-  });
+
+// Function to handle province change and reset municipality selection
+const handleprovinciaChange = (event) => {
+  provinciaSelected.value = event.target.value;
+  apiData.muniSel = ''; // Limpiamos el nombre del municipio cuando cambia la provincia
+  apiData.municipioSelected = null; // También puedes resetear el municipio seleccionado
+};
+
+// Function to handle municipality change and update the store with the municipality name
+const handleMunicipioChange = (event) => {
+  const selectedCP = event.target.value;
+  apiData.municipioSelected = selectedCP; // Store the CP (postal code) for fetching data
+  apiData.muniSel = municipioNombre.value; // Store the name of the municipality in the store
+};
+
+
+// Watcher to fetch weather data whenever the selected municipality changes
+  watch(() => apiData.municipioSelected, (newValue) => {
+  console.log(newValue);
+  if (newValue) {
+    apiData.fetchWeatherData(newValue);
+  }
+});
+
+
+
+
   
   
   

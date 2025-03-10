@@ -5,6 +5,7 @@ export const useAPIdata = defineStore('APIdata', {
   state: () => ({
     municipioSelected: null,
     muniSel: null,
+    provinciaSelected:null,
     meteoData0: {  
       date: 0,
       precipitation: 0,
@@ -104,6 +105,10 @@ export const useAPIdata = defineStore('APIdata', {
   actions: {
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
+    },
+
+    setMuniSel(municipio) {
+      this.muniSel = municipio;
     },
 
     async fetchWeatherData(municipio) {
