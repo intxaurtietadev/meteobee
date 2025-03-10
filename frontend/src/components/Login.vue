@@ -96,19 +96,19 @@ const errorMessage = ref('');
 const handleSubmit = async () => {
   errorMessage.value = '';
   isLoading.value = true;
-  
+
   try {
     // 🔗 Llamada al JSON Server para obtener usuarios
     const response = await fetch('http://localhost:3000/users');
     if (!response.ok) throw new Error('Error al obtener usuarios.');
 
     const users = await response.json();
-    
+
     // 🔐 Verificar credenciales
     const user = users.find(u => u.email === email.value && u.password === password.value);
 
     if (user) {
-      emit('login', { email: user.email, remember: remember.value });
+      emit('login', { ...user, remember: remember.value }); // Emitir todos los datos del usuario
     } else {
       errorMessage.value = 'Correo o contraseña incorrectos.';
     }

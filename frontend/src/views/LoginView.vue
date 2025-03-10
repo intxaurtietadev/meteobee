@@ -18,10 +18,13 @@ const activeTab = ref('login');
 const router = useRouter();
 const authStore = useAuthStore();
 
-const handleLogin = async (user) => {
-  authStore.user = user;
-  localStorage.setItem('user', JSON.stringify(user));
-  router.push('/profile');
+const handleLogin = async (userData) => {
+  try {
+    await authStore.login(userData); // Llama al método `login` del store con los datos completos
+    router.push('/profile'); // Redirige al perfil
+  } catch (err) {
+    alert(err.message);
+  }
 };
 
 const switchToRegister = () => {
