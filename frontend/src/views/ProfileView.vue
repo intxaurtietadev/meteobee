@@ -6,14 +6,19 @@
 
       <div class="profile__info">
         <div class="profile__avatar">
-          <img :src="avatarUrl" alt="Avatar de usuario" class="profile__avatar-img" />
+          <!-- Usa la imagen predeterminada -->
+          <img 
+            src="/assets/img/default-avatar.png" 
+            alt="Avatar predeterminado del usuario" 
+            class="profile__avatar-img" 
+          />
         </div>
         <div class="profile__details">
           <p class="profile__field"><strong>Email:</strong> {{ user.email }}</p>
-          <p class="profile__field"><strong>Provincia:</strong> {{ user.provincia }}</p>
-          <p class="profile__field"><strong>Municipio:</strong> {{ user.municipio }}</p>
-          <p class="profile__field"><strong>Colmenas:</strong> {{ user.numColmenas }}</p>
-          <p class="profile__field"><strong>Especie:</strong> {{ user.especieAbeja }}</p>
+          <p class="profile__field"><strong>Provincia:</strong> {{ user.provincia || 'No especificada' }}</p>
+          <p class="profile__field"><strong>Municipio:</strong> {{ user.municipio || 'No especificado' }}</p>
+          <p class="profile__field"><strong>Colmenas:</strong> {{ user.numColmenas || 0 }}</p>
+          <p class="profile__field"><strong>Especie:</strong> {{ user.especieAbeja || 'No especificada' }}</p>
         </div>
       </div>
 
@@ -28,7 +33,6 @@ import { computed } from 'vue';
 
 const authStore = useAuthStore();
 const user = computed(() => authStore.user);
-const avatarUrl = computed(() => user.value.avatar || '/default-avatar.png');
 
 const logout = () => {
   authStore.logout();
@@ -115,11 +119,11 @@ const logout = () => {
 }
 
 .profile__button--logout {
-  background: var(--color-accent);
+  background: var(--color-secondary);
   color: white;
 }
 
 .profile__button--logout:hover {
-  background: var(--color-light);
+  background: var(--color-primary);
 }
 </style>

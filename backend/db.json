@@ -70,6 +70,33 @@
       "province": "Soria",
       "municipality": "Baraona",
       "CP": "42029"
+    },
+    {
+      "id": "f7a6",
+      "name": "Thais",
+      "email": "thais@abejas.com",
+      "password": "thaisabejas",
+      "colmenas": 9,
+      "species": [
+        "Apis mellifera"
+      ],
+      "province": "Zamora",
+      "municipality": "Bretó",
+      "CP": "49025"
+    },
+    {
+      "id": "16ea",
+      "name": "nerea",
+      "email": "nerea@abeja.com",
+      "password": "nereaabejas",
+      "colmenas": 15,
+      "species": [
+        "Apis mellifera",
+        "Ceratina cyanea"
+      ],
+      "province": "Valladolid",
+      "municipality": "Benafarces",
+      "CP": "47016"
     }
   ]
 }

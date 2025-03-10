@@ -205,7 +205,6 @@ const handleRegister = async () => {
   }
 
   const selectedMunicipio = municipalities.value.find(m => m.NOMBRE === selectedMunicipality.value);
-
   if (!selectedMunicipio) {
     errorMessage.value = 'Municipio no encontrado.';
     isLoading.value = false;
@@ -239,8 +238,7 @@ const handleRegister = async () => {
     }
 
     // 🔐 Autenticar al usuario después del registro
-    authStore.login(newUser.email, newUser.password); // Usa el método login del authStore
-    router.push('/profile'); // Redirige al perfil
+    authStore.login(newUser); // Usa el método login del authStore con los datos del nuevo usuario
   } catch (error) {
     errorMessage.value = error.message;
   } finally {
