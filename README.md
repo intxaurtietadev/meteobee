@@ -21,7 +21,10 @@ The colours, design and functionalities have been approved by the client in repe
 <br>
 <br>
 - Through the top navigation menu you can access the news and grants and subsidies sections, which will be closed to unregistered users.
-- 
+  <div style=" diplay: flex; gap:10px;">
+  <img src="frontend/src/assets/img/Web_news.png" alt="News" width="40%"/>
+  <img src="frontend/src/assets/img/Web_grants.png" alt="Grants" width="40%"/>
+  </div>
 - To the right of this bar there is a user login icon which allows users who are already registered to enter their username and password or new users to do so. This will give access to personalised data.
 <br>
 <br>
