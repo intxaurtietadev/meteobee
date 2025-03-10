@@ -120,11 +120,12 @@
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
-  background-color: var(--color-box-background);
+  background-color: var(--color-tertiary);
   border-radius: var(--border-radius);
   margin-bottom: 20px;
   box-shadow: var(--box-shadow);
   }
+  
   .container__select:hover {
   transform: scale(1.05);
 }

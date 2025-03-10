@@ -110,7 +110,7 @@ const getWeatherIcon = (condition) => {
 }
 
 .daymeteo__card:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to left, #446c97, #56c4d5);
   transform: scale(1.05);
 }
 .day__icon {   
