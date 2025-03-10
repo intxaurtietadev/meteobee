@@ -17,7 +17,11 @@ The colours, design and functionalities have been approved by the client in repe
 <br>
 **The structure of the website has:**
 - A general access home page where all relevant data is displayed.
+  <img src="frontend/src/assets/img/Web_Meteobee.png" alt="webpage"/>
+<br>
+<br>
 - Through the top navigation menu you can access the news and grants and subsidies sections, which will be closed to unregistered users.
+- 
 - To the right of this bar there is a user login icon which allows users who are already registered to enter their username and password or new users to do so. This will give access to personalised data.
 <br>
 <br>
