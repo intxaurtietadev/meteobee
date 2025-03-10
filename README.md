@@ -1,3 +1,8 @@
+<div style="align-items: center;">
+  <img src="frontend/src/assets/img/logo.png" width="500px" />
+</div>
+<br>
+<br>
 
 **Project development:**
 
@@ -15,7 +20,7 @@ Users will have general access to the meteorological data and will have the poss
 The colours, design and functionalities have been approved by the client in repeated meetings with the development team.<br>
 <br>
 <br>
-**The structure of the website has:**
+**The structure of the website:**
 - A general access home page where all relevant data is displayed.
   <img src="frontend/src/assets/img/Web_Meteobee.png" alt="webpage"/>
 <br>
@@ -29,7 +34,8 @@ The colours, design and functionalities have been approved by the client in repe
 <br>
 <br>
 
-**This project is an exercise carried out in the PeñascalF5 Full-Stack Bootcamp.**<br>
+**This project is an exercise carried out in the PeñascalF5 Full-Stack Bootcamp.**
+<br>
 The members of the group are:
 - Product owner: [Youssef Oulmakhzoune](https://github.com/SideWalk29)
 - Scrum master: [Tais Intxaurtieta](https://github.com/intxaurtietadev)
@@ -49,6 +55,7 @@ The members of the group are:
   </div>
 <br>
 <br>
+
 **For the group work, the following methodologies have been used:**
 <div style="display: flex; gap: 10px;">
     <img src="frontend/public/Icon/figma.webp" alt="Descripción 1" width="200"/>
@@ -58,6 +65,7 @@ The members of the group are:
   </div>
 <br>
 <br>
+
 **The project has the following parameters:**
 - The development of an e-commerce website was requested using everything learned so far within the Bootcamp.
 - Use of one or more public APIs, which allow its use. Checking the availability of their use (with registration, api key, token authentication, etc.).
