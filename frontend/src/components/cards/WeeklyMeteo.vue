@@ -74,7 +74,7 @@ const getDayOfWeek = (dateString) => {
     date = new Date(dateString);
   }
   
-  const days = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+  const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   return days[date.getDay()];
 };
 
@@ -109,9 +109,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+
 .weather-container {
   text-align: center;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
   color: white;
   padding: 20px;
   border-radius: 15px; 
@@ -131,6 +132,11 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.day-card:hover {
+  background: linear-gradient(to left, #446c97, #56c4d5);
+  transform: scale(1.05);
 }
 
 .weather-info {

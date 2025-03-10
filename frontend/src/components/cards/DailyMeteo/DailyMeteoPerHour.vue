@@ -116,16 +116,21 @@ watch(meteoData, updateWeatherConditions, { immediate: true });
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  background-color: var(--color-box-background);
   border-radius: var(--border-radius);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 20px;
   box-shadow: var(--box-shadow);
 }
 
 .daymeteo__card:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to left, #446c97, #56c4d5);
   transform: scale(1.05);
+}
+.day__icon {   
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  display: inline-block;
 }
 
 .hours {

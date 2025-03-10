@@ -181,10 +181,10 @@ const handleMunicipioChange = (event) => {
   </script>
   
   
-  
+
   <style scoped>
   .daily-meteo {
-    text-align: center;
+  text-align: center;
   }
   /* Main container */
   .container__select {
@@ -198,11 +198,12 @@ const handleMunicipioChange = (event) => {
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--color-box-background);
   border-radius: var(--border-radius);
-  margin-bottom: var(--space-md);
+  margin-bottom: 20px;
   box-shadow: var(--box-shadow);
   }
+  
   .container__select:hover {
   transform: scale(1.05);
 }
@@ -215,7 +216,7 @@ const handleMunicipioChange = (event) => {
     margin: var(--space-xs) 0;
     border-radius: var(--border-radius);
     border: none;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-light);
     color: black;
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
@@ -223,10 +224,9 @@ const handleMunicipioChange = (event) => {
     transition: background var(--transition-duration);
   }
   
-  select:hover {
-    background: rgba(255, 255, 255, 0.5);
+  .container__select:hover{
+    background: linear-gradient(to right, #446c97, #56c4d5);
   }
-  
   label {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);

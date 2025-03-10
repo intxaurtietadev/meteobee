@@ -62,8 +62,19 @@ const getWeatherIcon = (condition) => {
     'Despejado': '☀️',
     'Parcialmente nublado': '⛅',
     'Nublado': '☁️',
+    'Cubierto': '☁️',
+    'Neblina': '🌫️',
+    'Niebla': '🌫️',
     'Lluvia ligera': '🌦️',
     'Lluvia': '🌧️',
+    'Lluvia fuerte': '⛈️',
+    'Tormenta eléctrica': '⚡',
+    'Nieve': '❄️',
+    'Nieve ligera': '🌨️',
+    'Nieve fuerte': '❄️',
+    'Aguanieve': '🌨️',
+    'Granizo': '🌨️',
+    'Ventoso': '💨'
   };
   return iconMap[condition] || '🌤️';
 };
@@ -73,25 +84,24 @@ const getWeatherIcon = (condition) => {
   
   <style scoped>
   .daymeteoContainer {
-    width: 50%;
-    text-align: center;
-    margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
   padding: 1rem;
   border-radius: var(--border-radius);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   transition: transform 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  color: white;
+  background-color: var(--color-box-background);
   margin-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.daymeteoContainerg:hover {
+.daymeteoContainer:hover {
+  background: linear-gradient(to left, #446c97, #56c4d5);
   transform: scale(1.05);
 }
 

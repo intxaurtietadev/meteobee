@@ -3,6 +3,7 @@ import municipiosData from "@/assets/Municipios.json";
 
 export const useAPIdata = defineStore('APIdata', {
   state: () => ({
+    provinciaSelected: null,
     municipioSelected: null,
     muniSel: null,
     provinciaSelected:null,
@@ -103,6 +104,10 @@ export const useAPIdata = defineStore('APIdata', {
   }),
 
   actions: {
+    setProvinciaSelected(provincia) {
+      this.provinciaSelected = provincia;
+    },
+
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
     },
@@ -236,6 +241,8 @@ export const useAPIdata = defineStore('APIdata', {
         
       },
       reset() {
+        this.provinciaSelected = null; // Resetear la provincia seleccionada
+        this.municipioSelected = null;
         this.meteoData0 = {  
           date: 0,
       precipitation: 0,
