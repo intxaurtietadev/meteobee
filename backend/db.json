@@ -1,36 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Igor",
-      "email": "igor@example.com",
-      "password": "contrasena"
-    },
-    {
-      "id": "2",
-      "name": "Youssef",
-      "email": "youssef@example.com",
-      "password": "contrasena"
-    },
-    {
-      "id": "3",
-      "name": "Azalfa",
-      "email": "azalfa@example.com",
-      "password": "contrasena"
-    },
-    {
-      "id": "4",
-      "name": "Nerea",
-      "email": "nerea@example.com",
-      "password": "contrasena"
-    },
-    {
-      "id": "5",
-      "name": "Thais",
-      "email": "thais@example.com",
-      "password": "contrasena"
-    },
-    {
       "id": "fd53",
       "name": "ramon",
       "email": "ramon@zaragoza.com",
@@ -70,6 +40,38 @@
       "province": "Soria",
       "municipality": "Baraona",
       "CP": "42029"
+    },
+    {
+      "id": "f7a6",
+      "name": "Thais",
+      "email": "thais@abejas.com",
+      "password": "thaisabejas",
+      "colmenas": 9,
+      "species": [
+        "Apis mellifera"
+      ],
+      "province": "Zamora",
+      "municipality": "Bretó",
+      "CP": "49025",
+      "provincia": "Zamora",
+      "municipio": "Bretó",
+      "numColmenas": 14,
+      "especieAbeja": "Apis mellifera",
+      "avatar": ""
+    },
+    {
+      "id": "16ea",
+      "name": "nerea",
+      "email": "nerea@abeja.com",
+      "password": "nereaabejas",
+      "colmenas": 15,
+      "species": [
+        "Apis mellifera",
+        "Ceratina cyanea"
+      ],
+      "province": "Valladolid",
+      "municipality": "Benafarces",
+      "CP": "47016"
     }
   ],
   
