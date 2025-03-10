@@ -113,24 +113,21 @@ const gotToDailyRec = () => {
 /* Modificadores para cada tarjeta */
 .home-grid__card--daily-meteo {
   grid-area: daily-meteo;
-  background-color: var(--color-box-background); /* --color-primary con transparencia */
+  background: linear-gradient(to right, #446c97, #56c4d5);
 }
 
 .home-grid__card--weekly-meteo {
   grid-area: weekly-meteo;
-  background-color: var(--color-box-background);  /* --color-secondary con transparencia */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+  url('../assets/img/background-user.png');;
 }
 
 .home-grid__card--daily-todo {
   grid-area: daily-todo;
-  background-color: var(--color-box-background);/* --color-tertiary con transparencia */
+  background: linear-gradient(to right, #446c97, #56c4d5);
   cursor: pointer; /* Indicar que es clickeable */
 }
 
-.home-grid__card--weekly-todo {
-  grid-area: weekly-todo;
-  background-color: var(--color-box-background);  /* --color-accent con transparencia */
-}
 
 .home-grid__card--honey-production {
   grid-area: honey-production;
@@ -139,7 +136,8 @@ const gotToDailyRec = () => {
 
 .home-grid__card--floracion {
   grid-area: floracion;
-  background-color: var(--color-box-background);  /* --color-primary con transparencia */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+  url('../assets/img/background-user.png');
 }
 
 /* Efecto especial para la tarjeta clickeable */
