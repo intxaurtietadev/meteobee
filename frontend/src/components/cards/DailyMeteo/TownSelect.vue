@@ -1,107 +1,85 @@
 <template>
-    <div class="container__select">
-    <div>
-      <!-- Selector de provincias -->
-      <label for="selectprovincia">Selecciona una provincia:</label>
-      <select id="selectprovincia">
-        <option
-          v-for="provincia in provincias"
-          :key="provincia.CP"
-          :value="provincia.CP"
-          @click="provinciaSelected = provincia.provincia"
-        >
-          {{ provincia.provincia }}
-        </option>
-      </select>
-    </div>
-  
-    <div>
-      <!-- Selector de municipios -->
-      <label for="selectMunicipio">Selecciona un municipio:</label>
-      <select id="selectMunicipio" v-model="apiData.municipioSelected">
-        <option
-          v-for="municipio in filteredMunicipios"
-          :key="municipio.CP"
-          :value="municipio.CP"
-        >
-          {{ municipio.NOMBRE }}
-        </option>
-      </select>
-    </div>
-  
+  <div class="container__select">
+    <!-- Selector de provincias -->
+    <label for="selectprovincia">Selecciona una provincia:</label>
+    <select id="selectprovincia" v-model="apiData.provinciaSelected">
+      <option
+        v-for="provincia in provincias"
+        :key="provincia.CP"
+        :value="provincia.provincia"
+      >
+        {{ provincia.provincia }}
+      </option>
+    </select>
+
+    <!-- Selector de municipios -->
+    <label for="selectMunicipio">Selecciona un municipio:</label>
+    <select id="selectMunicipio" v-model="apiData.municipioSelected">
+      <option
+        v-for="municipio in filteredMunicipios"
+        :key="municipio.CP"
+        :value="municipio.CP"
+      >
+        {{ municipio.NOMBRE }}
+      </option>
+    </select>
+
     <!-- Prueba de que el municipio se selecciona bien -->
     <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p>
-    <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
-     <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
-     <!-- <DailyMeteo2 /> -->
-    </div>
-  </template>
+    <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
+  </div>
+</template>
   
   
   
-  <script setup>
-  import { ref, computed, onMounted, watch } from "vue";
-  import provinciasData from "../../../assets/Provincias.json";
-  import municipiosData from "../../../assets/Municipios.json";
-  import { useAPIdata } from '@/stores/APIdata.js';
-  
-  const apiData = useAPIdata();
-  
-  const resetMeteoData = () => {
-    apiData.reset();
-  };
-  
-  //Constantes
-  const provincias = ref([]);
-  const municipios = ref([]);
-  const provinciaSelected = ref(null);
-  const municipioSelected = ref(null);
-  const weatherData = ref(null);
-  
-  
-  
-  
-  //Convertimos los json en arrays y los ordenamos alfabéticamente según el idioma ES
-  onMounted(() => {
-    provincias.value = [...provinciasData].sort((a, b) =>
-      a.provincia.localeCompare(b.provincia, "es")
-    );
-    municipios.value = [...municipiosData].sort((a, b) =>
-      a.NOMBRE.localeCompare(b.NOMBRE, "es")
-    );
-    // Obtenemos los datos guardados en localStorage
-    const savedData = localStorage.getItem("DailyMeteo");
-    if (savedData) {
-      weatherData.value = JSON.parse(savedData);
-    };
-  });
-  
-  // Filtramos los municipios en función de la provincia seleccionada
-  const filteredMunicipios = computed(() => {
-    if (!provinciaSelected.value) return [];
-    return municipios.value.filter(
-      (municipio) => municipio.provincia === provinciaSelected.value
-    );
-  });
+<script setup>
+import { ref, computed, onMounted, watch } from "vue";
+import provinciasData from "../../../assets/Provincias.json";
+import municipiosData from "../../../assets/Municipios.json";
+import { useAPIdata } from '@/stores/APIdata.js';
 
-  const muniSel = computed(() => {
-  const selectedMunicipio = municipios.value.find(municipio => municipio.CP === municipioSelected.value);
-  return selectedMunicipio ? selectedMunicipio.NOMBRE : '';
+const apiData = useAPIdata();
+
+// Función para resetear los datos meteorológicos
+const resetMeteoData = () => {
+  apiData.reset();
+};
+
+// Constantes
+const provincias = ref([]);
+const municipios = ref([]);
+
+// Convertimos los JSON en arrays y los ordenamos alfabéticamente según el idioma ES
+onMounted(() => {
+  provincias.value = [...provinciasData].sort((a, b) =>
+    a.provincia.localeCompare(b.provincia, "es")
+  );
+  municipios.value = [...municipiosData].sort((a, b) =>
+    a.NOMBRE.localeCompare(b.NOMBRE, "es")
+  );
+
+  // Obtenemos los datos guardados en localStorage
+  const savedData = localStorage.getItem("DailyMeteo");
+  if (savedData) {
+    weatherData.value = JSON.parse(savedData);
+  }
 });
-  
-  // Función para que cuando se cambie la provincia se cambien los municipios
-  const handleprovinciaChange = (event) => {
-    provinciaSelected.value = event.target.value;
-  };
-  
-  // Función para que cuando se cambie el municipio se ejectute la función que pide los datos a la API de AEMET
-  watch(() => apiData.municipioSelected, async (newValue) => {
-    if (newValue) {
-      await apiData.fetchWeatherData(newValue);
-    }
-  });
-  
-  </script>
+
+// Filtramos los municipios en función de la provincia seleccionada
+const filteredMunicipios = computed(() => {
+  if (!apiData.provinciaSelected) return [];
+  return municipios.value.filter(
+    (municipio) => municipio.provincia === apiData.provinciaSelected
+  );
+});
+
+// Función para que cuando se cambie el municipio se ejecute la función que pide los datos a la API de AEMET
+watch(() => apiData.municipioSelected, async (newValue) => {
+  if (newValue) {
+    await apiData.fetchWeatherData(newValue);
+  }
+});
+</script>
   
 
   <style scoped>
@@ -120,7 +98,7 @@
   align-items: center;
   flex-direction: column;
   color: var(--color-text);
-  background-color: var(--color-tertiary);
+  background-color: var(--color-box-background);
   border-radius: var(--border-radius);
   margin-bottom: 20px;
   box-shadow: var(--box-shadow);
