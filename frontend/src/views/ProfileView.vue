@@ -10,10 +10,10 @@
         </div>
         <div class="profile__details">
           <p class="profile__field"><strong>Email:</strong> {{ user.email }}</p>
-          <p class="profile__field"><strong>Provincia:</strong> {{ user.provincia }}</p>
-          <p class="profile__field"><strong>Municipio:</strong> {{ user.municipio }}</p>
-          <p class="profile__field"><strong>Colmenas:</strong> {{ user.numColmenas }}</p>
-          <p class="profile__field"><strong>Especie:</strong> {{ user.especieAbeja }}</p>
+          <p class="profile__field"><strong>Provincia:</strong> {{ user.provincia || 'No especificada' }}</p>
+<p class="profile__field"><strong>Municipio:</strong> {{ user.municipio || 'No especificado' }}</p>
+<p class="profile__field"><strong>Colmenas:</strong> {{ user.numColmenas || 0 }}</p>
+<p class="profile__field"><strong>Especie:</strong> {{ user.especieAbeja || 'No especificada' }}</p>
         </div>
       </div>
 
