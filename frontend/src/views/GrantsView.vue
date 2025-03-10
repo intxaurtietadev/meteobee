@@ -1,6 +1,6 @@
 <template>
   <div class="grants">
-    <h1 class="grants__title">Copia</h1>
+    <h1 class="grants__title">Ayudas y subvenciones</h1>
     <div class="grants__list">
       <GrantsCard v-for="grant in grants" :key="grant.id" :grants="grant" />
     </div>
