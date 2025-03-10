@@ -1,14 +1,16 @@
 <template>
     <div class="container__select">
+      <span class="place">, {{ provinciaSelected }}</span>
     <div>
       <!-- Selector de provincias -->
-      <label for="selectprovincia">Selecciona una provincia:</label>
-      <select id="selectprovincia">
+      <label for="selectprovincia" >Selecciona una provincia:</label>
+      <select id="selectprovincia" v-model="apiData.provinciaSelected">
         <option
           v-for="provincia in provincias"
           :key="provincia.CP"
           :value="provincia.CP"
           @click="provinciaSelected = provincia.provincia"
+          
         >
           {{ provincia.provincia }}
         </option>
@@ -30,7 +32,7 @@
     </div>
   
     <!-- Prueba de que el municipio se selecciona bien -->
-    <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p>
+    <!-- <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p> -->
     <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
      <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
      <!-- <DailyMeteo2 /> -->
@@ -46,10 +48,12 @@
   import { useAPIdata } from '@/stores/APIdata.js';
   
   const apiData = useAPIdata();
+  const meteoData = computed(() => apiData.meteoData0);
   
   const resetMeteoData = () => {
     apiData.reset();
   };
+
   
   //Constantes
   const provincias = ref([]);
@@ -99,6 +103,8 @@
     if (newValue) {
       await apiData.fetchWeatherData(newValue);
     }
+
+  
   });
   
   
@@ -212,6 +218,11 @@
     margin-bottom: var(--space-xs);
   }
   
+  .place {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-md);
+  }
   
   
   </style>
