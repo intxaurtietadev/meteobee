@@ -35,7 +35,7 @@ const consejos = computed(() => {
   const region = meteoBeeData.meteobee_data[selectedProvince];
   if (!region) {
     console.error(`❌ No hay datos disponibles para la provincia: ${selectedProvince}`);
-    return [`❌ Este mes no hay flora melifera en foloracion en: ${selectedProvince}`];
+    return [`❌ Este mes no hay flora melifera en floracion en: ${selectedProvince}`];
   }
 
   console.log("Datos de la región encontrados:", region);
