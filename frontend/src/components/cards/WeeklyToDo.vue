@@ -93,7 +93,10 @@ watch(provinciaSelected, () => {
   font-size: var(--font-size-base);
   line-height: 1.4;
 }
-
+.consejos__item:hover {
+  background: linear-gradient(to right, #f6b83c, #f5e55c);
+  transform: scale(1.05);
+}
 .consejos__item:before {
   color: var(--color-primary);
   font-weight: bold;

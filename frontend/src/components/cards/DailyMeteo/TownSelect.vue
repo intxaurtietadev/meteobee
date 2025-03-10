@@ -26,7 +26,6 @@
 
     <!-- Prueba de que el municipio se selecciona bien -->
     <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p>
-    <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
   </div>
 </template>
   
@@ -116,7 +115,7 @@ watch(() => apiData.municipioSelected, async (newValue) => {
     margin: 10px 0;
     border-radius: 8px;
     border: none;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-light);
     color: black;
     font-size: 16px;
     font-weight: bold;
@@ -124,10 +123,9 @@ watch(() => apiData.municipioSelected, async (newValue) => {
     transition: background 0.3s;
   }
   
-  select:hover {
-    background: rgba(255, 255, 255, 0.5);
+  .container__select:hover{
+    background: linear-gradient(to right, #446c97, #56c4d5);
   }
-  
   label {
     font-size: 18px;
     font-weight: bold;

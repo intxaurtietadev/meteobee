@@ -42,7 +42,7 @@
         { "nombre_comun": "Tomillo", "floracion": [5, 6, 7], "nectar": "Alta", "polen": "Media", "color_polen": "Blanco", "produccion_miel": "Alta (16 kg/colmena)" }
       ]
     },
-    "cordoba": {
+    "córdoba": {
       "plantas_meliferas": [
         { "nombre_comun": "Tomillo", "floracion": [5, 6, 7], "nectar": "Alta", "polen": "Media", "color_polen": "Blanco", "produccion_miel": "Alta (16 kg/colmena)" },
         { "nombre_comun": "Romero", "floracion": [3, 4, 5], "nectar": "Alta", "polen": "Baja", "color_polen": "N/A", "produccion_miel": "Alta (15 kg/colmena)" },

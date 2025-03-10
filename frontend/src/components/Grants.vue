@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-
 import { defineProps } from 'vue';
 
 const props = defineProps({
@@ -41,8 +40,6 @@ const props = defineProps({
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
-
-.grants__text {}
 
 .grants__card:hover {
   transform: scale(1.02);

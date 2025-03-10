@@ -5,6 +5,7 @@ import ProfileView from '../views/ProfileView.vue'; // Asegúrate de que Profile
 import { useAuthStore } from '../stores/auth';
 import NewsView from '../views/NewsView.vue';
 import GrantsView from '../views/GrantsView.vue';
+import GrantsViewcopy from '../views/GrantsViewcopy.vue';
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
   path: '/ayudas',
   name: 'Ayudas',
   component: GrantsView,
+},
+{
+  path: '/copia',
+  name: 'Copia',
+  component: GrantsViewcopy,
 }
 ];
 
