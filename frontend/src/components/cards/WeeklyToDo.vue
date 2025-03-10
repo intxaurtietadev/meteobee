@@ -11,26 +11,26 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import meteoBeeData from '../../../public/floracion.json';
 
-const loading = ref(true);
-const provinciaSelected = ref(null);
-
-// Simula la selección de una provincia (esto puede venir desde un selector externo)
-onMounted(() => {
-  // Ejemplo: Establece la provincia seleccionada manualmente o desde un selector
-  provinciaSelected.value = "malaga"; // Cambia esto según la provincia seleccionada
-  loading.value = false;
+// Propiedad para recibir la provincia seleccionada
+const props = defineProps({
+  provinciaSelected: {
+    type: String,
+    required: true
+  }
 });
+
+const loading = ref(true);
 
 // Consejos basados en el JSON de floración
 const consejos = computed(() => {
-  if (!provinciaSelected.value) {
+  if (!props.provinciaSelected) {
     return ["❌ No hay provincia seleccionada."];
   }
 
-  const selectedProvince = provinciaSelected.value.toLowerCase();
+  const selectedProvince = props.provinciaSelected.toLowerCase();
   const region = meteoBeeData.meteobee_data[selectedProvince];
 
   if (!region) {
@@ -60,6 +60,11 @@ const consejos = computed(() => {
   });
 
   return consejosArray;
+});
+
+// Simular carga inicial
+watch(() => props.provinciaSelected, () => {
+  loading.value = false;
 });
 </script>
 

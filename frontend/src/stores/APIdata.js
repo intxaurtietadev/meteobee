@@ -105,6 +105,7 @@ export const useAPIdata = defineStore('APIdata', {
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
     },
+    
 
     async fetchWeatherData(municipio) {
        this.setMunicipioSelected(municipio);
