@@ -13,6 +13,7 @@
     "axios": "^1.8.1",
     "blendy": "^0.0.1",
     "bootstrap": "^5.3.3",
+    "cypress-vite": "^1.6.0",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "swapy": "^1.0.5",

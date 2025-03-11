@@ -1,10 +1,12 @@
 <template>
+  <main>
   <div class="grants">
     <h1 class="grants__title">Ayudas y subvenciones</h1>
     <div class="grants__list">
       <GrantsCard v-for="grant in grants" :key="grant.id" :grants="grant" />
     </div>
   </div>
+</main>
 </template>
 
 <script setup>
@@ -24,6 +26,9 @@ onMounted(fetchGrants);
 </script>
 
 <style scoped>
+main{  background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+  url('../assets/img/background-user-2.png');
+}
 .grants {
   padding-top: 7rem;
   max-width: 60rem;

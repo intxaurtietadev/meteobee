@@ -1,32 +1,32 @@
 <template>
     <div v-if="hasData" class="daymeteoContainer" >
         <div class="daymeteo__card">
-            <p class="hours"><strong>00h - 06h</strong></p>
-            <span class="icon">{{ results["06"].icon }}</span>
+            <p class="hours"><strong>00:00 - 06:00</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura: </strong>{{ meteoData.temp06 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation06 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity06 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind06 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p class="hours"><strong>06h - 12h</strong></p>
-            <span class="icon">{{ results["12"].icon }}</span>
+            <p class="hours"><strong>06:00 - 12:00</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp12 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation12 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity12 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind12 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p class="hours"><strong>12h - 18h</strong></p>
-            <span class="icon">{{ results["18"].icon }}</span>
+            <p class="hours"><strong>12:00 - 18:00</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp18 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation18 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity18 }} %</p>
             <p><strong>Viento:</strong> {{ meteoData.wind18 }} km/h</p>
         </div>
         <div class="daymeteo__card">
-            <p class="hours"><strong>18h - 24h</strong></p>
-            <span class="icon">{{ results["24"].icon }}</span>
+            <p class="hours"><strong>18:00 - 24:00</strong></p>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp24 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation24 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity24 }} %</p>
@@ -141,8 +141,83 @@ watch(meteoData, updateWeatherConditions, { immediate: true });
   transform: scale(1.05);
 }
 
-.icon {
-  font-size: 2rem;
-  display: inline-block;
+
+
+@media (max-width: 480px) {
+  .daymeteoContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .daymeteo__card {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .hours {
+    font-size: 1.2rem;
+  }
+
+  .day__icon {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
 }
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .daymeteoContainer {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .daymeteo__card {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .hours {
+    font-size: 1.4rem;
+  }
+
+  .day__icon {
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .daymeteoContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .daymeteo__card {
+    width: 90%;
+    padding: 1rem;
+  }
+}
+
+
+@media (min-width: 1025px) {
+  .daymeteoContainer {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .daymeteo__card {
+    width: 22%;
+  }
+}
+
+
   </style>

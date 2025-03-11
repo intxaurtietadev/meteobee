@@ -160,4 +160,65 @@ h2 {
 p {
   margin: 8px 0;
 }
+
+@media (max-width: 480px) {
+  .days-forecast {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day-card {
+    width: 90%;
+    padding: 0.9375rem; 
+  }
+
+  .weather-emoji {
+    font-size: 1.25rem; 
+    margin-right: 0.5rem; 
+  }
+
+  .weather-info {
+    padding: 0.625rem; 
+  }
+
+  h2 {
+    font-size: 1.125rem; 
+  }
+
+  p {
+    font-size: 0.875rem; 
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .days-forecast {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day-card {
+    width: 80%;
+  }
+
+  h2 {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  p {
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .days-forecast {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day-card {
+    width: 100%;
+  }
+}
+
+
 </style>

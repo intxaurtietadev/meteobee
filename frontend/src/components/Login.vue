@@ -5,7 +5,7 @@
         <div class="login__logo">
           <img src="../assets/img/logo.png" alt="Logo ApiClima" />
         </div>
-        <h1 class="login__title">Meteo Bee</h1>
+        <h1 class="login__title">MeteoBee</h1>
         <p class="login__subtitle">Meteorología para apicultores</p>
       </div>
       
