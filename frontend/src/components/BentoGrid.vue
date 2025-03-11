@@ -58,7 +58,8 @@ const gotToDailyRec = () => {
   gap: var(--space-md);
   padding: var(--space-lg); 
   margin: 0 auto;
-  width: 100%;
+  margin-top: var(--space-lg);
+  width: 90%;
   max-width: 100rem;
   font-family: var(--font-family);
   color: var(--color-text);
@@ -187,4 +188,54 @@ const gotToDailyRec = () => {
 .home-grid__card {
   animation: fadeIn 0.5s ease-in-out;
 }
+
+@media (max-width: 1024px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "daily-meteo"
+      "weekly-meteo"
+      "daily-todo"
+      "floracion"
+      "honey-production";
+    padding: var(--space-md);
+  }
+}
+
+/* Tablets pequeñas y móviles grandes (≤768px) */
+@media (max-width: 768px) {
+
+  .home-grid__card {
+    min-height: 18rem;
+  }
+
+  .home-grid__card h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .home-grid__card p {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Móviles pequeños (≤480px) */
+@media (max-width: 480px) {
+  .home-grid {
+    gap: var(--space-sm);
+  }
+
+  .home-grid__card {
+    padding: var(--space-sm);
+  }
+
+  .home-grid__card h2 {
+    font-size: var(--font-size-base);
+  }
+
+  .home-grid__card p {
+    font-size: var(--font-size-xs);
+  }
+}
+
+
 </style>

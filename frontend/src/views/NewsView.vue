@@ -1,10 +1,12 @@
 <template>
+  <main>
     <div class="news">
       <h1 class="news__title">Últimas Noticias</h1>
       <div class="news__list">
         <NewsCard v-for="newsItem in news" :key="newsItem.id" :news="newsItem" />
       </div>
     </div>
+  </main>
   </template>
   
   <script setup>
@@ -26,6 +28,10 @@
   </script>
   
   <style scoped>
+  main{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.247), rgba(255, 255, 255, 0.205)),
+    url('../assets/img/background-user-2.png');
+  }
   .news {
     padding-top: 7rem;
     max-width: 60rem;

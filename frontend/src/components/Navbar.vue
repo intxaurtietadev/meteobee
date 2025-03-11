@@ -25,8 +25,6 @@
       <li class="navbar__nav-item"><router-link to="/" class="navbar__link">Inicio</router-link></li>
       <li class="navbar__nav-item"><router-link to="/ayudas" class="navbar__link">Subvenciones</router-link></li>
       <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
-      <li class="navbar__nav-item"><router-link to="/Copia" class="navbar__link">Copia</router-link></li>
-      <li class="navbar__nav-item"><a href="#about" class="navbar__link">Acerca de</a></li>
     </ul>
     <!-- Ícono de usuario, redirigir al login -->
     <div class="navbar__user" @click="$router.push('/login')"> <!-- Aquí redirigimos a la página de login -->
@@ -78,8 +76,9 @@ export default {
   transform: translateX(-50%);
   color: var(--color-text);
   z-index: 1000;
-  background-color: var(--color-box-background);/* --color-primary con transparencia */
+  background-color: rgba(255, 255, 255, 0.801);/* --color-primary con transparencia */
   font-family: var(--font-family);
+  font-size: var(--font-size-lg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
@@ -99,13 +98,8 @@ export default {
   display: flex;
   gap: var(--space-md);
   transition: transform var(--transition-duration) ease;
-  /*border: 1px solid var(--color-primary);
-  border-radius: 1rem;
-  padding: 1rem;*/
-}
+  margin-right: 4rem;
 
-.navbar__nav-item {
-  /* Estilos para cada ítem del menú */
 }
 
 .navbar__link {

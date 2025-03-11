@@ -27,32 +27,68 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   justify-content: space-around;
   gap: 1rem;
   align-items: center;
-  height: 100%;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding: 2rem 1rem;
   box-shadow: var(--box-shadow);
   transition: transform 0.3s;
   border-radius: var(--border-radius);
   margin: 0 auto;
-}
-
-
-.row__one {
-  display: flex;
-  justify-content: space-around;
-  align-items: space-around;
   width: 95%;
-  height: 50%;
-  gap: 2rem;
+  max-width: 100rem;
 }
 
+.row__one,
 .row__two {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 95%;
-  height: 50%;
-  gap: 1rem
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2rem;
 }
+
+/* Tablets medianas */
+@media (max-width: 1024px) {
+  .dailymeteo__card {
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .row__one,
+  .row__two {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablets pequeñas y móviles grandes (≤768px) */
+@media (max-width: 768px) {
+  .dailymeteo__card {
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .row__one,
+  .row__two {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Móviles pequeños (≤480px) */
+@media (max-width: 480px) {
+  .dailymeteo__card {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .row__one,
+  .row__two {
+    width: 100%;
+    gap: 0.75rem;
+  }
+}
+
 
 </style>
