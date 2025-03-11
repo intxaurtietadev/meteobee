@@ -16,7 +16,11 @@
     ],
     "snow": [
       {
-        "range": { "min": 0, "max": 500 },
+        "range": { "min": 0, "max": 0 },
+        "advice": "Sin nieve a la vista. ❄️ Aprovecha para inspeccionar las colmenas y asegurarte de que estén bien ventiladas y protegidas contra la humedad."
+      },
+      {
+        "range": { "min": 100, "max": 500 },
         "advice": "Nieve a baja altitud. ❄️ Si tienes colmenas en zonas montañosas, protégelas con aislamiento extra. Revisa accesos en caso de acumulación."
       },
       {

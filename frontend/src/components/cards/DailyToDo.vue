@@ -69,10 +69,15 @@ const getTimeRange = () => {
 // Function to find the advice for a given parameter and value
 const getAdvice = (parameter, value, adviceJSON) => {
   const adviceList = adviceJSON.advice[parameter];
-  const adviceItem = adviceList.find(item => 
-    value >= item.range.min && value <= item.range.max
-  );
-  return adviceItem ? adviceItem.advice : ""; 
+
+  if (!adviceList) return ""; // Si no hay datos, evitar errores
+
+  // Filtra los rangos válidos y encuentra el que corresponde a `value`
+  const adviceItem = adviceList.find(item => {
+    return value >= item.range.min && value <= item.range.max;
+  });
+
+  return adviceItem ? adviceItem.advice : ""; // Retorna el consejo correcto
 };
 
 // Function to find the advice for temperature based on min and max values
