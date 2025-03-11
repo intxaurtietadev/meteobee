@@ -25,7 +25,7 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  gap: 1rem;
+  gap: var(--space-sm);
   align-items: center;
   padding: 2rem 1rem;
   box-shadow: var(--box-shadow);

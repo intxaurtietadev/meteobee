@@ -17,15 +17,23 @@
     "snow": [
       {
         "range": { "min": 0, "max": 500 },
-        "advice": "Sin nieve a la vista. ❄️ Tus abejas están calentitas en sus colmenas, pero no olvides verificar su alimento."
+        "advice": "Nieve a baja altitud. ❄️ Si tienes colmenas en zonas montañosas, protégelas con aislamiento extra. Revisa accesos en caso de acumulación."
       },
       {
         "range": { "min": 501, "max": 1000 },
-        "advice": "Nieve ligera. 🌨️ Asegúrate de que las colmenas estén bien aisladas. ¡Las abejas odian el frío tanto como nosotros!"
+        "advice": "Nieve en cotas medias. 🌨️ Asegúrate de que las colmenas estén protegidas del viento y la humedad. Proporciona alimento extra si es necesario."
       },
       {
-        "range": { "min": 1001, "max": 3000 },
-        "advice": "Nieve abundante. ❅ Cubre las colmenas con mantas térmicas y evita que la nieve bloquee las entradas. ¡No queremos abejas atrapadas!"
+        "range": { "min": 1001, "max": 1500 },
+        "advice": "Nieve en zonas altas. 🏔️ Si tus colmenas están en montaña, revisa los accesos y evita que la nieve bloquee las entradas."
+      },
+      {
+        "range": { "min": 1501, "max": 2000 },
+        "advice": "Nieve en alta montaña. ❅ La actividad de las abejas será mínima. Evita manipular las colmenas para no alterar su equilibrio térmico."
+      },
+      {
+        "range": { "min": 2001, "max": 3000 },
+        "advice": "Cota de nieve extrema. 🏔️ Si tienes colmenas a esta altitud, ya deberían estar protegidas en un refugio invernal."
       }
     ],
     "temperature_combined": [

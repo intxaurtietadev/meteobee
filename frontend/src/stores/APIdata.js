@@ -6,6 +6,7 @@ export const useAPIdata = defineStore('APIdata', {
     provinciaSelected: null,
     municipioSelected: null,
     muniSel: null,
+    provinciaSelected:null,
     meteoData0: {  
       date: 0,
       precipitation: 0,
@@ -109,6 +110,10 @@ export const useAPIdata = defineStore('APIdata', {
 
     setMunicipioSelected(municipio) {
       this.municipioSelected = municipio;
+    },
+
+    setMuniSel(municipio) {
+      this.muniSel = municipio;
     },
 
     async fetchWeatherData(municipio) {
