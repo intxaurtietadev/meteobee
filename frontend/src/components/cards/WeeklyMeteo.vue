@@ -169,24 +169,24 @@ p {
 
   .day-card {
     width: 90%;
-    padding: 0.9375rem; /* 15px */
+    padding: 0.9375rem; 
   }
 
   .weather-emoji {
-    font-size: 1.25rem; /* 20px */
-    margin-right: 0.5rem; /* 8px */
+    font-size: 1.25rem; 
+    margin-right: 0.5rem; 
   }
 
   .weather-info {
-    padding: 0.625rem; /* 10px */
+    padding: 0.625rem; 
   }
 
   h2 {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem; 
   }
 
   p {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem; 
   }
 }
 

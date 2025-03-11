@@ -157,9 +157,8 @@ const getWeatherIcon = (condition) => {
 
 @media (min-width: 481px) and (max-width: 768px) {
   .daymeteoContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 
   .daymeteo__card {
