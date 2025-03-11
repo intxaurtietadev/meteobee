@@ -34,14 +34,30 @@ describe('DailyToDo Component Tests', () => {
   it('should display advice blocks when meteoData is available', () => {
     // Simulamos datos meteorológicos en el store
     apiData.meteoData0 = {
-    precipitation: 20,
-      snow: 5,
-      uv_index: 8,
-      min_temp: 10,
-      max_temp: 20,
-      min_humidity: 30,
-      max_humidity: 60,
-      wind: 15,
+        precipitation: 20,
+        precipitation06: 50,
+        precipitation12: 50,
+        precipitation18: 30,
+        precipitation24: 0,
+        snow: 0,
+        max_temp: 20,
+        min_temp: 15,
+        temp06: 15,
+        temp12: 20,
+        temp18: 20,
+        temp24: 15,
+        max_humidity: 60,
+        min_humidity: 30,
+        humidity06: 30,
+        humidity12: 40,
+        humidity18: 50,
+        humidity24: 60,
+        wind: 0,
+        wind06: 10,
+        wind12: 10,
+        wind18: 0,
+        wind24: 0,
+        uv_index: 2
     };
 
     // Esperamos a que el componente actualice los datos
@@ -60,14 +76,30 @@ describe('DailyToDo Component Tests', () => {
   it('should correctly update advice when meteoData changes', () => {
     // Establecemos los datos meteorológicos iniciales
     apiData.meteoData0 = {
-      snow: 0,
-      uv_index: 3,
-      min_temp: 5,
-      max_temp: 15,
-      min_humidity: 40,
-      max_humidity: 70,
-      precipitation: 100,
-      wind: 0
+        precipitation: 20,
+        precipitation06: 50,
+        precipitation12: 50,
+        precipitation18: 30,
+        precipitation24: 0,
+        snow: 0,
+        max_temp: 20,
+        min_temp: 15,
+        temp06: 15,
+        temp12: 20,
+        temp18: 20,
+        temp24: 15,
+        max_humidity: 60,
+        min_humidity: 30,
+        humidity06: 30,
+        humidity12: 40,
+        humidity18: 50,
+        humidity24: 60,
+        wind: 0,
+        wind06: 10,
+        wind12: 10,
+        wind18: 0,
+        wind24: 0,
+        uv_index: 2
     };
 
     cy.wait(500);
@@ -78,14 +110,30 @@ describe('DailyToDo Component Tests', () => {
 
     // Cambiamos los valores del store
     apiData.meteoData0 = {
-      snow: 8,
-      uv_index: 9,
-      min_temp: 2,
-      max_temp: 12,
-      min_humidity: 20,
-      max_humidity: 50,
-      precipitation: 5,
-      wind: 20
+        precipitation: 50,
+        precipitation06: 20,
+        precipitation12: 20,
+        precipitation18: 20,
+        precipitation24: 50,
+        snow: 0,
+        max_temp: 32,
+        min_temp: 26,
+        temp06: 26,
+        temp12: 28,
+        temp18: 32,
+        temp24: 26,
+        max_humidity: 90,
+        min_humidity: 70,
+        humidity06: 70,
+        humidity12: 70,
+        humidity18: 90,
+        humidity24: 90,
+        wind: 0,
+        wind06: 8,
+        wind12: 15,
+        wind18: 15,
+        wind24: 0,
+        uv_index: 3
     };
 
     cy.wait(500);
