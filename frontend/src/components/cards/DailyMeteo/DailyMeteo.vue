@@ -25,8 +25,9 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  gap: 1rem;
+  gap: var(--space-sm);
   align-items: center;
+  width: 100%;
   height: 100%;
   padding-top: 2rem;
   padding-bottom: 1rem;
@@ -43,7 +44,7 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   align-items: space-around;
   width: 95%;
   height: 50%;
-  gap: 2rem;
+  gap: var(--space-md);
 }
 
 .row__two {
@@ -52,7 +53,7 @@ import DailyMeteoPerHour from "./DailyMeteoPerHour.vue";
   align-items: center;
   width: 95%;
   height: 50%;
-  gap: 1rem
+  gap: var(--space-sm);
 }
 
 </style>

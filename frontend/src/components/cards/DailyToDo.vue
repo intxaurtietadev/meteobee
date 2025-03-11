@@ -158,7 +158,7 @@ watch(meteoData, (newData) => {
 }
 
 .daily__advice__p {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   gap: 1rem; /* Espacio entre los bloques */

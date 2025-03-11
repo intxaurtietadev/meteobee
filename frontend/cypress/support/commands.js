@@ -22,4 +22,21 @@
 //
 //
 // -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })ç
+
+import { mount } from '@cypress/vue';
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
+
+export const mountWithPinia = (component) => {
+  const pinia = createPinia();  // Crear una nueva instancia de Pinia
+  const app = createApp(component);
+  app.use(pinia);  // Usamos Pinia como plugin en la app Vue
+
+  // Montamos el componente con Pinia
+  return mount(component, {
+    global: {
+      plugins: [pinia],  // Usamos Pinia como plugin en el contexto global
+    },
+  });
+};
