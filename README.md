@@ -49,9 +49,9 @@ The members of the group are:
 <div style="display: flex; gap: 10px;">
   <img src="frontend/public/Icon/vue-vite-icon.webp" alt="Descripción 1" width="150"/>
   <img src="/frontend/public/Icon/html5.png" alt="Descripción 2" width="150"/>
-  <img src="/frontend/public/Icon/CSS3.jpg" alt="Descripción 2" width="150"/>
+  <img src="/frontend/public/Icon/CSS3.png" alt="Descripción 2" width="150"/>
   <img src="/frontend/public/Icon/javascript.png" alt="Descripción 2" width="150"/>
-  <img src="/frontend/public/Icon/github.jpg" alt="Descripción 2" width="150"/>
+  <img src="/frontend/public/Icon/github.png" alt="Descripción 2" width="150"/>
   </div>
 <br>
 <br>
@@ -59,9 +59,9 @@ The members of the group are:
 **For the group work, the following methodologies have been used:**
 <div style="display: flex; gap: 10px;">
     <img src="frontend/public/Icon/figma.webp" alt="Descripción 1" width="200"/>
-  <img src="frontend/public/Icon/agile.jpg" alt="Descripción 1" width="200"/>
+  <img src="frontend/public/Icon/agile.png" alt="Descripción 1" width="200"/>
   <img src="/frontend/public/Icon/jira.png" alt="Descripción 2" width="200"/>
-  <img src="/frontend/public/Icon/scrum.jpg" alt="Descripción 2" width="200"/>
+  <img src="/frontend/public/Icon/scrum.png" alt="Descripción 2" width="200"/>
   </div>
 <br>
 <br>
