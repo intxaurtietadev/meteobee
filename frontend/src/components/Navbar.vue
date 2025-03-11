@@ -27,7 +27,7 @@
       <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
     </ul>
     <!-- Ícono de usuario, redirigir al login -->
-    <div class="navbar__user" @click="$router.push('/login')"> <!-- Aquí redirigimos a la página de login -->
+    <div class="navbar__user" @click="handleUserClick"> <!-- Aquí redirigimos a la página de login -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -47,19 +47,30 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/stores/auth'
+
 export default {
   name: "NavBar",
   data() {
     return {
-      isOpen: false, // Estado inicial cerrado
-    };
+      isOpen: false,
+      auth: useAuthStore(),
+    }
   },
   methods: {
     toggleMenu() {
-      this.isOpen = !this.isOpen;
+      this.isOpen = !this.isOpen
     },
-  },
-};
+    handleUserClick() {
+      if (this.auth.user.id) {
+        this.$router.push('/profile')
+      } else {
+        this.$router.push('/login')
+      }
+    }
+  }
+}
+
 </script>
 
 <style>
