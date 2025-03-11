@@ -25,7 +25,7 @@ export default {
 
   setup() {
     // Define an array of years (2021 to 2024) that we are interested in
-    const years = ['2021', '2022', '2023', '2024'];
+    const years = ['2024'];
 
     // Define an array of regions where the data will be displayed
     const regions = ['Andalucía', 'Castilla y León', 'Extremadura'];

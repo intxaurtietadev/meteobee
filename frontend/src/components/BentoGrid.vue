@@ -132,7 +132,7 @@ const gotToDailyRec = () => {
 
 .home-grid__card--honey-production {
   grid-area: honey-production;
-  background-color: var(--color-box-background); /* --color-light con transparencia */
+  background-color: var(--color-light); /* --color-light con transparencia */
 }
 
 .home-grid__card--floracion {
