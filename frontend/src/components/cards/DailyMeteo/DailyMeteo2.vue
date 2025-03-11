@@ -7,7 +7,7 @@
         <p><strong>Temperatura min/max: </strong>{{ meteoData.min_temp }}/{{ meteoData.max_temp }} ºC</p>
         <p><strong>Probabilidad de precipitación: </strong>{{ meteoData.precipitation }} %</p>
         <p><strong>Humedad relativa min/max:</strong> {{ meteoData.min_humidity }}/{{ meteoData.max_humidity }} %</p>
-        <p><strong>Cota de nieve: </strong>{{ meteoData.snow }} m</p>
+        <p><strong>Cota de nieve: </strong>{{ meteoData.snow !== 0 ? meteoData.snow + ' m' : '-'}} </p>
         <p><strong>Índice UV: </strong>{{ meteoData.uv_index }}</p>
     
       </div>

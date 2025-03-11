@@ -34,7 +34,7 @@
     <!-- Test to verify if the municipality is selected correctly -->
     <!-- <p>El municipio seleccionado es: {{ apiData.municipioSelected }}</p> -->
     <!-- <button @click="downloadDailyMeteoJSON">Descargar DailyMeteo.json</button> -->
-     <button @click="resetMeteoData()">BOTON RESET METEODATA</button>
+     <!-- <button @click="resetMeteoData()">BOTON RESET METEODATA</button> -->
      <!-- <DailyMeteo2 /> -->
     </div>
   </template>
