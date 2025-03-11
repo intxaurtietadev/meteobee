@@ -10,7 +10,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>06:00 - 12:00</strong></p>
-            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation12)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp12 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation12 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity12 }} %</p>
@@ -18,7 +18,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>12:00 - 18:00</strong></p>
-            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation18)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp18 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation18 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity18 }} %</p>
@@ -26,7 +26,7 @@
         </div>
         <div class="daymeteo__card">
             <p class="hours"><strong>18:00 - 24:00</strong></p>
-            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation06)) }}</span>
+            <span class="day__icon">{{ getWeatherIcon(getWeatherCondition(meteoData.precipitation24)) }}</span>
             <p><strong>Temperatura:</strong> {{ meteoData.temp24 }} °C</p>
             <p><strong>Probabilidad de precipitación:</strong> {{ meteoData.precipitation24 }} %</p>
             <p><strong>Humedad:</strong> {{ meteoData.humidity24 }} %</p>
