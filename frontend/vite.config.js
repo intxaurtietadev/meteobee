@@ -3,10 +3,11 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+  base: '/meteobee/', 
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': '/src'
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   server: {
@@ -14,7 +15,7 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''), // Elimina /api de la ruta
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
