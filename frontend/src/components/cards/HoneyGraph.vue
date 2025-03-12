@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Main title of the page, explaining the data shown -->
-    <h2>Honey Production and Weather Data (2021-2024)</h2>
+    <h2>Honey Production and Weather Data (2024)</h2>
     
     <!-- Subheading explaining the regions -->
     <h3>Honey Production and Weather Data for (Andalucia, Castilla y Leon, Extremadura):</h3>
@@ -25,7 +25,7 @@ export default {
 
   setup() {
     // Define an array of years (2021 to 2024) that we are interested in
-    const years = ['2021', '2022', '2023', '2024'];
+    const years = [ '2024'];
 
     // Define an array of regions where the data will be displayed
     const regions = ['Andalucía', 'Castilla y León', 'Extremadura'];

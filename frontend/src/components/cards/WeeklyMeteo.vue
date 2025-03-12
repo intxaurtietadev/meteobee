@@ -43,7 +43,7 @@ const weekData = computed(() => {
   if (!apiData) return [];
   
   return [
-    apiData.meteoData0,
+   // apiData.meteoData0,
     apiData.meteoData1,
     apiData.meteoData2,
     apiData.meteoData3,
