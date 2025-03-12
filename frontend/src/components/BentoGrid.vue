@@ -11,7 +11,7 @@
     </BentoCard>
 
     <!-- Tarjeta 3: WeeklyMeteo -->
-    <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
+    <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" >
       <WeeklyMeteo />
     </BentoCard>
 
