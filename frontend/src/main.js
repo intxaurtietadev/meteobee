@@ -12,4 +12,11 @@ pinia.use(piniaPersist)
 
 app.use(pinia);
 app.use(router); 
+
+
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
+authStore.checkAuth() // <-- Recupera el usuario si estaba logueado
+
+
 app.mount('#app');

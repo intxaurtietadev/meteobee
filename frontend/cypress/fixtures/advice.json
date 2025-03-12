@@ -80,30 +80,6 @@
   {
     "range": { "max_min": [36, 40], "max_max": [41, 50] },
     "advice": "Calor extremo. 🌋 ¡Emergencia apícola! Proporciona agua constante y sombra total. Considera trasladar las colmenas a un lugar más fresco si es posible."
-  },
-  {
-    "range": { "max_min": [-50, -10], "max_max": [-9, 5] },
-    "advice": "Frío extremo. ❄️ Las abejas estarán en modo supervivencia. Asegúrate de que las colmenas estén bien aisladas y con suficiente alimento almacenado."
-  },
-  {
-    "range": { "max_min": [-9, 5], "max_max": [6, 15] },
-    "advice": "Frío moderado. 🧣 La actividad de las abejas será limitada. Verifica sus reservas de miel y asegúrate de que la colmena esté protegida del viento y la humedad."
-  },
-  {
-    "range": { "max_min": [6, 15], "max_max": [16, 25] },
-    "advice": "Temperatura ideal. 🌼 Las abejas estarán activas recolectando néctar. Asegúrate de que tengan suficiente espacio en la colmena para almacenar miel."
-  },
-  {
-    "range": { "max_min": [16, 25], "max_max": [26, 35] },
-    "advice": "Clima cálido. ☀️ Proporciona agua fresca cerca de las colmenas y asegúrate de que haya sombra suficiente para evitar el sobrecalentamiento."
-  },
-  {
-    "range": { "max_min": [26, 35], "max_max": [36, 45] },
-    "advice": "Calor intenso. 🔥 La ventilación es clave. Mantén las colmenas en zonas sombreadas y proporciona agua abundante para evitar estrés térmico en las abejas."
-  },
-  {
-    "range": { "max_min": [36, 45], "max_max": [46, 55] },
-    "advice": "Temperaturas extremas. 🌋 ¡Emergencia para las abejas! Sombra total, agua constante y ventilación adecuada son esenciales para su supervivencia."
   }
 ],
     "humidity_combined": [

@@ -11,7 +11,7 @@
     </BentoCard>
 
     <!-- Tarjeta 3: WeeklyMeteo -->
-    <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" @click="gotToDailyRec">
+    <BentoCard class="home-grid__card home-grid__card--daily-todo" :routeName="'DailyToDo'" >
       <WeeklyMeteo />
     </BentoCard>
 
@@ -132,7 +132,7 @@ const gotToDailyRec = () => {
 
 .home-grid__card--honey-production {
   grid-area: honey-production;
-  background-color: var(--color-box-background); /* --color-light con transparencia */
+  background-color: var(--color-light); /* --color-light con transparencia */
 }
 
 .home-grid__card--floracion {

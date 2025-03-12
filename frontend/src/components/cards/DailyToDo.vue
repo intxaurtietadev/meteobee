@@ -69,24 +69,28 @@ const getTimeRange = () => {
 // Function to find the advice for a given parameter and value
 const getAdvice = (parameter, value, adviceJSON) => {
   const adviceList = adviceJSON.advice[parameter];
-  const adviceItem = adviceList.find(item => 
-    value >= item.range.min && value <= item.range.max
-  );
-  return adviceItem ? adviceItem.advice : ""; // Devuelve "" si no hay recomendación
+
+  if (!adviceList) return ""; // Si no hay datos, evitar errores
+
+  // Filtra los rangos válidos y encuentra el que corresponde a `value`
+  const adviceItem = adviceList.find(item => {
+    return value >= item.range.min && value <= item.range.max;
+  });
+
+  return adviceItem ? adviceItem.advice : ""; // Retorna el consejo correcto
 };
 
 // Function to find the advice for temperature based on min and max values
 const getTemperatureAdvice = (minTemp, maxTemp, adviceJSON) => {
-  const avgTemp = (minTemp + maxTemp) / 2; // Calcula la temperatura promedio
   const adviceList = adviceJSON.advice["temperature_combined"];
-  
+
   const adviceItem = adviceList.find(item => 
-    avgTemp >= item.range.min && avgTemp <= item.range.max
+    minTemp >= item.range.max_min[0] && minTemp <= item.range.max_min[1] &&
+    maxTemp >= item.range.max_max[0] && maxTemp <= item.range.max_max[1]
   );
 
-  return adviceItem ? adviceItem.advice : ""; // Devuelve "" si no hay recomendación
+  return adviceItem ? adviceItem.advice : ""; 
 };
-
 // Function to find the advice for humidity based on min and max values
 const getHumidityAdvice = (minHumidity, maxHumidity, adviceJSON) => {
   const adviceList = adviceJSON.advice["humidity_combined"];
@@ -96,7 +100,7 @@ const getHumidityAdvice = (minHumidity, maxHumidity, adviceJSON) => {
     maxHumidity >= item.range.maxima_min && maxHumidity <= item.range.maxima_max
   );
 
-  return adviceItem ? adviceItem.advice : ""; // Devuelve "" si no hay recomendación
+  return adviceItem ? adviceItem.advice : ""; 
 };
 
 // Function to load the advice from the JSON file

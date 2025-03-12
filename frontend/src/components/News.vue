@@ -30,6 +30,7 @@ const props = defineProps({
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  background-color: rgba(255, 255, 255, 0.801);/* --color-primary con transparencia */;
 }
 .news__card:hover {
   transform: scale(1.02);
