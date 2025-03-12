@@ -1,0 +1,160 @@
+{
+  "advice": {
+    "precipitation": [
+      {
+        "range": { "min": 0, "max": 20 },
+        "advice": "¡Día soleado! 🌞 Las abejas estarán felices recolectando néctar. Aprovecha para revisar las colmenas y asegurarte de que tengan suficiente espacio."
+      },
+      {
+        "range": { "min": 21, "max": 60 },
+        "advice": "Llovizna ligera. 🌧️ Las abejas se quedarán en casa, así que es un buen momento para revisar los techos de las colmenas y evitar filtraciones."
+      },
+      {
+        "range": { "min": 61, "max": 100 },
+        "advice": "Lluvia intensa. ⛈️ ¡Hora de proteger las colmenas! Usa lonas o techos inclinados para evitar que el agua entre y dañe a tus pequeñas trabajadoras."
+      }
+    ],
+    "snow": [
+      {
+        "range": { "min": 0, "max": 0 },
+        "advice": "Sin nieve a la vista. ❄️ Aprovecha para inspeccionar las colmenas y asegurarte de que estén bien ventiladas y protegidas contra la humedad."
+      },
+      {
+        "range": { "min": 100, "max": 500 },
+        "advice": "Nieve a baja altitud. ❄️ Si tienes colmenas en zonas montañosas, protégelas con aislamiento extra. Revisa accesos en caso de acumulación."
+      },
+      {
+        "range": { "min": 501, "max": 1000 },
+        "advice": "Nieve en cotas medias. 🌨️ Asegúrate de que las colmenas estén protegidas del viento y la humedad. Proporciona alimento extra si es necesario."
+      },
+      {
+        "range": { "min": 1001, "max": 1500 },
+        "advice": "Nieve en zonas altas. 🏔️ Si tus colmenas están en montaña, revisa los accesos y evita que la nieve bloquee las entradas."
+      },
+      {
+        "range": { "min": 1501, "max": 2000 },
+        "advice": "Nieve en alta montaña. ❅ La actividad de las abejas será mínima. Evita manipular las colmenas para no alterar su equilibrio térmico."
+      },
+      {
+        "range": { "min": 2001, "max": 3000 },
+        "advice": "Cota de nieve extrema. 🏔️ Si tienes colmenas a esta altitud, ya deberían estar protegidas en un refugio invernal."
+      }
+    ],
+    "temperature_combined": [
+  {
+    "range": { "max_min": [-50, -21], "max_max": [-20, -1] },
+    "advice": "¡Frio ártico! 🥶 Tus abejas están en modo supervivencia. Asegúrate de que las colmenas estén completamente aisladas y con suficiente alimento almacenado."
+  },
+  {
+    "range": { "max_min": [-20, -1], "max_max": [0, 5] },
+    "advice": "Frío extremo. ❄️ Las abejas formarán un cúmulo para mantenerse calientes. Verifica que las colmenas estén bien selladas contra el viento."
+  },
+  {
+    "range": { "max_min": [0, 5], "max_max": [6, 10] },
+    "advice": "Días fríos. 🧣 Las abejas estarán menos activas. Asegúrate de que tengan suficiente miel para sobrevivir."
+  },
+  {
+    "range": { "max_min": [6, 10], "max_max": [11, 15] },
+    "advice": "Fresquito. 🌬️ Las abejas comenzarán a moverse más. Revisa su actividad y asegúrate de que tengan suficiente espacio en la colmena."
+  },
+  {
+    "range": { "max_min": [11, 15], "max_max": [16, 20] },
+    "advice": "Temperatura ideal. 🌼 Las abejas están listas para trabajar. Asegúrate de que tengan suficiente espacio para almacenar miel."
+  },
+  {
+    "range": { "max_min": [16, 20], "max_max": [21, 25] },
+    "advice": "Clima cálido. ☀️ Las abejas estarán muy activas recolectando néctar. Proporciona agua fresca cerca de las colmenas."
+  },
+  {
+    "range": { "max_min": [21, 25], "max_max": [26, 30] },
+    "advice": "Calor moderado. 🌞 Mantén las colmenas en áreas sombreadas. ¡Las abejas necesitan refrescarse mientras trabajan!"
+  },
+  {
+    "range": { "max_min": [26, 30], "max_max": [31, 35] },
+    "advice": "Calor intenso. 🔥 Proporciona mucha agua fresca y asegúrate de que las colmenas estén bien ventiladas. ¡El calor puede agotar a tus abejas!"
+  },
+  {
+    "range": { "max_min": [31, 35], "max_max": [36, 40] },
+    "advice": "Olas de calor. 🌡️ Refuerza la ventilación y protege las colmenas del sol directo. ¡Tus abejas necesitarán toda la ayuda posible!"
+  },
+  {
+    "range": { "max_min": [36, 40], "max_max": [41, 50] },
+    "advice": "Calor extremo. 🌋 ¡Emergencia apícola! Proporciona agua constante y sombra total. Considera trasladar las colmenas a un lugar más fresco si es posible."
+  },
+  {
+    "range": { "max_min": [-50, -10], "max_max": [-9, 5] },
+    "advice": "Frío extremo. ❄️ Las abejas estarán en modo supervivencia. Asegúrate de que las colmenas estén bien aisladas y con suficiente alimento almacenado."
+  },
+  {
+    "range": { "max_min": [-9, 5], "max_max": [6, 15] },
+    "advice": "Frío moderado. 🧣 La actividad de las abejas será limitada. Verifica sus reservas de miel y asegúrate de que la colmena esté protegida del viento y la humedad."
+  },
+  {
+    "range": { "max_min": [6, 15], "max_max": [16, 25] },
+    "advice": "Temperatura ideal. 🌼 Las abejas estarán activas recolectando néctar. Asegúrate de que tengan suficiente espacio en la colmena para almacenar miel."
+  },
+  {
+    "range": { "max_min": [16, 25], "max_max": [26, 35] },
+    "advice": "Clima cálido. ☀️ Proporciona agua fresca cerca de las colmenas y asegúrate de que haya sombra suficiente para evitar el sobrecalentamiento."
+  },
+  {
+    "range": { "max_min": [26, 35], "max_max": [36, 45] },
+    "advice": "Calor intenso. 🔥 La ventilación es clave. Mantén las colmenas en zonas sombreadas y proporciona agua abundante para evitar estrés térmico en las abejas."
+  },
+  {
+    "range": { "max_min": [36, 45], "max_max": [46, 55] },
+    "advice": "Temperaturas extremas. 🌋 ¡Emergencia para las abejas! Sombra total, agua constante y ventilación adecuada son esenciales para su supervivencia."
+  }
+],
+    "humidity_combined": [
+      {
+        "range": { "minima_min": 0, "minima_max": 30, "maxima_min": 51, "maxima_max": 80 },
+        "advice": "Humedad variable. 💨 Mantén una buena ventilación en las colmenas para evitar problemas de condensación."
+      },
+      {
+        "range": { "minima_min": 0, "minima_max": 30, "maxima_min": 30, "maxima_max": 50 },
+        "advice": "Humedad baja. 🏜️ Coloca fuentes de agua cerca de las colmenas. ¡Las abejas necesitan hidratarse para producir miel!"
+      },
+      {
+        "range": { "minima_min": 51, "minima_max": 80, "maxima_min": 81, "maxima_max": 100 },
+        "advice": "Humedad alta constante. 🌧️ Revisa las colmenas para evitar moho o enfermedades. ¡Un ambiente húmedo puede ser peligroso!"
+      },
+      {
+        "range": { "minima_min": 0, "minima_max": 20, "maxima_min": 81, "maxima_max": 100 },
+        "advice": "Cambio extremo de humedad. 🌫️ Protege las colmenas contra la condensación. ¡Las abejas prefieren la estabilidad!"
+      },
+      {
+        "range": { "minima_min": 21, "minima_max": 50, "maxima_min": 51, "maxima_max": 75 },
+        "advice": "Humedad estable. 🌱 Buenas condiciones para las abejas. Aprovecha para revisar su actividad y asegurarte de que todo esté en orden."
+      }
+    ],
+    "wind": [
+      {
+        "range": { "min": 0, "max": 20 },
+        "advice": "Viento suave. 🍃 Perfecto para las abejas. No te preocupes, tus colmenas están seguras."
+      },
+      {
+        "range": { "min": 21, "max": 40 },
+        "advice": "Viento moderado. 🌬️ Asegúrate de que las colmenas estén bien sujetas. ¡No queremos que tus abejas salgan volando!"
+      },
+      {
+        "range": { "min": 41, "max": 100 },
+        "advice": "Viento fuerte. 🌪️ Refuerza las colmenas y protege las entradas. ¡Es un día difícil para las abejas!"
+      }
+    ],
+    "uv_index": [
+      {
+        "range": { "min": 0, "max": 2 },
+        "advice": "Índice UV bajo. ☀️ Condiciones perfectas para que las abejas recolecten néctar sin riesgos."
+      },
+      {
+        "range": { "min": 3, "max": 5 },
+        "advice": "Índice UV moderado. 🌞 Proporciona sombra a las colmenas si están expuestas directamente al sol. ¡Protege a tus pequeñas trabajadoras!"
+      },
+      {
+        "range": { "min": 6, "max": 10 },
+        "advice": "Índice UV alto. 🌡️ Mantén las colmenas en áreas sombreadas. ¡Demasiado sol puede agotar a las abejas!"
+      }
+    ]
+  }
+}
