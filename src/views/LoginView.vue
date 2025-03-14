@@ -21,7 +21,7 @@ const authStore = useAuthStore();
 const handleLogin = async (userData) => {
   try {
     await authStore.login(userData); // Llama al método `login` del store con los datos completos
-    router.push('/profile'); // Redirige al perfil
+    router.push('/meteobee/profile'); // Redirige al perfil
   } catch (err) {
     alert(err.message);
   }
