@@ -99,7 +99,7 @@ const handleSubmit = async () => {
 
   try {
     // 🔗 Llamada al JSON Server para obtener usuarios
-    const response = await fetch('http://localhost:3000/users');
+    const response = await fetch('https://backendbee-production.up.railway.app/users');
     if (!response.ok) throw new Error('Error al obtener usuarios.');
 
     const users = await response.json();

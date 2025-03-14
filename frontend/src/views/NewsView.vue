@@ -12,19 +12,23 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import NewsCard from '../components/News.vue';
+  import newsData from '../assets/news.json'; 
+
+
+const news = ref(newsData.news);
   
-  // Array to store news
-  const news = ref([]);
+  // // Array to store news
+  // const news = ref([]);
   
-  const fetchNews = async () => {
-      // Load JSON data
-      const response = await fetch('/news.json');
-      // Turn response into .json
-      const data = await response.json();
-      news.value = data.news;
-  };
+  // const fetchNews = async () => {
+  //     // Load JSON data
+  //     const response = await fetch('/news.json');
+  //     // Turn response into .json
+  //     const data = await response.json();
+  //     news.value = data.news;
+  // };
   
-  onMounted(fetchNews);
+  // onMounted(fetchNews);
   </script>
   
   <style scoped>

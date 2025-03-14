@@ -2,19 +2,23 @@
   <div class="news">
     <div class="news__card">
       <img v-if="news.image" :src="news.image" alt="Noticia" class="news__image" />
-      <h2 class="news__title">{{ news.title }}</h2>
-      <p class="news__date">{{ news.date }}</p>
-      <p class="news__description">{{ news.description }}</p>
-    </div>
+    <h2 class="news__title">{{ news.title }}</h2>
+    <p class="news__date">{{ news.date }}</p>
+    <p class="news__description">{{ news.description }}</p>
+  </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, onMounted } from 'vue';
 
 //Receive the news object from the parent component
 const props = defineProps({
   news: Object 
+});
+
+onMounted(() => {
+  console.log("Imagen recibida:", props.news.image);
 });
 </script>
 

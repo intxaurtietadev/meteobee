@@ -43,6 +43,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { useAPIdata } from '@/stores/APIdata.js';
+import adviceJSON from '@/../public/advice.json';
 
 const apiData = useAPIdata();
 const meteoData = computed(() => apiData.meteoData0);
@@ -70,14 +71,13 @@ const getTimeRange = () => {
 const getAdvice = (parameter, value, adviceJSON) => {
   const adviceList = adviceJSON.advice[parameter];
 
-  if (!adviceList) return ""; // Si no hay datos, evitar errores
-
-  // Filtra los rangos válidos y encuentra el que corresponde a `value`
+  if (!adviceList) return ""; 
+  
   const adviceItem = adviceList.find(item => {
     return value >= item.range.min && value <= item.range.max;
   });
 
-  return adviceItem ? adviceItem.advice : ""; // Retorna el consejo correcto
+  return adviceItem ? adviceItem.advice : ""; 
 };
 
 // Function to find the advice for temperature based on min and max values
@@ -105,8 +105,10 @@ const getHumidityAdvice = (minHumidity, maxHumidity, adviceJSON) => {
 
 // Function to load the advice from the JSON file
 const loadAdvice = async () => {
-    const response = await fetch('/advice.json');
-    const data = await response.json();
+    // const response = await fetch('/advice.json');
+    // const data = await response.json();
+
+    const data = adviceJSON;
 
     if (!meteoData.value) return;
 

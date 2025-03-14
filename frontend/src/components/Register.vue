@@ -223,7 +223,7 @@ const handleRegister = async () => {
   };
 
   try {
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch('https://backendbee-production.up.railway.app/users', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',

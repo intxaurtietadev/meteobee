@@ -16,7 +16,7 @@ import GrantsCard from '../components/Grantscopy.vue';
 const grants = ref([]);
 
 const fetchGrants = async () => {
-  const response = await fetch('http://localhost:3000/grants');
+  const response = await fetch('https://backendbee-production.up.railway.app/grants');
   if (!response.ok) throw new Error('Error al obtener usuarios.');
   const data = await response.json();
   grants.value = data;
