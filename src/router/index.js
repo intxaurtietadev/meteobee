@@ -9,35 +9,35 @@ import GrantsViewcopy from '../views/GrantsViewcopy.vue';
 
 const routes = [
   {
-    path: '/',
+    path: '/meteobee/',
     name: 'Home',
     component: HomeView,
     meta: { requiresAuth: false }, // No requiere autenticación
   },
   {
-    path: '/login',
+    path: '/meteobee/login',
     name: 'Login',
     component: LoginView,
     meta: { requiresAuth: false }, // No requiere autenticación
   },
   {
-    path: '/profile',
+    path: '/meteobee/profile',
     name: 'Profile',
     component: ProfileView,
     meta: { requiresAuth: true }, // Requiere autenticación
   },
   {
-    path: '/noticias',
+    path: '/meteobee/noticias',
     name: 'Noticias',
     component: NewsView,
   },
   {
-  path: '/ayudas',
+  path: '/meteobee/ayudas',
   name: 'Ayudas',
   component: GrantsView,
 },
 {
-  path: '/copia',
+  path: '/meteobee/copia',
   name: 'Copia',
   component: GrantsViewcopy,
 }

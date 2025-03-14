@@ -22,9 +22,9 @@
       </svg>
     </div>
     <ul class="navbar__nav-links" :class="{ 'navbar__nav-links--open': isOpen }">
-      <li class="navbar__nav-item"><router-link to="/" class="navbar__link">Inicio</router-link></li>
-      <li class="navbar__nav-item"><router-link to="/ayudas" class="navbar__link">Subvenciones</router-link></li>
-      <li class="navbar__nav-item"><router-link to="/noticias" class="navbar__link">Noticias</router-link></li>
+      <li class="navbar__nav-item"><router-link to="/meteobee/" class="navbar__link">Inicio</router-link></li>
+      <li class="navbar__nav-item"><router-link to="/meteobee/ayudas" class="navbar__link">Subvenciones</router-link></li>
+      <li class="navbar__nav-item"><router-link to="/meteobee/noticias" class="navbar__link">Noticias</router-link></li>
     </ul>
     <!-- Ícono de usuario, redirigir al login -->
     <div class="navbar__user" @click="handleUserClick"> <!-- Aquí redirigimos a la página de login -->
@@ -63,9 +63,9 @@ export default {
     },
     handleUserClick() {
       if (this.auth.user.id) {
-        this.$router.push('/profile')
+        this.$router.push('/meteobee/profile')
       } else {
-        this.$router.push('/login')
+        this.$router.push('/meteobee/login')
       }
     }
   }
