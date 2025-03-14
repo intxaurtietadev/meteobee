@@ -11,7 +11,7 @@
     "title": "Apicultores europeos adoptan inteligencia artificial para mejorar la producción de miel",
     "date": "2024-02-24",
     "description": "En varios países europeos, los apicultores han comenzado a implementar inteligencia artificial (IA) en la gestión de sus colmenas, logrando mejorar la salud de sus abejas y aumentar la producción de miel. La tecnología, basada en sensores y algoritmos de aprendizaje automático, permite monitorear el sonido y los movimientos de las abejas dentro de la colmena. A través del análisis de estos datos, los apicultores pueden detectar signos tempranos de enfermedades, problemas en la alimentación o incluso la posible fuga de la reina. \"Antes, solo podíamos inspeccionar las colmenas manualmente y muchas veces era demasiado tarde cuando descubríamos un problema\", comenta Pierre Lefèvre, un apicultor de Francia que ha incorporado IA en su apiario. \"Ahora, con estos sistemas, recibimos alertas en tiempo real y podemos actuar de inmediato.\" Este avance tecnológico está revolucionando la apicultura y promete hacerla más sostenible y eficiente en los próximos años.",
-    "image": "./img/news/ia.jpg"
+    "image": "../img/news/ia.jpg"
   },
   {
     "id": "3",
